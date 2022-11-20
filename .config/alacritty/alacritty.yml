@@ -2,12 +2,15 @@
 # Font configuration
 font:
   normal:
-    family: Fantasque Sans Mono
+    family: FiraCode NF
     style: Regular
   bold:
-    family: Fantasque Sans Mono
+    family: FiraCode NF
     style: Bold
   size: 12
+
+shell:
+  program: /usr/bin/fish
 
 # Color configuration
 # Colors (Gruvbox dark)

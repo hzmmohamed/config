@@ -13,7 +13,7 @@
 set $mod Mod4
 set $other Shift
 
-# set $Locker "i3lock"
+set $Locker swaylock
 
 # set workspace labels
 set $ws1_term  "1: 1 "
@@ -70,9 +70,7 @@ bindsym $mod+c focus child
 
 
 # font
-font pango:Fura Code NF 15
-
-
+font FiraCode NF 13
 # vim:filetype=i3
 
 ############################
@@ -104,8 +102,7 @@ client.urgent           #000000 #000000 #ffffff #ffffff
 ####       WALLPAPER CONFIG       ####
 ######################################
 
-output * bg ~/pix/wal/crimson.jpg fill
-
+output * bg ~/wallpapers/veeterzy-sMQiL_2v4vs-unsplash.jpg fill
 
 # vim:filetype=i3
 
@@ -275,8 +272,8 @@ bindsym $mod+x [urgent=latest] focus
 # kill focused window
 bindsym $mod+Q kill
 
-
-
+gaps inner 15
+#gaps  50
 
 # vim:filetype=i3
 
@@ -346,6 +343,8 @@ bindsym XF86AudioPrev exec playerctl previous
 # brightness
 bindsym XF86MonBrightnessUp exec light -A 5
 bindsym XF86MonBrightnessDown exec light -U 5
+bindsym Ctrl+XF86MonBrightnessUp exec light -A 1
+bindsym Ctrl+XF86MonBrightnessDown exec light -U 1
 
 # power
 bindsym XF86PowerOff exec $Locker
@@ -356,17 +355,23 @@ bindsym XF86PowerOff exec $Locker
 # vim:filetype=i3
 
 ##########################
-####     TOUCHPAD     ####
+####     INPUT     ####
 ##########################
 
 input type:touchpad {
-       dwt enabled
+    # Further options: https://wayland.freedesktop.org/libinput/doc/latest/configuration.html
+       dwt enabled # disable while typing
        tap enabled
-       natural_scroll enabled
+       natural_scroll disabled
        middle_emulation enabled
    }
 
    
+input "type:keyboard" {
+    xkb_layout us,ara
+}
+
+bindsym $mod+Shift+Return exec sway input 1:1:AT_Translated_Set_2_keyboard  xkb_switch_layout next
 # vim:filetype=i3
 
 ##########################
@@ -374,8 +379,7 @@ input type:touchpad {
 ##########################
 
 
-
-exec waybar
+exec_always --no-startup-id ~/.config/waybar/launch.sh 
 # vim:filetype=i3
 
 ######################################

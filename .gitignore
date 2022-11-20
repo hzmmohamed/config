@@ -1,4 +1,6 @@
-*~          # emacs backup files
-\#.*\#       # emacs autosave files
+*~     # emacs backup files
+\#.*\# # emacs autosave files
 
 fonts
+.config/fish/fish_variables
+.config/fish/completions/nvm.fish
