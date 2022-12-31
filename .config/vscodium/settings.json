@@ -1,0 +1,56 @@
+{
+  "workbench.colorTheme": "Solarized Light",
+  "workbench.startupEditor": "none",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "prettier.requireConfig": true,
+  "files.autoSave": "afterDelay",
+  "explorer.confirmDragAndDrop": false,
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
+  "editor.lineNumbers": "on",
+  "notebook.lineNumbers": "on",
+  "files.watcherExclude": {
+    "**/env/**": true
+  },
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "files.associations": {
+    "*.dvc": "yaml",
+    "dvc.lock": "yaml"
+  },
+  "workbench.sideBar.location": "right",
+  "redhat.telemetry.enabled": true,
+  "npm.keybindingsChangedWarningShown": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "gitlens.views.branches.branches.layout": "list",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python"
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+},
+  "jupyter.askForKernelRestart": false,
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "settingsSync.ignoredSettings": [
+    "-window.zoomLevel"
+  ],
+  "[ignore]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "workbench.iconTheme": "vscode-icons",
+  "window.zoomLevel": 1,
+  "workbench.tree.indent": 16
+}

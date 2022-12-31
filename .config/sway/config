@@ -392,3 +392,5 @@ exec_always --no-startup-id ~/.config/waybar/launch.sh
 # Stop any services that are running, so that they receive the new env var when they restart.
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway && systemctl --user stop pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-wlr && systemctl --user start pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-wlr
 
+
+output eDP-1 scale 1
