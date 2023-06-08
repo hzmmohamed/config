@@ -1,6 +1,4 @@
-*~     # emacs backup files
-\#.*\# # emacs autosave files
+# Ignore nix build output
+result*
 
-fonts
-.config/fish/fish_variables
-.config/fish/completions/nvm.fish
+.direnv/
