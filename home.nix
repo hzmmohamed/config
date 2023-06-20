@@ -26,25 +26,14 @@
     # # "Hello, world!" when run.
     # pkgs.hello
     xterm
-    openshot-qt
-    libreoffice
+  #  openshot-qt
+  #  libreoffice
     qgis
     pdfgrep
-    delta
+  #  delta
 
     rsync
     gnused
-
-    gnome-frog
-    gnome.gnome-tweaks
-    gnome-extension-manager
-    gnomeExtensions.workspaces-bar
-    gnomeExtensions.space-bar
-    unstable.gnomeExtensions.top-bar-organizer
-    # gnomeExtensions.animation-tweaks
-    gnomeExtensions.impatience
-    gnomeExtensions.just-perfection
-    gnomeExtensions.cpufreq
 
     tesseract
     ripgrep
@@ -111,15 +100,12 @@
     ffmpeg_5
     handbrake
     mpv
+    pavucontrol
 
     python310Packages.fn
 
     dbeaver
     figma-linux
-
-    gnomeExtensions.vitals
-    gnomeExtensions.sound-output-device-chooser
-    gnomeExtensions.space-bar
 
     # KDE Partition Manager
     # partition-manager
@@ -128,19 +114,18 @@
 
     anytype
 
-    ardour
-    carla
-    x42-plugins
-    x42-avldrums
-    CHOWTapeModel
-    ChowCentaur
-    ChowPhaser
-    # How to get decent sampler
-    easyeffects
-    helm
-    guitarix
-    pavucontrol
-    sfizz
+#    ardour
+#    carla
+#    x42-plugins
+#    x42-avldrums
+#    CHOWTapeModel
+#    ChowCentaur
+#    ChowPhaser
+#    # How to get decent sampler
+#    easyeffects
+#    helm
+#    guitarix
+#    sfizz
 
     lens
     postman
@@ -149,10 +134,10 @@
 
     vnstat
 
-    freecad
-    kicad
-    gimp
-    inkscape
+#    freecad
+#    kicad
+#    gimp
+#    inkscape
 
     libsForQt5.kgpg
     ktorrent
@@ -160,7 +145,7 @@
     kubectl
     kubernetes-helm
 
-    lapce
+#    lapce
     lazygit
 
     nano
@@ -172,7 +157,7 @@
     noto-fonts-extra
     noto-fonts-emoji
 
-    obs-studio
+#    obs-studio
     os-prober
 
     gzip
@@ -299,7 +284,7 @@
     mpv.enable = true;
     navi.enable = true;
     pandoc.enable = true;
-    obs-studio.enable = true;
+    # obs-studio.enable = true;
     rofi.enable = true;
     ssh.enable = true;
     tmux.enable = true;
@@ -314,55 +299,10 @@
     settings = {}; # https://github.com/nix-community/home-manager/blob/master/modules/misc/editorconfig.nix
   };
 
-  dconf.settings = {
-    "org/gnome/desktop/wm/keybindings" = {
-      switch-to-workspace-1 = ["<Super>1"];
-      switch-to-workspace-2 = ["<Super>2"];
-      switch-to-workspace-3 = ["<Super>3"];
-      switch-to-workspace-4 = ["<Super>4"];
-      switch-to-workspace-5 = ["<Super>5"];
-      switch-to-workspace-6 = ["<Super>6"];
-      switch-to-workspace-7 = ["<Super>7"];
-      switch-to-workspace-8 = ["<Super>8"];
-      switch-to-workspace-9 = ["<Super>9"];
-      switch-to-workspace-10 = ["<Super>0"];
 
-      move-to-workspace-1 = ["<Shift><Super>1"];
-      move-to-workspace-2 = ["<Shift><Super>2"];
-      move-to-workspace-3 = ["<Shift><Super>3"];
-      move-to-workspace-4 = ["<Shift><Super>4"];
-      move-to-workspace-5 = ["<Shift><Super>5"];
-      move-to-workspace-6 = ["<Shift><Super>6"];
-      move-to-workspace-7 = ["<Shift><Super>7"];
-      move-to-workspace-8 = ["<Shift><Super>8"];
-      move-to-workspace-9 = ["<Shift><Super>9"];
-      move-to-workspace-10 = ["<Shift><Super>0"];
-    };
-    "org/gnome/mutter" = {
-      focus-change-on-pointer-rest = false;
-    };
-    "org/gnome/shell" = {
-      show-screenshot-ui = ["<Shift><Super>s"];
-      disable-user-extensions = false;
-
-      # `gnome-extensions list` for a list
-      enabled-extensions = [
-        # "user-theme@gnome-shell-extensions.gcampax.github.com"
-        # "trayIconsReloaded@selfmade.pl"
-        "Vitals@CoreCoding.com"
-        # "dash-to-panel@jderose9.github.com"
-        "sound-output-device-chooser@kgshank.net"
-        "space-bar@luchrioh"
-      ];
-    };
-    "org/gnome/desktop/interface" = {
-      enable-animations = false;
-    };
-  };
-
-  wayland.windowManager.sway = {
-    enable = true;
-  };
+#  wayland.windowManager.sway = {
+#    enable = true;
+#  };
 
   targets.genericLinux.enable = true;
 

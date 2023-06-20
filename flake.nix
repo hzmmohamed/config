@@ -8,7 +8,7 @@
     # NixPkgs Unstable (nixos-unstable)
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # Home Manager (release-22.05)
+    # Home Manager (release-23.05)
     home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -27,7 +27,9 @@
   outputs = {
     self,
     nixpkgs,
+    unstable,
     nixos-generators,
+    home-manager,
     ...
   }: {
     packages.x86_64-linux = {
@@ -40,6 +42,20 @@
         format = "install-iso";
       };
     };
+
+	    homeConfigurations."hfahmi" = home-manager.lib.homeManagerConfiguration {
+       pkgs = nixpkgs.legacyPackages.${system};
+       extraSpecialArgs = {
+         unstable = unstable.legacyPackages.${system};
+       };
+
+       # Specify your home configuration modules here, for example,
+       # the path to your home.nix.
+       modules = [./home.nix];
+
+       # Optionally use extraSpecialArgs
+       # to pass through arguments to home.nix
+     };
   };
 
   # outputs = {
