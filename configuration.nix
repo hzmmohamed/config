@@ -68,6 +68,7 @@
     xkbVariant = "";
   };
   services.mpd.enable = true;
+  services.udisks2.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.hfahmi = {
@@ -600,6 +601,10 @@
     };
     services.kanshi.enable = true;
     services.dunst.enable = true;
+    services.udiskie = {
+      enable = true;
+      tray = "always";
+    };
 
     services.swayidle = {
       enable = true;
