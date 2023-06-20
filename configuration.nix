@@ -295,6 +295,14 @@
           name = "pisces";
           src = pisces.src;
         }
+        {
+          name = "fzf-fish";
+          src = fzf-fish.src;
+        }
+        {
+          name = "colored-man-pages";
+          src = colored-man-pages.src;
+        }
       ];
       interactiveShellInit = ''
         set fish_greeting # Disable greeting
@@ -378,7 +386,10 @@
       tmux.enable = true;
       urxvt.enable = true;
       zellij.enable = true;
-      zoxide.enable = true;
+      zoxide = {
+        enable = true;
+        enableFishIntegration = true;
+      };
       broot.enable = true;
       waybar = {
         enable = true;
