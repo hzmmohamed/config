@@ -39,6 +39,12 @@
   services.tlp.enable = true;
   services.system76-scheduler.enable = true;
   services.smartd.enable = true;
+  services.vnstat.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    rootless.enable = true;
+    # autoPrune.enable = true;
+  };
 
   # Enable networking
   networking.networkmanager.enable = true;

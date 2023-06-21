@@ -17,3 +17,12 @@ What are the pros and cons of using Home manager + Nix vs NixOS?
 - I love that PopOS just works out of the box. I think I can get very far with Nix and home manager. It would be a good thing to list the functionalities that are configured outside Nix on the system level.
 - NixOS is very constraining. I can't even run a normal binary within the system itself. I will need something like distrobox. For example, I now don't have decent sampler on nixpkgs. How do I run it without containerisation? I will need to package it.
 - What else
+
+
+To do:
+- Fix docker rootless mode or replace with podman
+- Fix flameshot portals problem (https://github.com/flameshot-org/flameshot/issues/2872)
+- look into asusd
+- fix waybar temperature widget
+- setup kanshi + install wdisplays
+- install catpcuccin theme 
