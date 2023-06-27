@@ -35,6 +35,12 @@
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  services.upower = {
+    enable = true;
+    criticalPowerAction = "Hibernate";
+  };
+  services.thermald.enable = true;
+  services.cpupower-gui.enable = true;
 
   services.tlp.enable = true;
   services.system76-scheduler.enable = true;
@@ -42,8 +48,11 @@
   services.vnstat.enable = true;
   virtualisation.docker = {
     enable = true;
-    rootless.enable = true;
-    # autoPrune.enable = true;
+    # rootless = {
+    #   enable = true;
+    #   setSocketVariable = true;
+    # };
+    autoPrune.enable = true;
   };
 
   # Enable networking
@@ -76,11 +85,12 @@
   services.mpd.enable = true;
   services.udisks2.enable = true;
 
+  programs.adb.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.hfahmi = {
     isNormalUser = true;
     description = "Hazem Fahmi";
-    extraGroups = ["networkmanager" "wheel" "video" "seat" "input"];
+    extraGroups = ["networkmanager" "wheel" "video" "seat" "input" "docker" "adbusers"];
     packages = with pkgs; [firefox];
   };
 
@@ -131,6 +141,9 @@
       ripgrep-all
       # vgrep
 
+      # webkitgtk
+      # gtk3
+
       (nerdfonts.override {fonts = ["FiraCode" "DroidSansMono"];})
       fontfor
       fontforge
@@ -145,7 +158,7 @@
       font-manager
       alejandra
 
-      vnstat
+      powertop
       fx
       jqp
       p7zip
@@ -221,9 +234,11 @@
       lens
       postman
 
-      powertop
-
       vnstat
+
+      #
+      cpupower-gui
+      glib # gapplication required for cpupower-gui
 
       #    freecad
       #    kicad
@@ -824,6 +839,7 @@
       QT_QPA_PLATFORM = "wayland";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
 
+      DISPLAY = ":0";
       # Fix for some Java AWT applications (e.g. Android Studio),
       # use this if they aren't displayed properly:
       _JAVA_AWT_WM_NONREPARENTING = 1;
@@ -899,6 +915,8 @@
   xdg.portal = {
     enable = true;
     wlr.enable = true;
+
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
   services.xserver.libinput.enable = true;
   services.xserver.enable = true;
@@ -913,6 +931,8 @@
     enable = true;
     enableSSHSupport = true;
   };
+
+  programs.light.enable = true;
 
   # Git NixOS option
   programs.git.enable = true;
