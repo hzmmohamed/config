@@ -6,7 +6,9 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  unstable = import <nixos-unstable> {};
+in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -93,7 +95,6 @@
     isNormalUser = true;
     description = "Hazem Fahmi";
     extraGroups = ["networkmanager" "wheel" "video" "seat" "input" "docker" "adbusers"];
-    packages = with pkgs; [firefox];
   };
 
   home-manager.useGlobalPkgs = true;
@@ -107,6 +108,11 @@
     home.username = "hfahmi";
     home.homeDirectory = "/home/hfahmi";
     home.shellAliases = {};
+    home.pointerCursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Original-Classic";
+      size = 22;
+    };
 
     # This value determines the Home Manager release that your configuration is
     # compatible with. This helps avoid breakage when a new Home Manager release
@@ -125,15 +131,16 @@
       xdg-utils
       dmenu
 
+      distrobox
+
       # # Adds the 'hello' command to your environment. It prints a friendly
       # # "Hello, world!" when run.
-      # pkgs.hello
+      
       xterm
       #  openshot-qt
-      #  libreoffice
+      libreoffice
       qgis
       pdfgrep
-      #  delta
       openlens
       rsync
       gnused
@@ -264,8 +271,10 @@
       noto-fonts-extra
       noto-fonts-emoji
 
-      #    obs-studio
+      obs-studio
+      
       os-prober
+      killall
 
       gzip
 
@@ -478,7 +487,13 @@
         terminal = "alacritty";
         startup = [];
 
-        menu = "rofi -show drun";
+        menu = "wofi --show drun";
+        output = {
+          eDP-1 = {
+            scale = "1.2";
+            # bg = "";
+          };
+        };
 
         keybindings = let
           modifier = config.wayland.windowManager.sway.config.modifier;
@@ -842,13 +857,17 @@
       QT_QPA_PLATFORM = "wayland";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
 
-      DISPLAY = ":0";
+      DISPLAY = ":1";
       # Fix for some Java AWT applications (e.g. Android Studio),
       # use this if they aren't displayed properly:
       _JAVA_AWT_WM_NONREPARENTING = 1;
 
       # gtk applications on wayland
       GDK_BACKEND = "wayland";
+
+      # Fractional scaling
+      NIXOS_OZONE_WL = "1";
+      QT_AUTO_SCREEN_SCALE_FACTOR = "1";
     };
     # Install and Configure VSCodium
     programs.vscode = {
