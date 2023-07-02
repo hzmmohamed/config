@@ -24,6 +24,8 @@
   };
 
   security.polkit.enable = true;
+  # needed by pipewire pulse
+  security.rtkit.enable = true;
 
   # Enable swap on luks
   boot.initrd.luks.devices."luks-2d5a7033-b62c-4fad-9eac-7db206491629".device = "/dev/disk/by-uuid/2d5a7033-b62c-4fad-9eac-7db206491629";
@@ -454,6 +456,7 @@
 
     # Sway
     wayland.windowManager.sway = {
+      # Wrapped version of sway in nixpkgs already adds recommended command here in the sway docs https://github.com/swaywm/sway/wiki/Systemd-integration#managing-user-applications-with-systemd
       enable = true;
 
       wrapperFeatures.gtk = true;
