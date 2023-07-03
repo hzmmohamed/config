@@ -118,6 +118,35 @@ in {
     description = "Hazem Fahmi";
     extraGroups = ["networkmanager" "wheel" "video" "seat" "input" "docker" "adbusers" "libvirtd"];
   };
+
+  fonts = {
+    enableDefaultFonts = true;
+    fonts = with pkgs; [
+      (nerdfonts.override {fonts = ["FiraCode" "DroidSansMono"];})
+      font-awesome
+      kawkab-mono-font
+      roboto
+      roboto-mono
+
+      fira-code
+
+      jetbrains-mono
+      victor-mono
+
+      noto-fonts-extra
+      noto-fonts-emoji
+
+      # Meslo Nerd fonts package contains all the needed glyphs for the tide prompt
+      meslo-lgs-nf
+    ];
+
+    fontconfig = {
+      defaultFonts = {
+        serif = ["FreeSerif"];
+        sansSerif = ["Roboto"];
+        monospace = ["JetBrainsMono"];
+      };
+    };
   };
 
   home-manager.useGlobalPkgs = true;
@@ -176,18 +205,10 @@ in {
       # webkitgtk
       # gtk3
 
-      (nerdfonts.override {fonts = ["FiraCode" "DroidSansMono"];})
       fontfor
       fontforge
-      font-awesome
-      kawkab-mono-font
-      noto-fonts-extra
-      roboto
-      roboto-mono
-      fira-code
-      jetbrains-mono
-      victor-mono
       font-manager
+
       alejandra
 
       powertop
@@ -288,12 +309,7 @@ in {
 
       nano
 
-      # Meslo Nerd fonts package contains all the needed glyphs for the tide prompt
-      meslo-lgs-nf
       fishPlugins.pisces
-
-      noto-fonts-extra
-      noto-fonts-emoji
 
       obs-studio
       
