@@ -59,6 +59,28 @@ in {
     autoPrune.enable = true;
   };
 
+  # VirtualBox
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = ["hfahmi"];
+  virtualisation.virtualbox.guest.enable = true;
+  virtualisation.virtualbox.guest.x11 = true;
+
+  # Enable dconf (System Management Tool)
+  programs.dconf.enable = true;
+  # Manage the virtualisation services
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemu = {
+        swtpm.enable = true;
+        ovmf.enable = true;
+        ovmf.packages = [pkgs.OVMFFull.fd];
+      };
+    };
+    spiceUSBRedirection.enable = true;
+  };
+  services.spice-vdagentd.enable = true;
+
   # Enable networking
   networking.networkmanager.enable = true;
   programs.nm-applet.enable = true;
@@ -94,7 +116,8 @@ in {
   users.users.hfahmi = {
     isNormalUser = true;
     description = "Hazem Fahmi";
-    extraGroups = ["networkmanager" "wheel" "video" "seat" "input" "docker" "adbusers"];
+    extraGroups = ["networkmanager" "wheel" "video" "seat" "input" "docker" "adbusers" "libvirtd"];
+  };
   };
 
   home-manager.useGlobalPkgs = true;
@@ -204,6 +227,7 @@ in {
       tilt
       docker-compose
 
+      pcmanfm
       logkeys
 
       digikam
@@ -857,7 +881,7 @@ in {
       QT_QPA_PLATFORM = "wayland";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
 
-      DISPLAY = ":1";
+      # DISPLAY = ":1";
       # Fix for some Java AWT applications (e.g. Android Studio),
       # use this if they aren't displayed properly:
       _JAVA_AWT_WM_NONREPARENTING = 1;
@@ -925,6 +949,17 @@ in {
     lm_sensors
     smartmontools
     polkit_gnome
+
+    # Virt manager setup
+    virt-manager
+    virt-viewer
+    virtiofsd
+    spice
+    spice-gtk
+    spice-protocol
+    win-virtio
+    win-spice
+    gnome.adwaita-icon-theme
   ];
 
   services.pipewire = {
