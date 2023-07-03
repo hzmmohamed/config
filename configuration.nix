@@ -119,6 +119,9 @@ in {
     extraGroups = ["networkmanager" "wheel" "video" "seat" "input" "docker" "adbusers" "libvirtd"];
   };
 
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
   fonts = {
     enableDefaultFonts = true;
     fonts = with pkgs; [
@@ -187,7 +190,7 @@ in {
 
       # # Adds the 'hello' command to your environment. It prints a friendly
       # # "Hello, world!" when run.
-      
+
       xterm
       #  openshot-qt
       libreoffice
@@ -271,7 +274,8 @@ in {
       clamav
 
       anytype
-
+      
+      audacity
       #    ardour
       #    carla
       #    x42-plugins
@@ -312,7 +316,7 @@ in {
       fishPlugins.pisces
 
       obs-studio
-      
+
       os-prober
       killall
 
@@ -518,6 +522,7 @@ in {
         floating.modifier = "Mod4";
         floating.border = 0;
         window.border = 0;
+        bars = [];
         fonts = {
           names = ["RobotoMono"];
           size = 9.0;
@@ -685,6 +690,7 @@ in {
       tray = "always";
     };
 
+    services.blueman-applet.enable = true;
     services.swayidle = {
       enable = true;
     };
@@ -921,6 +927,15 @@ in {
         kamadorueda.alejandra
         jnoortheen.nix-ide
         emmanuelbeziat.vscode-great-icons
+        donjayamanne.githistory
+        mhutchie.git-graph
+        mikestead.dotenv
+        naumovs.color-highlight
+        vincaslt.highlight-matching-tag
+        foxundermoon.shell-format
+        jebbs.plantuml
+        antyos.openscad
+
         # vscodevim.vim
       ];
     };
