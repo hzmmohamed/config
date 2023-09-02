@@ -335,7 +335,7 @@ in {
       #    ChowPhaser
       #    # How to get decent sampler
       #    easyeffects
-      helm
+      # helm
       #    guitarix
       sfizz
 
