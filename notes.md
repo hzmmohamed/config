@@ -19,15 +19,6 @@ What are the pros and cons of using Home manager + Nix vs NixOS?
 - What else
 
 
-To do:
-- Fix docker rootless mode or replace with podman
-- Fix flameshot portals problem (https://github.com/flameshot-org/flameshot/issues/2872)
-- fix waybar temperature widget
-- setup kanshi + install wdisplays
-- install catpcuccin theme 
-- enable upower and configure its actions (the goal is to be able to understand what consumes power)
-- install code formatting extensions for vscode
-
 
 
 Power management and thermal management:
@@ -71,16 +62,39 @@ https://linuxhint.com/monitor_optimize_power_usage/
 
 
 
+
+To do:
+- Fix docker rootless mode or replace with podman
+- Fix flameshot portals problem (https://github.com/flameshot-org/flameshot/issues/2872)
+- fix waybar temperature widget
+- setup kanshi + install wdisplays
+- install catpcuccin theme 
+- enable upower and configure its actions (the goal is to be able to understand what consumes power)
+- install code formatting extensions for vscode
+
+
 Other features to add:
 - Add widget to show both the current power configuration (balance, balance_power, etc.) and the cpu governor and the cpu frequency
-- Add the ability to disable lidswitch close action in an ad hoc way, for situations where I'd like to the keep the computer running after closing the lid
-- Sleep then hibernate after duration + Hibernate right away if battery under threshold
+- Add the ability to disable lidswitch close action in an ad hoc way, for situations where I'd like to the keep the computer running after closing the lid 
+- Sleep then hibernate after duration + Hibernate right away if battery under threshold ---> solution: https://gist.github.com/mattdenner/befcf099f5cfcc06ea04dcdd4969a221
+
 - Wrap chromium and electron apps with `wrapProgram` and add flags `--enable-features=UseOzonePlatform`
 - Nvidia support
 - second display support + Kanshi
 - virtualbox + windows vm + ubuntu vm
-- clipboard management
+- [DONE] clipboard management
 - flameshot service is active and running but not showing in the system tray. Probably the system tray is not available when flameshot starts
+
 - codium crashes when run without --disable-gpu.
+
 - Maybe use virtualisation.kvmgt.enable
+
 - bluetooth headset audio quality is very poor when configured as a both source and sink
+    There is currently no perfect solution. The best to do is to switch to the bidirectional (and worse) profile during calls and back to the unidirectional A2DP profile when only listening to audio.
+- Configure notification daemon styles and font
+<!-- - logkeys service -->
+- switcheroo service
+- on resuming from hibernate or on restarting sway --> restart waybar service + restart services that live in the tray like flameshot, nm-applet, udiskie, and blueman. Is there a way to define this relationship and have systemd restart them by just restarting waybar?
+- Codium and other electron apps issue with GPU on wayland: https://github.com/NixOS/nixpkgs/issues/158947
+- Setting up secrets like Kubernetes Credentials using sops or these othehr tools
+- Setup mime associations

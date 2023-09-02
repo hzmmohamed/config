@@ -59,6 +59,52 @@ in {
     autoPrune.enable = true;
   };
 
+  # Nvidia
+  # Make sure opengl is enabled
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+
+  hardware.nvidia.prime = {
+    offload = {
+      enable = true;
+      enableOffloadCmd = true;
+    };
+
+    intelBusId = "PCI:00:02:0";
+    nvidiaBusId = "PCI:01:00:0";
+  };
+
+  # NVIDIA drivers are unfree.
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      "nvidia-x11"
+    ];
+
+  # Tell Xorg to use the nvidia driver
+  services.xserver.videoDrivers = ["nvidia"];
+
+  hardware.nvidia = {
+    # Modesetting is needed for most wayland compositors
+    modesetting.enable = true;
+
+    # Use the open source version of the kernel module
+    # Only available on driver 515.43.04+
+    # open = true;
+
+    # Fix screen tearing on external display. HDMI port is directly connected to dGPU
+    forceFullCompositionPipeline = true;
+
+    # Enable the nvidia settings menu
+    nvidiaSettings = true;
+
+    # Optionally, you may need to select the appropriate driver version for your specific GPU.
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
+
+  programs.kdeconnect.enable = true;
   # VirtualBox
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = ["hfahmi"];
@@ -118,9 +164,8 @@ in {
     description = "Hazem Fahmi";
     extraGroups = ["networkmanager" "wheel" "video" "seat" "input" "docker" "adbusers" "libvirtd"];
   };
-
-  hardware.bluetooth.enable = true;
   services.blueman.enable = true;
+  hardware.bluetooth.enable = true;
 
   fonts = {
     enableDefaultFonts = true;
@@ -212,6 +257,10 @@ in {
       fontforge
       font-manager
 
+      poetry
+      zotero
+      jdk
+
       alejandra
 
       powertop
@@ -240,6 +289,8 @@ in {
       entr
       pciutils
       python311
+      python311Packages.pip
+      virtualenv
       wget
       glances
       progress
@@ -252,7 +303,6 @@ in {
       docker-compose
 
       pcmanfm
-      logkeys
 
       digikam
 
@@ -274,10 +324,10 @@ in {
       clamav
 
       anytype
-      
+
       audacity
-      #    ardour
-      #    carla
+      ardour
+      carla
       #    x42-plugins
       #    x42-avldrums
       #    CHOWTapeModel
@@ -285,9 +335,9 @@ in {
       #    ChowPhaser
       #    # How to get decent sampler
       #    easyeffects
-      #    helm
+      helm
       #    guitarix
-      #    sfizz
+      sfizz
 
       lens
       postman
@@ -299,15 +349,18 @@ in {
       glib # gapplication required for cpupower-gui
 
       #    freecad
-      #    kicad
-      #    gimp
-      #    inkscape
+      kicad
+      gimp
+      inkscape
 
       libsForQt5.kgpg
       ktorrent
 
       kubectl
       kubernetes-helm
+
+      spotify
+      spotify-tray
 
       #    lapce
 
@@ -350,6 +403,13 @@ in {
       #   org.gradle.daemon.idletimeout=3600000
       # '';
     };
+    # programs.thunderbird = {
+    #   enable = true;
+    #   profiles.hfahmi = {
+    #     isDefault = true;
+    #     name =
+    #   }
+    # };
 
     programs.fish = {
       enable = true;
@@ -536,6 +596,7 @@ in {
         output = {
           eDP-1 = {
             scale = "1.2";
+            mode = "1920x1080@60.002Hz";
             # bg = "";
           };
         };
@@ -683,6 +744,14 @@ in {
         WantedBy = ["graphical-session.target"];
       };
     };
+    services.kdeconnect = {
+      enable = true;
+      indicator = true;
+    };
+
+    services.playerctld.enable = true;
+    services.mpris-proxy.enable = true;
+
     services.kanshi.enable = true;
     services.dunst.enable = true;
     services.udiskie = {
@@ -696,7 +765,10 @@ in {
     };
     programs.swaylock.enable = true;
     programs.wofi.enable = true;
-    services.clipman.enable = true;
+    services.clipmenu = {
+      enable = true;
+      launcher = "rofi";
+    };
 
     home.file.waybarConfig = {
       enable = true;
@@ -1000,6 +1072,8 @@ in {
     jack.enable = true;
   };
 
+  services.logkeys.enable = true;
+
   xdg.portal = {
     enable = true;
     wlr.enable = true;
@@ -1031,6 +1105,8 @@ in {
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
+  system.copySystemConfiguration = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
