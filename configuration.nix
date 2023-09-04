@@ -68,15 +68,16 @@ in {
   };
 
   hardware.nvidia.prime = {
-    offload = {
-      enable = true;
-      enableOffloadCmd = true;
-    };
+    # offload = {
+    #   enable = true;
+    #   enableOffloadCmd = true;
+    # };
 
     intelBusId = "PCI:00:02:0";
     nvidiaBusId = "PCI:01:00:0";
   };
 
+  hardware.enableAllFirmware = true;
   # NVIDIA drivers are unfree.
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
@@ -92,7 +93,7 @@ in {
 
     # Use the open source version of the kernel module
     # Only available on driver 515.43.04+
-    # open = true;
+    open = true;
 
     # Fix screen tearing on external display. HDMI port is directly connected to dGPU
     forceFullCompositionPipeline = true;
@@ -108,7 +109,8 @@ in {
   # VirtualBox
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = ["hfahmi"];
-  virtualisation.virtualbox.guest.enable = true;
+  # setting vbox guest causes a boot problem https://github.com/NixOS/nixpkgs/pull/60938  and https://github.com/NixOS/nixpkgs/issues/58127
+  virtualisation.virtualbox.guest.enable = false;
   virtualisation.virtualbox.guest.x11 = true;
 
   # Enable dconf (System Management Tool)
@@ -309,10 +311,10 @@ in {
       ytfzf
 
       # Support for Windows VST2/VST3 plugins
-    yabridge
-    yabridgectl
-    wineWowPackages.stable
-winetricks
+      yabridge
+      yabridgectl
+      wineWowPackages.stable
+      winetricks
 
       ffmpeg_5
       handbrake
@@ -334,8 +336,8 @@ winetricks
       audacity
       ardour
       carla
-       x42-plugins
-       x42-avldrums
+      x42-plugins
+      x42-avldrums
       #    CHOWTapeModel
       #    ChowCentaur
       #    ChowPhaser
@@ -399,14 +401,14 @@ winetricks
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
     # plain files is through 'home.file'.
     home.file = {
-# Setup Yabridge
-# If you face issues with scanning the plugins in Ardour (e.g. Invalid ELF header), creating a clean Wine prefix and re-installing the plugins should fix it.
-    ".config/yabridgectl/config.toml".text = ''
-     plugin_dirs = ['/home/hfahmi/.wine/drive_c/Program\ Files/Common\ Files/VST3']
-      vst2_location = 'centralized'
-      no_verify = false
-      blacklist = []
-    '';
+      # Setup Yabridge
+      # If you face issues with scanning the plugins in Ardour (e.g. Invalid ELF header), creating a clean Wine prefix and re-installing the plugins should fix it.
+      ".config/yabridgectl/config.toml".text = ''
+        plugin_dirs = ['/home/hfahmi/.wine/drive_c/Program\ Files/Common\ Files/VST3']
+         vst2_location = 'centralized'
+         no_verify = false
+         blacklist = []
+      '';
       # # Building this configuration will create a copy of 'dotfiles/screenrc' in
       # # the Nix store. Activating the configuration will then make '~/.screenrc' a
       # # symlink to the Nix store copy.
@@ -472,7 +474,8 @@ winetricks
     };
     programs.alacritty.enable = true;
     services = {
-      flameshot.enable = true;
+      # Not needed as a service and I can't get the tray indicator to show anyway.
+      # flameshot.enable = true;
       redshift = {
         enable = true;
         provider = "geoclue2";
@@ -586,7 +589,7 @@ winetricks
     wayland.windowManager.sway = {
       # Wrapped version of sway in nixpkgs already adds recommended command here in the sway docs https://github.com/swaywm/sway/wiki/Systemd-integration#managing-user-applications-with-systemd
       enable = true;
-
+      extraOptions = ["--unsupported-gpu"];
       wrapperFeatures.gtk = true;
       swaynag.enable = true;
 
@@ -631,6 +634,7 @@ winetricks
             "${modifier}+d" = "focus mode_toggle";
             # focus the parent container
             "${modifier}+p" = "focus parent";
+            "${modifier}+Shift+s" = "exec flameshot gui";
 
             # focus the child container
             "${modifier}+c" = "focus child";
@@ -725,22 +729,6 @@ winetricks
         ######################################
         ####       WAYLAND CONFIG         ####
         ######################################
-
-
-
-        # Import the WAYLAND_DISPLAY env var from sway into the systemd user session.
-        # Stop any services that are running, so that they receive the new env var when they restart.
-
-
-        exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
-        exec hash dbus-update-activation-environment 2>/dev/null && \
-             dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
-
-
-
-        # Run the GUI polkit authenticaiton agent
-
-        exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway && systemctl --user stop pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-wlr && systemctl --user start pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-wlr
 
       '';
     };
@@ -862,6 +850,16 @@ winetricks
             },
             "memory": {
                 "format": "{}% "
+            },
+            "memory": {
+              "interval": 5,
+              "format": " {percentage}%   {swapPercentage}%",
+              "tooltip-format": " {used}/{total}\n {swapUsed}/{swapTotal}",
+              "states": {
+                "warning": 70,
+                "critical": 90
+              },
+              // "on-click": "swaymsg exec \\$term_scratch htop"
             },
             "temperature": {
                 // "thermal-zone": 2,
@@ -997,6 +995,9 @@ winetricks
 
       # gtk applications on wayland
       GDK_BACKEND = "wayland";
+
+      # Seems to fix scaling in electron apps on wayland
+      WLR_NO_HARDWARE_CURSORS = 1;
 
       # Fractional scaling
       NIXOS_OZONE_WL = "1";
