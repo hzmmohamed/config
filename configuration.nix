@@ -308,6 +308,12 @@ in {
 
       ytfzf
 
+      # Support for Windows VST2/VST3 plugins
+    yabridge
+    yabridgectl
+    wineWowPackages.stable
+winetricks
+
       ffmpeg_5
       handbrake
       mpv
@@ -328,8 +334,8 @@ in {
       audacity
       ardour
       carla
-      #    x42-plugins
-      #    x42-avldrums
+       x42-plugins
+       x42-avldrums
       #    CHOWTapeModel
       #    ChowCentaur
       #    ChowPhaser
@@ -339,6 +345,7 @@ in {
       #    guitarix
       sfizz
 
+      trashy
       lens
       postman
 
@@ -392,6 +399,14 @@ in {
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
     # plain files is through 'home.file'.
     home.file = {
+# Setup Yabridge
+# If you face issues with scanning the plugins in Ardour (e.g. Invalid ELF header), creating a clean Wine prefix and re-installing the plugins should fix it.
+    ".config/yabridgectl/config.toml".text = ''
+     plugin_dirs = ['/home/hfahmi/.wine/drive_c/Program\ Files/Common\ Files/VST3']
+      vst2_location = 'centralized'
+      no_verify = false
+      blacklist = []
+    '';
       # # Building this configuration will create a copy of 'dotfiles/screenrc' in
       # # the Nix store. Activating the configuration will then make '~/.screenrc' a
       # # symlink to the Nix store copy.
@@ -1085,7 +1100,7 @@ in {
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.displayManager.sessionPackages = [pkgs.sway];
   # hardware.opengl.enable = true;
-
+  services.flatpak.enable = true;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

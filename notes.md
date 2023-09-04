@@ -98,3 +98,7 @@ Other features to add:
 - Codium and other electron apps issue with GPU on wayland: https://github.com/NixOS/nixpkgs/issues/158947
 - Setting up secrets like Kubernetes Credentials using sops or these othehr tools
 - Setup mime associations
+- Setup battery charging limits in TLP config
+- Show TLP CPU and platform profile in the status bar +  Make a wofi selector for these profiles.
+- Add psi-notify and configure its thresholds
+- Show swap in the memory widget in waybar https://www.reddit.com/r/swaywm/comments/smfor2/waybar_swap_widget/
