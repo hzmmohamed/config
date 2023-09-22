@@ -65,7 +65,7 @@ https://linuxhint.com/monitor_optimize_power_usage/
 
 To do:
 - Fix docker rootless mode or replace with podman
-- Fix flameshot portals problem (https://github.com/flameshot-org/flameshot/issues/2872)
+- [done] Fix flameshot portals problem (https://github.com/flameshot-org/flameshot/issues/2872)
 - fix waybar temperature widget
 - setup kanshi + install wdisplays
 - install catpcuccin theme 
@@ -76,9 +76,9 @@ To do:
 Other features to add:
 - Add widget to show both the current power configuration (balance, balance_power, etc.) and the cpu governor and the cpu frequency
 - Add the ability to disable lidswitch close action in an ad hoc way, for situations where I'd like to the keep the computer running after closing the lid 
-- Sleep then hibernate after duration + Hibernate right away if battery under threshold ---> solution: https://gist.github.com/mattdenner/befcf099f5cfcc06ea04dcdd4969a221
+- Hibernate right away if battery under threshold ---> solution: https://gist.github.com/mattdenner/befcf099f5cfcc06ea04dcdd4969a221
 
-- Wrap chromium and electron apps with `wrapProgram` and add flags `--enable-features=UseOzonePlatform`
+- [Not Needed] Wrap chromium and electron apps with `wrapProgram` and add flags `--enable-features=UseOzonePlatform`
 - Nvidia support
 - second display support + Kanshi
 - virtualbox + windows vm + ubuntu vm
@@ -101,4 +101,78 @@ Other features to add:
 - Setup battery charging limits in TLP config
 - Show TLP CPU and platform profile in the status bar +  Make a wofi selector for these profiles.
 - Add psi-notify and configure its thresholds
-- Show swap in the memory widget in waybar https://www.reddit.com/r/swaywm/comments/smfor2/waybar_swap_widget/
+- [done] Show swap in the memory widget in waybar https://www.reddit.com/r/swaywm/comments/smfor2/waybar_swap_widget/
+- add asus hwmon kernel package
+- add asusd
+- enable default network in virt-manager by default (using systemd?)
+- Make floating windows transparent and experiment with that for a while
+- Make my basic shortcuts like mod+q work even in the arabic keyboard layout
+- Try putting shortcuts to workspaces on the home row with held keys or with a leader key
+- ANother variation on the previous idea: Replace mod with space bar and see if conflicts happen during typing
+- Have charing limit at 70%, and send notifications to myself every 5 minutes when the battery gets below 40%
+- Configure screen dim after 5 minutes of inactivity + Configure sleep after 15 minutes of inactivity, then hibernate.
+
+
+
+-- Amazing accidental discovery:
+When the dGPU is completely turned off, battery life is greatly extended. Since I rarely use it, I should definitely use the boot variations, one without dPGU and the other with PRIME Sync or offload. There's even more: 
+
+
+Packages to add:
+- slides
+-  zmore, zless, zcat, zgrep, zdiff
+- zbar
+
+
+
+I tried it and it worked. Let's packageit for nixpkgs.
+- wifi-qr (package it for nixpkgs or NUR) (It's easy, it's just a simple shell script) (Check this post https://www.ertt.ca/nix/shell-scripts/)
+
+
+
+- Document the windows plugins I use:
+	- Valhalla Supermassive, Swanky Amp
+https://midination.com/vst/free-vst-plugins/best-free-vst-plugins/
+https://bedroomproducersblog.com/2019/10/31/free-synthesizer-vst-plugins/
+https://midination.com/vst/free-vst-plugins/free-drum-vst/
+
+Add GUI for brightness and volume control, it's easier to access when the keyboard key labels are not visible.
+Add keyboard shortcuts for go back and forward to my VSCodium config in home-manager
+Add Gill Sans font
+Add fontfor package
+font-manager
+- Add floating window rule location for QGIS's measure window. I want it to go by default in a corner of the screen not in the center.
+- Running `flameshot` from the CLI after sway has loaded works perfectly and has no issues. That means that the systemd service version should work fine only if I set its dependencies correctly.
+- Add zotero chromium extension
+- GTK applications panic when the env var GDK_BACKEND is set globally to wayland. I read online that GTK will automatically connect to the appropriate backend (wayland or xwayland). Try unsetting this env var.
+- Add Cadence for Pro-Audio management
+- Add Carla for hosting plugins outside the DAW
+- Try out nix conf editor
+- Add Theme Switcher to VSCodium to switch theme by time of day https://burkeholland.dev/posts/vscode/auto-switch-themes/#:~:text=Open%20the%20settings.,time%20(24%20hour%20format).
+
+
+
+Chromium settings to set:
+- Use system borders
+- No bookmarks bar
+- no home button
+- Font settings
+- Theme (I don't use a theme but I could make it use the GTK or QT theme)
+- zotero extension
+
+
+Dynamic themes by time of day for the whole system: https://www.reddit.com/r/NixOS/comments/13w9o1i/dynamically_changing_themes_in_nixos/jn32iyl/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+https://discourse.nixos.org/t/how-to-enable-global-dark-mode-using-home-manager-in-nixos/28348
+
+- change networking.networkmanager.insertNameservers to cloudflare and google
+- VSCodium add the back and forward shortcuts in the settings config
+- Add Sway Notification Center
+
+
+- Add RSS Reader and configure my selected new sources
+- Add to my sway setup:
+	- swaycons
+	- swayr
+	- swayws
+
+- Add higher quality codecs to bluetooh https://nixos.wiki/wiki/Bluetooth#Enabling_extra_codecs
