@@ -22,16 +22,14 @@
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
-
-    # Modules
     ./nvidia.nix
-    ./vbox.nix
     ./bluetooth.nix
     ./locale.nix
     ./nvidia.nix
+    ./modules/fonts.nix
+    ./modules/virt.nix
 
-    # Import home-manager's NixOS module
-    inputs.home-manager.nixosModules.home-manager
+    ./home-manager.nix
   ];
 
   nixpkgs = {
@@ -73,13 +71,6 @@
       experimental-features = "nix-command flakes";
       # Deduplicate and optimize nix store
       auto-optimise-store = true;
-    };
-  };
-
-  home-manager = {
-    extraSpecialArgs = {inherit inputs outputs;};
-    users = {
-      hfahmi = import ../home-manager/home.nix;
     };
   };
 
@@ -133,9 +124,10 @@
     openssh = {
       enable = true;
       # Forbid root login through SSH.
-      permitRootLogin = "no";
-      # Use keys only. Remove if you want to SSH using password (not recommended)
-      passwordAuthentication = false;
+      settings = {
+        # Use keys only. Remove if you want to SSH using password (not recommended)
+        PasswordAuthentication = false;
+      };
     };
   };
 

@@ -1,4 +1,11 @@
 {
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}:{
   # Nvidia
   # Make sure opengl is enabled
   hardware.opengl = {

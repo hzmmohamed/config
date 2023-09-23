@@ -1,4 +1,11 @@
 {
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   # Manage the virtualisation services
   virtualisation = {
     libvirtd = {

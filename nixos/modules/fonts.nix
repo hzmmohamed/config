@@ -1,4 +1,11 @@
 {
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   fonts = {
     enableDefaultFonts = true;
     fonts = with pkgs; [

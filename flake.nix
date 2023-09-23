@@ -3,7 +3,7 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:nixos/nixpkgs/da5adce0ffaff10f6d0fee72a02a5ed9d01b52fc";
     # You can access packages and modules from different nixpkgs revs
     # at the same time. Here's an working example:
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -69,8 +69,8 @@
       };
     };
 
-    # Standalone home-manager configuration entrypoint
-    # Available through 'home-manager --flake .#your-username@your-hostname'
+    # # Standalone home-manager configuration entrypoint
+    # # Available through 'home-manager --flake .#your-username@your-hostname'
     # homeConfigurations = {
     #   # FIXME replace with your username@hostname
     #   "hfahmi@nixos" = home-manager.lib.homeManagerConfiguration {

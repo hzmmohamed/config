@@ -1,5 +1,12 @@
 {
-  home.packages = [
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [
     # dev
     gcc
     kind

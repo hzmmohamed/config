@@ -253,7 +253,6 @@
     chooser_type=simple
   '';
 
-  home.
   # Install and Configure VSCodium
   programs.vscode = {
     enable = true;
