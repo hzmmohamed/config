@@ -6,6 +6,7 @@
   pkgs,
   ...
 }: {
+  home.packages = with pkgs; [wl-clipboard wofi-emoji];
   # Sway
   wayland.windowManager.sway = {
     # Wrapped version of sway in nixpkgs already adds recommended command here in the sway docs https://github.com/swaywm/sway/wiki/Systemd-integration#managing-user-applications-with-systemd

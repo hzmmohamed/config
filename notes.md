@@ -176,3 +176,18 @@ https://discourse.nixos.org/t/how-to-enable-global-dark-mode-using-home-manager-
 	- swayws
 
 - Add higher quality codecs to bluetooh https://nixos.wiki/wiki/Bluetooth#Enabling_extra_codecs
+
+Resources on dev shells:
+- https://determinate.systems/posts/nix-direnv
+- https://github.com/the-nix-way/dev-templates/blob/main/python/flake.nix
+- https://devenv.sh/guides/using-with-flakes/#automatic-shell-switching-with-direnv
+- https://shyim.me/blog/devenv-compose-developer-environment-for-php-with-nix/
+- Riff
+- Devbox
+
+
+
+
+
+- wluma sounds amazing
+- Research fzf workflows and document them so I can remember to actively use them.

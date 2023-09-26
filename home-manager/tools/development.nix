@@ -8,6 +8,7 @@
 }: {
   home.packages = with pkgs; [
     # dev
+    gibo
     gcc
     kind
     awscli2
@@ -34,4 +35,12 @@
       nix-direnv.enable = true;
     };
   };
+
+  # xdg.configFile.direnv = {
+  #   text = ''
+  #     [global]
+  #     load_dotenv=true
+  #   '';
+  #   target = "direnv/direnv.toml";
+  # };
 }
