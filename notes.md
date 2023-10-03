@@ -38,15 +38,10 @@ Power management and thermal management:
         - fancontrol service from lmsensors
         - nbfc
         - https://wiki.archlinux.org/title/fan_speed_control#Fancontrol_(lm-sensors)
-- asusd
-    I'm not sure asusd service is suited for my laptop. Let's see.
 
 - Add a waybar module to show the current cpu governor and cpu frequency
 - turbostat?
 - learn to understand the powertop stats and `cpupower monitor` stats (https://linux.die.net/man/1/cpupower-monitor)
-- Read and summarize the TLP documentation
-- Document tlp vs.autocpu-freq vs. power-profiles-daemon
-- configure logind lidswitch actions correctly
 https://wiki.archlinux.org/title/Laptop#Power_management
 - Stress testing the system with stress-ng (https://www.youtube.com/watch?v=gbVNQHSpKeI)
 
@@ -58,6 +53,12 @@ https://linuxhint.com/monitor_optimize_power_usage/
 - upower --monitor-detail
 - acpi 
 - powerstat
+
+
+What are C-state and P-state and their formula of PCU utilization?
+Could high-performance CPUs like H CPUs not be suited to running at a low clock speed? Would undervolting work for them or disabling some of the cores?
+Apparently, 12th-gen H and U processors cannot  be undervolted. https://www.reddit.com/r/intel/comments/wormah/safe_undervolt_for_12th_gen_inteli5_cpu/
+https://twitter.com/toniievych/status/1619453625050492928?lang=en
 
 
 
@@ -78,35 +79,33 @@ Other features to add:
 - Add the ability to disable lidswitch close action in an ad hoc way, for situations where I'd like to the keep the computer running after closing the lid 
 - Hibernate right away if battery under threshold ---> solution: https://gist.github.com/mattdenner/befcf099f5cfcc06ea04dcdd4969a221
 
-- [Not Needed] Wrap chromium and electron apps with `wrapProgram` and add flags `--enable-features=UseOzonePlatform`
 - Nvidia support
 - second display support + Kanshi
 - virtualbox + windows vm + ubuntu vm
-- [DONE] clipboard management
-- flameshot service is active and running but not showing in the system tray. Probably the system tray is not available when flameshot starts
 
-- codium crashes when run without --disable-gpu.
+- clipboard management
 
-- Maybe use virtualisation.kvmgt.enable
 
-- bluetooth headset audio quality is very poor when configured as a both source and sink
-    There is currently no perfect solution. The best to do is to switch to the bidirectional (and worse) profile during calls and back to the unidirectional A2DP profile when only listening to audio.
 - Configure notification daemon styles and font
 <!-- - logkeys service -->
-- switcheroo service
 - on resuming from hibernate or on restarting sway --> restart waybar service + restart services that live in the tray like flameshot, nm-applet, udiskie, and blueman. Is there a way to define this relationship and have systemd restart them by just restarting waybar?
 - Codium and other electron apps issue with GPU on wayland: https://github.com/NixOS/nixpkgs/issues/158947
-- Setting up secrets like Kubernetes Credentials using sops or these othehr tools
-- Setup mime associations
+
 - Setup battery charging limits in TLP config
 - Show TLP CPU and platform profile in the status bar +  Make a wofi selector for these profiles.
 - Add psi-notify and configure its thresholds
-- [done] Show swap in the memory widget in waybar https://www.reddit.com/r/swaywm/comments/smfor2/waybar_swap_widget/
 - add asus hwmon kernel package
-- add asusd
+
 - enable default network in virt-manager by default (using systemd?)
+
 - Make floating windows transparent and experiment with that for a while
+
 - Make my basic shortcuts like mod+q work even in the arabic keyboard layout
+
+
+- Setting up secrets like Kubernetes Credentials using sops or these othehr tools
+- Setup mime associations
+
 - Try putting shortcuts to workspaces on the home row with held keys or with a leader key
 - ANother variation on the previous idea: Replace mod with space bar and see if conflicts happen during typing
 - Have charing limit at 70%, and send notifications to myself every 5 minutes when the battery gets below 40%
@@ -139,15 +138,9 @@ https://midination.com/vst/free-vst-plugins/free-drum-vst/
 Add GUI for brightness and volume control, it's easier to access when the keyboard key labels are not visible.
 Add keyboard shortcuts for go back and forward to my VSCodium config in home-manager
 Add Gill Sans font
-Add fontfor package
-font-manager
 - Add floating window rule location for QGIS's measure window. I want it to go by default in a corner of the screen not in the center.
-- Running `flameshot` from the CLI after sway has loaded works perfectly and has no issues. That means that the systemd service version should work fine only if I set its dependencies correctly.
-- Add zotero chromium extension
-- GTK applications panic when the env var GDK_BACKEND is set globally to wayland. I read online that GTK will automatically connect to the appropriate backend (wayland or xwayland). Try unsetting this env var.
 - Add Cadence for Pro-Audio management
 - Add Carla for hosting plugins outside the DAW
-- Try out nix conf editor
 - Add Theme Switcher to VSCodium to switch theme by time of day https://burkeholland.dev/posts/vscode/auto-switch-themes/#:~:text=Open%20the%20settings.,time%20(24%20hour%20format).
 
 
@@ -158,8 +151,14 @@ Chromium settings to set:
 - no home button
 - Font settings
 - Theme (I don't use a theme but I could make it use the GTK or QT theme)
-- zotero extension
 
+
+Consider librewolf
+
+
+Fonts:
+https://www.theleagueofmoveabletype.com/junction
+https://bootcamp.uxdesign.cc/17-free-to-download-sans-serif-fonts-that-you-might-never-heard-of-35b8b2787962
 
 Dynamic themes by time of day for the whole system: https://www.reddit.com/r/NixOS/comments/13w9o1i/dynamically_changing_themes_in_nixos/jn32iyl/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 https://discourse.nixos.org/t/how-to-enable-global-dark-mode-using-home-manager-in-nixos/28348
@@ -167,15 +166,8 @@ https://discourse.nixos.org/t/how-to-enable-global-dark-mode-using-home-manager-
 - change networking.networkmanager.insertNameservers to cloudflare and google
 - VSCodium add the back and forward shortcuts in the settings config
 - Add Sway Notification Center
-
-
 - Add RSS Reader and configure my selected new sources
-- Add to my sway setup:
-	- swaycons
-	- swayr
-	- swayws
 
-- Add higher quality codecs to bluetooh https://nixos.wiki/wiki/Bluetooth#Enabling_extra_codecs
 
 Resources on dev shells:
 - https://determinate.systems/posts/nix-direnv
@@ -189,5 +181,10 @@ Resources on dev shells:
 
 
 
-- wluma sounds amazing
-- Research fzf workflows and document them so I can remember to actively use them.
+https://bootcamp.uxdesign.cc/17-free-to-download-sans-serif-fonts-that-you-might-never-heard-of-35b8b2787962
+
+
+
+
+Little convenience things that would be amazing to have across apps:
+- Being able to not just move the cursor to the start of next word, but to the next upper case later in the same word, and similarly for separators like hyphen and underscore.

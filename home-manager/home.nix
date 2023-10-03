@@ -1,13 +1,6 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
+{ inputs, outputs, lib, config, pkgs, ... }: {
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
@@ -19,10 +12,14 @@
     # You can also split up your configuration and import pieces of it here:
     ./wm/sway.nix
     ./wm/waybar.nix
+    ./wm/wlogout
+    ./wm/gtk.nix
     ./tools/development.nix
+    ./tools/nvim.nix
     ./tools/fish.nix
     ./tools/pro-audio.nix
     ./tools/productivity.nix
+    ./theme
   ];
 
   nixpkgs = {
@@ -31,7 +28,7 @@
       # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.additions
       outputs.overlays.modifications
-      outputs.overlays.unstable-packages
+      outputs.overlays.stable-packages
 
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
@@ -56,18 +53,15 @@
     username = "hfahmi";
     homeDirectory = "/home/hfahmi";
     sessionVariables = {
-      EDITOR = "nano";
-    };
-    pointerCursor = {
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Original-Classic";
-      size = 22;
+      # EDITOR = "nano";
     };
   };
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    gnome.adwaita-icon-theme
+
     grim
     slurp
 
@@ -107,17 +101,12 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
 
-  programs.alacritty.enable = true;
+  programs.alacritty = { enable = true; };
+  programs.foot = { enable = true; };
 
   services = {
     # Not needed as a service and I can't get the tray indicator to show anyway.
-    # flameshot.enable = true;
-    redshift = {
-      enable = true;
-      provider = "geoclue2";
-    };
-    mako.enable = true;
-
+    flameshot.enable = true;
     gpg-agent.enable = true;
   };
 
@@ -126,14 +115,13 @@
     bat.enable = true;
 
     btop.enable = true;
-    neovim.enable = true;
 
     chromium = {
       enable = true;
       extensions = [
-        {id = "nngceckbapebfimnlniiiahkandclblb";} # Bitwarden
-        {id = "chphlpgkkbolifaimnlloiipkdnihall";} # OneTab
-        {id = "ekhagklcjbdpajgpjgmbionohlpdbjgc";} # Zotero Connector
+        { id = "nngceckbapebfimnlniiiahkandclblb"; } # Bitwarden
+        { id = "chphlpgkkbolifaimnlloiipkdnihall"; } # OneTab
+        { id = "ekhagklcjbdpajgpjgmbionohlpdbjgc"; } # Zotero Connector
       ];
     };
 
@@ -142,6 +130,7 @@
       enable = true;
       enableAliases = true;
     };
+
     git = {
       enable = true;
       userName = "hzmmohamed";
@@ -158,9 +147,6 @@
     gpg.enable = true;
     lf.enable = true;
 
-    lazygit = {
-      enable = true;
-    };
     less.enable = true;
 
     mcfly = {
@@ -170,16 +156,20 @@
     };
 
     mpv.enable = true;
-    navi.enable = true;
+
     pandoc.enable = true;
-    # obs-studio.enable = true;
+
     ssh.enable = true;
-    tmux.enable = true;
+
     urxvt.enable = true;
-    zellij.enable = true;
-    zoxide = {
+
+    # tmux.enable = true;
+    zellij = {
       enable = true;
+      # enableFishIntegration = true;
     };
+
+    zoxide = { enable = true; };
     broot.enable = true;
   };
   services.gammastep = {
@@ -193,17 +183,16 @@
   systemd.user.services.polkit-gnome = {
     Unit = {
       Description = "PolicyKit Authentication Agent";
-      After = ["graphical-session-pre.target"];
-      PartOf = ["graphical-session.target"];
+      After = [ "graphical-session-pre.target" ];
+      PartOf = [ "graphical-session.target" ];
     };
 
     Service = {
-      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+      ExecStart =
+        "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
     };
 
-    Install = {
-      WantedBy = ["graphical-session.target"];
-    };
+    Install = { WantedBy = [ "graphical-session.target" ]; };
   };
   services.kdeconnect = {
     enable = true;
@@ -230,7 +219,8 @@
 
   editorconfig = {
     enable = true;
-    settings = {}; # https://github.com/nix-community/home-manager/blob/master/modules/misc/editorconfig.nix
+    settings =
+      { }; # https://github.com/nix-community/home-manager/blob/master/modules/misc/editorconfig.nix
   };
 
   targets.genericLinux.enable = true;
@@ -276,37 +266,32 @@
 
       # vscodevim.vim
     ];
+
+    userSettings = {
+      "window.zoomLevel" = 1;
+      "workbench.sideBar.location" = "right";
+      "files.autoSave" = "afterDelay";
+      "files.autoSaveDelay" = 1000;
+      "editor.wordWrap" = "on";
+    };
   };
   # Allow mutable settings.json at runtime, and rewritten on running `home-manager switch`
   # Reference: https://github.com/nix-community/home-manager/issues/1800
-  home.activation.afterWriteBoundary = let
-    userSettings = {
-      "files.autoSave" = "afterDelay";
-      "files.autoSaveDelay" = 1000;
-
-      "nix.serverPath" = "nil";
-      "nix.serverSettings" = {};
-      "workbench.colorTheme" = "Quiet Light";
-      "workbench.sideBar.location" = "right";
-      "window.zoomLevel" = 1;
-      "editor.wordWrap" = "on";
-    };
-    configDir = "VSCodium";
-    userSettingsDirPath = "${config.xdg.configHome}/${configDir}/User";
-    userSettingsFilePath = "${userSettingsDirPath}/settings.json";
-  in {
-    after = ["writeBoundary"];
-    before = [];
-    data = ''
-      mkdir -p ${userSettingsDirPath}
-      cat ${pkgs.writeText "tmp_vscode_settings" (builtins.toJSON userSettings)} | ${pkgs.jq}/bin/jq --monochrome-output > ${userSettingsFilePath}
-    '';
-  };
-
-  # Let Home Manager install and manage itself.
-
-  # programs.neovim.enable = true;
-  # home.packages = with pkgs; [ steam ];
+  # home.activation.afterWriteBoundary = let
+  #   userSettings = {
+  #     "nix.serverPath" = "nil";
+  #   };
+  #   configDir = "VSCodium";
+  #   userSettingsDirPath = "${config.xdg.configHome}/${configDir}/User";
+  #   userSettingsFilePath = "${userSettingsDirPath}/settings.json";
+  # in {
+  #   after = ["writeBoundary"];
+  #   before = [];
+  #   data = ''
+  #     mkdir -p ${userSettingsDirPath}
+  #     cat ${pkgs.writeText "tmp_vscode_settings" (builtins.toJSON userSettings)} | ${pkgs.jq}/bin/jq --monochrome-output > ${userSettingsFilePath}
+  #   '';
+  # };
 
   # Enable home-manager and git
   programs.home-manager.enable = true;

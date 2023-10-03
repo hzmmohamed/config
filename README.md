@@ -8,7 +8,14 @@ Other references:
 - https://github.com/drduh/config
 
 
-My progress so far:
-- VSCodium installed and configured
-- Many CLI tools added
-- Basic fish config
+
+
+## Resources
+
+- Other Configs:
+    - https://github.com/KubqoA/dotfiles
+    - https://github.com/hlissner/dotfiles
+    - https://github.com/jakehamilton/config
+    - https://codeberg.org/sena/nixfiles-old
+    - https://github.com/xenoxanite/flakes
+    - https://codeberg.org/imMaturana/dotfiles/src/branch/main/home/features/nvim/default.nix

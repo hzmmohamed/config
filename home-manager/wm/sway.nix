@@ -1,104 +1,95 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
-  home.packages = with pkgs; [wl-clipboard wofi-emoji];
+{ inputs, outputs, lib, config, pkgs, ... }: {
+  home.packages = with pkgs; [ wl-clipboard wofi-emoji swayr swaycons swayws ];
   # Sway
   wayland.windowManager.sway = {
     # Wrapped version of sway in nixpkgs already adds recommended command here in the sway docs https://github.com/swaywm/sway/wiki/Systemd-integration#managing-user-applications-with-systemd
     enable = true;
-    extraOptions = ["--unsupported-gpu"];
+    extraOptions = [ "--unsupported-gpu" ];
     wrapperFeatures.gtk = true;
     swaynag.enable = true;
 
-    config = let
-      cfg = config.wayland.windowManager.sway;
-    in {
-      modifier = "Mod4";
-      floating.modifier = "Mod4";
-      floating.border = 0;
-      window.border = 0;
-      bars = [];
-      fonts = {
-        names = ["RobotoMono"];
-        size = 9.0;
-      };
-      focus.forceWrapping = false;
-      focus.followMouse = true;
-      terminal = "alacritty";
-      startup = [];
+    config =
+      let cfg = config.wayland.windowManager.sway;
+      in {
+        modifier = "Mod4";
+        floating.modifier = "Mod4";
+        floating.border = 0;
+        window.border = 0;
+        bars = [{ command = "waybar"; }];
+        focus.forceWrapping = false;
+        focus.followMouse = true;
+        terminal = "alacritty";
+        startup = [ ];
 
-      menu = "wofi --show drun";
-      output = {
-        eDP-1 = {
-          scale = "1.2";
-          mode = "1920x1080@60.002Hz";
-          # bg = "";
+        menu = "wofi --show drun";
+        output = {
+          eDP-1 = {
+            scale = "1.2";
+            mode = "1920x1080@60.002Hz";
+            # bg = "";
+          };
         };
-      };
 
-      keybindings = let
-        modifier = config.wayland.windowManager.sway.config.modifier;
-      in
-        lib.mkOptionDefault {
-          "${modifier}+Return" = "exec ${cfg.config.terminal}";
-          "${modifier}+q" = "kill";
-          "${modifier}+space" = "exec ${cfg.config.menu}";
-          "${modifier}+h" = "split h";
-          "${modifier}+v" = "split v";
-          "${modifier}+f" = "fullscreen";
-          "${modifier}+Shift+f" = "floating toggle";
-          # change focus between tiling/floating windows
-          "${modifier}+d" = "focus mode_toggle";
-          # focus the parent container
-          "${modifier}+p" = "focus parent";
-          "${modifier}+Shift+s" = "exec flameshot gui";
+        keybindings =
+          let inherit (config.wayland.windowManager.sway.config.modifier);
+          in lib.mkOptionDefault {
+            "${modifier}+Return" = "exec ${cfg.config.terminal}";
+            "${modifier}+q" = "kill";
+            "${modifier}+space" = "exec ${cfg.config.menu}";
+            "${modifier}+h" = "split h";
+            "${modifier}+v" = "split v";
+            "${modifier}+f" = "fullscreen";
+            "${modifier}+Shift+f" = "floating toggle";
+            # change focus between tiling/floating windows
+            "${modifier}+d" = "focus mode_toggle";
+            # focus the parent container
+            "${modifier}+p" = "focus parent";
+            "${modifier}+Shift+s" = "exec flameshot gui";
 
-          # focus the child container
-          "${modifier}+c" = "focus child";
+            # focus the child container
+            "${modifier}+c" = "focus child";
 
-          "${modifier}+Shift+Return" = "exec swaymsg input 1:1:AT_Translated_Set_2_keyboard  xkb_switch_layout next";
+            "${modifier}+Shift+Return" =
+              "exec swaymsg input 1:1:AT_Translated_Set_2_keyboard  xkb_switch_layout next";
 
-          # Jump to urgent window
-          "${modifier}+x" = "[urgent=latest] focus";
+            # Jump to urgent window
+            "${modifier}+x" = "[urgent=latest] focus";
 
-          "XF86AudioRaiseVolume" = "exec wpctl set-volume --limit 1 @DEFAULT_SINK@ 5%+";
-          "XF86AudioLowerVolume" = "exec wpctl set-volume --limit 1 @DEFAULT_SINK@ 5%-";
-          "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_SINK@ toggle";
+            "XF86AudioRaiseVolume" =
+              "exec wpctl set-volume --limit 1 @DEFAULT_SINK@ 5%+";
+            "XF86AudioLowerVolume" =
+              "exec wpctl set-volume --limit 1 @DEFAULT_SINK@ 5%-";
+            "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_SINK@ toggle";
 
-          # microphone
-          "XF86AudioMicMute" = "exec wpctl set-mute @DEFAULT_SOURCE@ toggle";
+            # microphone
+            "XF86AudioMicMute" = "exec wpctl set-mute @DEFAULT_SOURCE@ toggle";
 
-          # playback
-          ## play/pause
-          "XF86AudioPlay" = "exec playerctl play-pause";
-          "XF86AudioNext" = "exec playerctl next";
-          "XF86AudioPrev" = "exec playerctl previous";
+            # playback
+            ## play/pause
+            "XF86AudioPlay" = "exec playerctl play-pause";
+            "XF86AudioNext" = "exec playerctl next";
+            "XF86AudioPrev" = "exec playerctl previous";
 
-          # brightness
-          "XF86MonBrightnessUp" = "exec light -A 5";
-          "XF86MonBrightnessDown" = "exec light -U 5";
-          "Shift+XF86MonBrightnessUp" = "exec light -A 1";
-          "Shift+XF86MonBrightnessDown" = "exec light -U 1";
+            # brightness
+            "XF86MonBrightnessUp" = "exec light -A 5";
+            "XF86MonBrightnessDown" = "exec light -U 5";
+            "Shift+XF86MonBrightnessUp" = "exec light -A 1";
+            "Shift+XF86MonBrightnessDown" = "exec light -U 1";
 
-          # power
-          "XF86PowerOff" = "exec $Locker";
+            # power
+            "XF86PowerOff" = "exec $Locker";
+          };
+        modes.resize = {
+          Escape = "mode default";
+          Return = "mode default";
+          "Down" = "resize grow height 10 px or 10 ppt";
+          "Left" = "resize shrink width 10 px or 10 ppt";
+          "Right" = "resize grow width 10 px or 10 ppt";
+          "Up" = "resize shrink height 10 px or 10 ppt";
         };
-      modes.resize = {
-        Escape = "mode default";
-        Return = "mode default";
-        "Down" = "resize grow height 10 px or 10 ppt";
-        "Left" = "resize shrink width 10 px or 10 ppt";
-        "Right" = "resize grow width 10 px or 10 ppt";
-        "Up" = "resize shrink height 10 px or 10 ppt";
-      };
 
-      gaps.inner = 15;
-    };
+        gaps.inner = 15;
+      };
     extraConfig = ''
 
       # set workspace labels
@@ -173,6 +164,7 @@
     _JAVA_AWT_WM_NONREPARENTING = 1;
 
     # gtk applications on wayland
+    # GTK applications panic when the env var GDK_BACKEND is set globally to wayland. GTK will choose the appropriate backend (xwayland or wayland)
     # GDK_BACKEND = "wayland";
     # DISPLAY = ":1";
 
@@ -185,8 +177,6 @@
   };
 
   # Sway-related tools
-  services.swayidle = {
-    enable = true;
-  };
+  services.swayidle = { enable = true; };
   programs.swaylock.enable = true;
 }

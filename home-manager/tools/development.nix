@@ -1,46 +1,17 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
+{ inputs, outputs, lib, config, pkgs, ... }: {
   home.packages = with pkgs; [
     # dev
     gibo
-    gcc
-    kind
-    awscli2
-    ctlptl
-    dive
-    tilt
-    docker-compose
-    python311
-    python311Packages.pip
-    python310Packages.fn
-    poetry
     alejandra
     jqp
-    postman
-    nil # LSP for Nix
-    dbeaver
-    xterm
     distrobox
+    lazydocker
+    dbeaver
+    # Removed many of the tools here to make iterating on the system flake faster. Plus make the system lighter to begin with, adding specific tools for specific projects.
+    sway-launcher-desktop
+    sqlfluff
+    trunk-io
   ];
 
-  programs = {
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
-  };
-
-  # xdg.configFile.direnv = {
-  #   text = ''
-  #     [global]
-  #     load_dotenv=true
-  #   '';
-  #   target = "direnv/direnv.toml";
-  # };
+  programs = { lazygit = { enable = true; }; };
 }

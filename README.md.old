@@ -175,7 +175,6 @@ Index all the repos so I can do full text searches on all the repos I have clone
     along with gst-libav, gst-plugins-base,  gst-plugins-good, gst-plugin-pipewire
     https://wiki.archlinux.org/title/GStreamer#Installation
 - nvidia gfx packages from systemconfig notes
-- flameshot
 - dbeaver
 - photoqt
 - mpv
@@ -263,7 +262,6 @@ https://wiki.archlinux.org/title/Desktop_notifications#Notification_servers
         along with gst-libav, gst-plugins-base,  gst-plugins-good, gst-plugin-pipewire
         https://wiki.archlinux.org/title/GStreamer#Installation
     - nvidia gfx packages from systemconfig notes
-    - flameshot
     - dbeaver
     - photoqt
     - mpv

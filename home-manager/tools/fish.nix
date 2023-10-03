@@ -1,11 +1,4 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
+{ inputs, outputs, lib, config, pkgs, ... }: {
   programs = {
     fish = {
       enable = true;
@@ -22,19 +15,23 @@
       plugins = with pkgs.fishPlugins; [
         {
           name = "tide";
-          src = tide.src;
+          inherit (tide.src)
+            ;
         }
         {
           name = "pisces";
-          src = pisces.src;
+          inherit (pisces.src)
+            ;
         }
         {
           name = "fzf-fish";
-          src = fzf-fish.src;
+          inherit (fzf-fish.src)
+            ;
         }
         {
           name = "colored-man-pages";
-          src = colored-man-pages.src;
+          inherit (colored-man-pages.src)
+            ;
         }
       ];
       interactiveShellInit = ''
@@ -42,25 +39,21 @@
       '';
     };
 
-    # Bash shells automatically switch to fish unless expicitly opened from an existing fish shell
-    bash = {
-      enable = true;
-      # Copied from Arch Wiki https://wiki.archlinux.org/title/fish
-      initExtra = ''
-        if [[ $(ps --no-header --pid=$PPID --format=comm) != "fish" && -z $BASH_EXECUTION_STRING ]]
-        then
-        	exec fish
-        fi
-      '';
-    };
+    # # Bash shells automatically switch to fish unless expicitly opened from an existing fish shell
+    # bash = {
+    #   enable = true;
+    #   # Copied from Arch Wiki https://wiki.archlinux.org/title/fish
+    #   initExtra = ''
+    #     if [[ $(ps --no-header --pid=$PPID --format=comm) != "fish" && -z $BASH_EXECUTION_STRING ]]
+    #     then
+    #     	exec fish
+    #     fi
+    #   '';
+    # };
 
     # Integrations
-    mcfly = {
-      enableFishIntegration = true;
-    };
+    mcfly = { enableFishIntegration = true; };
 
-    zoxide = {
-      enableFishIntegration = true;
-    };
+    zoxide = { enableFishIntegration = true; };
   };
 }

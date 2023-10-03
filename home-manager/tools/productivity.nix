@@ -1,11 +1,4 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
+{ inputs, outputs, lib, config, pkgs, ... }: {
   home.packages = with pkgs; [
     # productivity
     zoom-us
@@ -23,7 +16,7 @@
     # design
     figma-linux
     freecad
-    kicad
+    # kicad
     gimp
     inkscape
 
@@ -54,7 +47,7 @@
     lurk # Rust alternative to strace
     tree
     ripgrep
-    ripgrep-all
+    pkgs.stable.ripgrep-all
     rsync
     gnused
     killall

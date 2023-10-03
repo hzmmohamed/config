@@ -1,15 +1,5 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
-  programs.waybar = {
-    enable = true;
-    systemd.enable = true;
-  };
+{ inputs, outputs, lib, config, pkgs, ... }: {
+  programs.waybar = { enable = true; };
 
   home.file.waybarConfig = {
     enable = true;
@@ -192,3 +182,6 @@
     '';
   };
 }
+# Custom module idea for fan RPM
+# https://www.reddit.com/r/swaywm/comments/117fx5q/waybar_any_template_for_a_fan_speed_rpm_module/
+
