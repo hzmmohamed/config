@@ -1,5 +1,12 @@
-{ inputs, outputs, lib, config, pkgs, ... }: {
-  programs.waybar = { enable = true; };
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
+  programs.waybar = {enable = true;};
 
   home.file.waybarConfig = {
     enable = true;

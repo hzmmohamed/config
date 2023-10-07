@@ -1,4 +1,11 @@
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   xdg.configFile."wlogout/icons".source = ./assets;
   programs.wlogout = {
     enable = true;

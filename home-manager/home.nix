@@ -1,6 +1,13 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
@@ -19,7 +26,7 @@
     ./tools/fish.nix
     ./tools/pro-audio.nix
     ./tools/productivity.nix
-    ./theme
+    # ./theme
   ];
 
   nixpkgs = {
@@ -101,8 +108,132 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
 
-  programs.alacritty = { enable = true; };
-  programs.foot = { enable = true; };
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      colors = {
+        # Default colors
+        primary = {
+          background = "#EFF1F5"; # base
+          foreground = "#4C4F69"; # text
+          # Bright and dim foreground colors
+          dim_foreground = "#4C4F69"; # text
+          bright_foreground = "#4C4F69"; # text
+        };
+
+        # Cursor colors
+        cursor = {
+          text = "#EFF1F5"; # base
+          cursor = "#DC8A78"; # rosewater
+        };
+        vi_mode_cursor = {
+          text = "#EFF1F5"; # base
+          cursor = "#7287FD"; # lavender
+        };
+        # Search colors
+        search = {
+          matches = {
+            foreground = "#EFF1F5"; # base
+            background = "#6C6F85"; # subtext0
+          };
+          focused_match = {
+            foreground = "#EFF1F5"; # base
+            background = "#40A02B"; # green
+          };
+          footer_bar = {
+            foreground = "#EFF1F5"; # base
+            background = "#6C6F85"; # subtext0
+          };
+        };
+        # Keyboard regex hints
+        hints = {
+          start = {
+            foreground = "#EFF1F5"; # base
+            background = "#DF8E1D"; # yellow
+          };
+          end = {
+            foreground = "#EFF1F5"; # base
+            background = "#6C6F85"; # subtext0
+          };
+        };
+
+        # Selection colors
+        selection = {
+          text = "#EFF1F5"; # base
+          background = "#DC8A78"; # rosewater
+        };
+        # Normal colors
+        normal = {
+          black = "#5C5F77"; # subtext1
+          red = "#D20F39"; # red
+          green = "#40A02B"; # green
+          yellow = "#DF8E1D"; # yellow
+          blue = "#1E66F5"; # blue
+          magenta = "#EA76CB"; # pink
+          cyan = "#179299"; # teal
+          white = "#ACB0BE"; # surface2
+        };
+        # Bright colors
+        bright = {
+          black = "#6C6F85"; # subtext0
+          red = "#D20F39"; # red
+          green = "#40A02B"; # green
+          yellow = "#DF8E1D"; # yellow
+          blue = "#1E66F5"; # blue
+          magenta = "#EA76CB"; # pink
+          cyan = "#179299"; # teal
+          white = "#BCC0CC"; # surface1
+        };
+        # Dim colors
+        dim = {
+          black = "#5C5F77"; # subtext1
+          red = "#D20F39"; # red
+          green = "#40A02B"; # green
+          yellow = "#DF8E1D"; # yellow
+          blue = "#1E66F5"; # blue
+          magenta = "#EA76CB"; # pink
+          cyan = "#179299"; # teal
+          white = "#ACB0BE"; # surface2
+        };
+
+        indexed_colors = [
+          {
+            index = 16;
+            color = "#FE640B";
+          }
+          {
+            index = 17;
+            color = "#DC8A78";
+          }
+        ];
+      };
+    };
+  };
+  programs.foot = {
+    enable = true;
+    settings = {
+      colors = {
+        foreground = "4c4f69"; # Text
+        background = "eff1f5"; # Base
+        regular0 = "5c5f77"; # Subtext 1
+        regular1 = "d20f39"; # red
+        regular2 = "40a02b"; # green
+        regular3 = "df8e1d"; # yellow
+        regular4 = "1e66f5"; # blue
+        regular5 = "ea76cb"; # pink
+        regular6 = "179299"; # teal
+        regular7 = "acb0be"; # Surface 2
+        bright0 = "6c6f85"; # Subtext 0
+        bright1 = "d20f39"; # red
+        bright2 = "40a02b"; # green
+        bright3 = "df8e1d"; # yellow
+        bright4 = "1e66f5"; # blue
+        bright5 = "ea76cb"; # pink
+        bright6 = "179299"; # teal
+        bright7 = "bcc0cc"; # Surface 1
+      };
+    };
+  };
 
   services = {
     # Not needed as a service and I can't get the tray indicator to show anyway.
@@ -119,9 +250,9 @@
     chromium = {
       enable = true;
       extensions = [
-        { id = "nngceckbapebfimnlniiiahkandclblb"; } # Bitwarden
-        { id = "chphlpgkkbolifaimnlloiipkdnihall"; } # OneTab
-        { id = "ekhagklcjbdpajgpjgmbionohlpdbjgc"; } # Zotero Connector
+        {id = "nngceckbapebfimnlniiiahkandclblb";} # Bitwarden
+        {id = "chphlpgkkbolifaimnlloiipkdnihall";} # OneTab
+        {id = "ekhagklcjbdpajgpjgmbionohlpdbjgc";} # Zotero Connector
       ];
     };
 
@@ -169,7 +300,7 @@
       # enableFishIntegration = true;
     };
 
-    zoxide = { enable = true; };
+    zoxide = {enable = true;};
     broot.enable = true;
   };
   services.gammastep = {
@@ -183,16 +314,15 @@
   systemd.user.services.polkit-gnome = {
     Unit = {
       Description = "PolicyKit Authentication Agent";
-      After = [ "graphical-session-pre.target" ];
-      PartOf = [ "graphical-session.target" ];
+      After = ["graphical-session-pre.target"];
+      PartOf = ["graphical-session.target"];
     };
 
     Service = {
-      ExecStart =
-        "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
     };
 
-    Install = { WantedBy = [ "graphical-session.target" ]; };
+    Install = {WantedBy = ["graphical-session.target"];};
   };
   services.kdeconnect = {
     enable = true;
@@ -219,8 +349,7 @@
 
   editorconfig = {
     enable = true;
-    settings =
-      { }; # https://github.com/nix-community/home-manager/blob/master/modules/misc/editorconfig.nix
+    settings = {}; # https://github.com/nix-community/home-manager/blob/master/modules/misc/editorconfig.nix
   };
 
   targets.genericLinux.enable = true;
@@ -266,32 +395,30 @@
 
       # vscodevim.vim
     ];
+  };
 
+  # Allow mutable settings.json at runtime, and rewritten on running `home-manager switch`
+  # Reference: https://github.com/nix-community/home-manager/issues/1800
+  home.activation.afterWriteBoundary = let
     userSettings = {
       "window.zoomLevel" = 1;
       "workbench.sideBar.location" = "right";
       "files.autoSave" = "afterDelay";
       "files.autoSaveDelay" = 1000;
       "editor.wordWrap" = "on";
+      "nix.serverPath" = "nil";
     };
+    configDir = "VSCodium";
+    userSettingsDirPath = "${config.xdg.configHome}/${configDir}/User";
+    userSettingsFilePath = "${userSettingsDirPath}/settings.json";
+  in {
+    after = ["writeBoundary"];
+    before = [];
+    data = ''
+      mkdir -p ${userSettingsDirPath}
+      cat ${pkgs.writeText "tmp_vscode_settings" (builtins.toJSON userSettings)} | ${pkgs.jq}/bin/jq --monochrome-output > ${userSettingsFilePath}
+    '';
   };
-  # Allow mutable settings.json at runtime, and rewritten on running `home-manager switch`
-  # Reference: https://github.com/nix-community/home-manager/issues/1800
-  # home.activation.afterWriteBoundary = let
-  #   userSettings = {
-  #     "nix.serverPath" = "nil";
-  #   };
-  #   configDir = "VSCodium";
-  #   userSettingsDirPath = "${config.xdg.configHome}/${configDir}/User";
-  #   userSettingsFilePath = "${userSettingsDirPath}/settings.json";
-  # in {
-  #   after = ["writeBoundary"];
-  #   before = [];
-  #   data = ''
-  #     mkdir -p ${userSettingsDirPath}
-  #     cat ${pkgs.writeText "tmp_vscode_settings" (builtins.toJSON userSettings)} | ${pkgs.jq}/bin/jq --monochrome-output > ${userSettingsFilePath}
-  #   '';
-  # };
 
   # Enable home-manager and git
   programs.home-manager.enable = true;

@@ -1,4 +1,11 @@
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   home.packages = with pkgs; [
     # dev
     gibo
@@ -13,5 +20,5 @@
     trunk-io
   ];
 
-  programs = { lazygit = { enable = true; }; };
+  programs = {lazygit = {enable = true;};};
 }

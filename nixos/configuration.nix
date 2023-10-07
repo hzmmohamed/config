@@ -1,6 +1,13 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   # You can import other NixOS modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/nixos):
@@ -53,19 +60,20 @@
   nix = {
     # This will add each flake input as a registry
     # To make nix3 commands consistent with your flake
-    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+    registry = lib.mapAttrs (_: value: {flake = value;}) inputs;
 
     # This will additionally add your inputs to the system's legacy channels
     # Making legacy nix commands consistent as well, awesome!
-    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}")
+    nixPath =
+      lib.mapAttrsToList (key: value: "${key}=${value.to.path}")
       config.nix.registry;
 
     settings = {
       # Enable flakes and new 'nix' command
-      experimental-features = [ "nix-command flakes repl-flake" ];
+      experimental-features = ["nix-command flakes repl-flake"];
       # Deduplicate and optimize nix store
       auto-optimise-store = true;
-      trusted-users = [ "hfahmi" ];
+      trusted-users = ["hfahmi"];
     };
 
     gc = {
@@ -85,22 +93,20 @@
     loader.efi.efiSysMountPoint = "/boot/efi";
 
     # Setup keyfile
-    initrd.secrets = { "/crypto_keyfile.bin" = null; };
+    initrd.secrets = {"/crypto_keyfile.bin" = null;};
     # Enable swap on luks
-    initrd.luks.devices."luks-2d5a7033-b62c-4fad-9eac-7db206491629".device =
-      "/dev/disk/by-uuid/2d5a7033-b62c-4fad-9eac-7db206491629";
-    initrd.luks.devices."luks-2d5a7033-b62c-4fad-9eac-7db206491629".keyFile =
-      "/crypto_keyfile.bin";
+    initrd.luks.devices."luks-2d5a7033-b62c-4fad-9eac-7db206491629".device = "/dev/disk/by-uuid/2d5a7033-b62c-4fad-9eac-7db206491629";
+    initrd.luks.devices."luks-2d5a7033-b62c-4fad-9eac-7db206491629".keyFile = "/crypto_keyfile.bin";
 
     # Kernel
-    kernelParams = [ "i915.force_probe=46a6" ];
+    kernelParams = ["i915.force_probe=46a6"];
     blacklistedKernelModules = [
       "nouveau"
       # "intel_lpss_pci"
     ];
   };
   # Networking
-  networking.networkmanager.insertNameservers = [ "1.1.1.1" "8.8.8.8" ];
+  networking.networkmanager.insertNameservers = ["1.1.1.1" "8.8.8.8"];
 
   # systemd
   services = {
@@ -193,7 +199,7 @@
 
   # Real-time Audio
   specialisation = {
-    rt_audio.configuration = { musnix = { enable = true; }; };
+    rt_audio.configuration = {musnix = {enable = true;};};
   };
 
   programs.direnv = {
@@ -214,7 +220,7 @@
     enable = true;
     wlr.enable = true;
 
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
 
   # Enable dconf (System Management Tool)
@@ -259,8 +265,8 @@
     };
   };
 
-  environment.shells = with pkgs; [ fish ];
-  programs = { fish.enable = true; };
+  environment.shells = with pkgs; [fish];
+  programs = {fish.enable = true;};
 
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
@@ -302,35 +308,35 @@
     '';
   };
 
-  stylix.image = ../wallpapers/veeterzy-sMQiL_2v4vs-unsplash.jpg;
-  stylix.fonts =
-    let
-      nf = pkgs.nerdfonts.override {
-        fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ];
-      };
-    in
-    {
-      sansSerif = {
-        package = pkgs.roboto;
-        name = "Roboto";
-      };
+  # stylix.image = ../wallpapers/veeterzy-sMQiL_2v4vs-unsplash.jpg;
+  # stylix.fonts =
+  #   let
+  #     nf = pkgs.nerdfonts.override {
+  #       fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" ];
+  #     };
+  #   in
+  #   {
+  #     sansSerif = {
+  #       package = pkgs.roboto;
+  #       name = "Roboto";
+  #     };
 
-      serif = config.stylix.fonts.sansSerif;
+  #     serif = config.stylix.fonts.sansSerif;
 
-      monospace = {
-        package = nf;
-        name = "JetBrainsMono Nerd Font";
-      };
+  #     monospace = {
+  #       package = nf;
+  #       name = "JetBrainsMono Nerd Font";
+  #     };
 
-      emoji = {
-        package = pkgs.noto-fonts-emoji;
-        name = "Noto Color Emoji";
-      };
-    };
+  #     emoji = {
+  #       package = pkgs.noto-fonts-emoji;
+  #       name = "Noto Color Emoji";
+  #     };
+  #   };
 
   services.printing = {
     enable = true;
-    drivers = with pkgs; [ gutenprint samsung-unified-linux-driver ];
+    drivers = with pkgs; [gutenprint samsung-unified-linux-driver];
   };
 
   # system.autoUpgrade = {

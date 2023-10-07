@@ -1,4 +1,11 @@
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   programs = {
     fish = {
       enable = true;
@@ -15,23 +22,19 @@
       plugins = with pkgs.fishPlugins; [
         {
           name = "tide";
-          inherit (tide.src)
-            ;
+          src = tide.src;
         }
         {
           name = "pisces";
-          inherit (pisces.src)
-            ;
+          src = pisces.src;
         }
         {
           name = "fzf-fish";
-          inherit (fzf-fish.src)
-            ;
+          src = fzf-fish.src;
         }
         {
           name = "colored-man-pages";
-          inherit (colored-man-pages.src)
-            ;
+          src = colored-man-pages.src;
         }
       ];
       interactiveShellInit = ''
@@ -52,8 +55,8 @@
     # };
 
     # Integrations
-    mcfly = { enableFishIntegration = true; };
+    mcfly = {enableFishIntegration = true;};
 
-    zoxide = { enableFishIntegration = true; };
+    zoxide = {enableFishIntegration = true;};
   };
 }

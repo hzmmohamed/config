@@ -1,5 +1,12 @@
-{ inputs, outputs, lib, config, pkgs, ... }: {
-  imports = [ inputs.nixvim.homeManagerModules.nixvim ];
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [inputs.nixvim.homeManagerModules.nixvim];
 
   programs.nixvim = {
     enable = true;
@@ -21,7 +28,7 @@
       termguicolors = true;
     };
 
-    globals = { mapleader = " "; };
+    globals = {mapleader = " ";};
 
     maps = {
       normal = {
@@ -48,12 +55,12 @@
 
       telescope = {
         enable = true;
-        keymaps = { "<leader>ff" = "find_files"; };
+        keymaps = {"<leader>ff" = "find_files";};
       };
 
       nvim-tree = {
         enable = false;
-        filters.custom = [ ".git" ];
+        filters.custom = [".git"];
       };
 
       nix.enable = true;
@@ -96,15 +103,15 @@
 
       nvim-cmp = {
         enable = true;
-        sources = [{ name = "nvim_lsp"; }];
-        mappingPresets = [ "insert" ];
-        mapping = { "<CR>" = "cmp.mapping.confirm({ select = true })"; };
-        formatting.fields = [ "kind" "abbr" "menu" ];
+        sources = [{name = "nvim_lsp";}];
+        mappingPresets = ["insert"];
+        mapping = {"<CR>" = "cmp.mapping.confirm({ select = true })";};
+        formatting.fields = ["kind" "abbr" "menu"];
       };
 
       lsp-lines.enable = true;
     };
-    extraPlugins = with pkgs.vimPlugins; [ nvim-base16 ];
+    extraPlugins = with pkgs.vimPlugins; [nvim-base16];
   };
 
   home.sessionVariables.EDITOR = "nvim";
