@@ -253,6 +253,7 @@
         {id = "nngceckbapebfimnlniiiahkandclblb";} # Bitwarden
         {id = "chphlpgkkbolifaimnlloiipkdnihall";} # OneTab
         {id = "ekhagklcjbdpajgpjgmbionohlpdbjgc";} # Zotero Connector
+        {id = "blkggjdmcfjdbmmmlfcpplkchpeaiiab";} # Omnivore
       ];
     };
 
