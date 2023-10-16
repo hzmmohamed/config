@@ -28,6 +28,7 @@
     ./nvidia.nix
     ./modules/fonts.nix
     ./modules/virt.nix
+    ./modules/security.nix
 
     ./home-manager.nix
   ];
