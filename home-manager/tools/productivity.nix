@@ -19,6 +19,7 @@
     anytype
     trashy
     pdfgrep
+    obsidian
 
     # design
     figma-linux
@@ -39,6 +40,7 @@
     handbrake
     mpv
     pavucontrol
+    pkgs.stable.spotify
 
     # UNIX utils
     entr
