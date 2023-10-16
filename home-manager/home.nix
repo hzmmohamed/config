@@ -74,8 +74,6 @@
 
     # xdg-utils
 
-    clamav
-
     # system monitoring and perf
     powertop
     vnstat
@@ -380,19 +378,37 @@
     mutableExtensionsDir = true; # default
     extensions = with pkgs.vscode-extensions; [
       tomoki1207.pdf
-      ms-python.python
-      editorconfig.editorconfig
-      kamadorueda.alejandra
-      jnoortheen.nix-ide
+      # Theming
       emmanuelbeziat.vscode-great-icons
+
+      # Git
       donjayamanne.githistory
       mhutchie.git-graph
+
       mikestead.dotenv
+      editorconfig.editorconfig
       naumovs.color-highlight
       vincaslt.highlight-matching-tag
+
+      # Programming language tooling
+      # Python
+      ms-python.python
+      ms-toolsai.jupyter
+      ms-toolsai.vscode-jupyter-slideshow
+      ms-toolsai.vscode-jupyter-cell-tags
+      ms-toolsai.jupyter-renderers
+      ms-toolsai.jupyter-keymap
+      # Shell
       foxundermoon.shell-format
+      # PlantUML
       jebbs.plantuml
+      # Go
+      golang.go
+      # OpenSCAD
       antyos.openscad
+      # Nix
+      kamadorueda.alejandra
+      jnoortheen.nix-ide
 
       # vscodevim.vim
     ];
@@ -404,6 +420,7 @@
     userSettings = {
       "window.zoomLevel" = 1;
       "workbench.sideBar.location" = "right";
+      "workbench.colorTheme" = "Quiet Light";
       "files.autoSave" = "afterDelay";
       "files.autoSaveDelay" = 1000;
       "editor.wordWrap" = "on";
