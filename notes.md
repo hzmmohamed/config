@@ -16,9 +16,6 @@ What do I need from the other laptop to be able to work on this one?
 What are the pros and cons of using Home manager + Nix vs NixOS?
 - I love that PopOS just works out of the box. I think I can get very far with Nix and home manager. It would be a good thing to list the functionalities that are configured outside Nix on the system level.
 - NixOS is very constraining. I can't even run a normal binary within the system itself. I will need something like distrobox. For example, I now don't have decent sampler on nixpkgs. How do I run it without containerisation? I will need to package it.
-- What else
-
-
 
 
 Power management and thermal management:
@@ -97,7 +94,8 @@ Other features to add:
 - add asus hwmon kernel package
 
 - enable default network in virt-manager by default (using systemd?)
-
+- nvim plugin
+- 	todo-comments.nvim
 - Make floating windows transparent and experiment with that for a while
 
 - Make my basic shortcuts like mod+q work even in the arabic keyboard layout
@@ -188,3 +186,13 @@ https://bootcamp.uxdesign.cc/17-free-to-download-sans-serif-fonts-that-you-might
 
 Little convenience things that would be amazing to have across apps:
 - Being able to not just move the cursor to the start of next word, but to the next upper case later in the same word, and similarly for separators like hyphen and underscore.
+
+
+- Things to update related to VSCode
+	- Add the Python + Jupyter Extensions in order to get full functionality for Jupyter notebooks in VSCode
+	- Consider always using VSCode server so that I can connect to it from the other laptop, as well use it locally. Try to document the differences between the browser version and the electron version.
+	- Set up the OS Keyring, because VSCode complained about that after installing the Jupyter extensions with the warning: "An OS keyring couldn't be identified for storing the encryption related data in your current desktop environment" https://www.reddit.com/r/NixOS/comments/qwu3d1/confused_about_git_gnomekeyring_and_libsecret/
+
+    - Consider a global solution for programming snippets that integrates with both Neovim and VSCode. Just today, I was thinking how, for example, a snippet for seaborn's FacetGrid syntax would be useful in my data exploration settings.
+
+- Rofi character picker (useful for emdash or other special characters. Would be great to combine with emojis)
