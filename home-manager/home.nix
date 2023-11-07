@@ -374,7 +374,7 @@
   # Install and Configure VSCodium
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
+    #    package = pkgs.vscodium;
     mutableExtensionsDir = true; # default
     extensions = with pkgs.vscode-extensions; [
       tomoki1207.pdf
@@ -411,6 +411,13 @@
       jnoortheen.nix-ide
 
       # vscodevim.vim
+
+      # Add "TODO Highlight"
+      # Add
+      # Live share
+      # CodeTogether (to test)
+      # Duckly (to test)
+      # Emmet Live
     ];
   };
 
@@ -425,8 +432,9 @@
       "files.autoSaveDelay" = 1000;
       "editor.wordWrap" = "on";
       "nix.serverPath" = "nil";
+      # TODO: Add trusted directory
     };
-    configDir = "VSCodium";
+    configDir = "Code";
     userSettingsDirPath = "${config.xdg.configHome}/${configDir}/User";
     userSettingsFilePath = "${userSettingsDirPath}/settings.json";
   in {
