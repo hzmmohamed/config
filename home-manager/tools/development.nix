@@ -18,6 +18,7 @@
     sway-launcher-desktop
     sqlfluff
     trunk-io
+    devenv
   ];
 
   programs = {lazygit = {enable = true;};};

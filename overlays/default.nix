@@ -7,6 +7,7 @@
   # You can change versions, add patches, set compilation flags, anything really.
   # https://nixos.wiki/wiki/Overlays
   modifications = final: prev: {
+    inherit (inputs.devenv.packages.${prev.system}) devenv;
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });
