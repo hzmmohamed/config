@@ -85,6 +85,7 @@
   };
 
   networking.hostName = "nixos";
+  networking.firewall.enable = false;
 
   # Bootloader and kernel params
   boot = {
