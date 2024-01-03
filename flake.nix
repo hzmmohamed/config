@@ -1,43 +1,95 @@
 {
-  description = "Your new nix config";
+  description = "Caramel Mint";
 
   inputs = {
-    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
+    # NixPkgs (nixos-23.11)
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
 
-    flake-utils.url = "github:numtide/flake-utils";
-    # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/da5adce0ffaff10f6d0fee72a02a5ed9d01b52fc";
-    # You can access packages and modules from different nixpkgs revs
-    # at the same time. Here's an working example:
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
+    # NixPkgs Unstable (nixos-unstable)
+    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    # Home Manager (release-23.11)
+    home-manager.url = "github:nix-community/home-manager/release-23.11";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    # macOS Support (master)
+    # darwin.url = "github:lnl7/nix-darwin";
+    # darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Hardware Configuration
+    nixos-hardware.url = "github:nixos/nixos-hardware";
+
+    # Generate System Images
+    nixos-generators.url = "github:nix-community/nixos-generators";
+    nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Snowfall Lib
+    snowfall-lib.url = "github:snowfallorg/lib";
+    snowfall-lib.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Snowfall Flake
+    flake.url = "github:snowfallorg/flake";
+    flake.inputs.nixpkgs.follows = "unstable";
+
+    # Comma
+    comma.url = "github:nix-community/comma";
+    comma.inputs.nixpkgs.follows = "unstable";
+
+    # System Deployment
+    deploy-rs.url = "github:serokell/deploy-rs";
+    deploy-rs.inputs.nixpkgs.follows = "unstable";
+
+    # Run unpatched dynamically compiled binaries
+    nix-ld.url = "github:Mic92/nix-ld";
+    nix-ld.inputs.nixpkgs.follows = "unstable";
+
+    # Vault Integration
+    vault-service = {
+      url = "github:DeterminateSystems/nixos-vault-service/a9f2a1c5577491da73d2c13f9bafff529445b760";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Flake Hygiene
+    flake-checker = {
+      url = "github:DeterminateSystems/flake-checker/46b02e6172ed961113d336a035688ac12c96d9f4";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    plusultra = {
+      url = "github:jakehamilton/config";
+      inputs.nixpkgs.follows = "unstable";
+      inputs.unstable.follows = "unstable";
+    };
+
+    # # Backup management
+    # icehouse = {
+    #   url = "github:snowfallorg/icehouse";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.unstable.follows = "unstable";
+    # };
+
+    # GPG default configuration
+    gpg-base-conf = {
+      url = "github:drduh/config";
+      flake = false;
+    };
+
     # Add devenv flake input
     devenv = {
       url = "github:cachix/devenv/latest";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "unstable";
     };
 
-    # Home manager
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-    # NixVim
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    # TODO: Adding this input to remind myself to learn to use it. This should be, in principle, easier than setting up formatters from pre-commit-hooks.nix
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "unstable";
     };
 
-    stylix = {url = "github:danth/stylix";};
-
-    musnix = {url = "github:musnix/musnix";};
-
-    # TODO: Add any other flake you might need
-    # hardware.url = "github:nixos/nixos-hardware";
-
-    # Shameless plug: looking for a way to nixify your themes and make
-    # everything match nicely? Try nix-colors!
-    # nix-colors.url = "github:misterio77/nix-colors";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {
@@ -45,86 +97,47 @@
     extra-substituters = "https://devenv.cachix.org";
   };
 
-  outputs = {
-    self,
-    nixpkgs-unstable,
-    home-manager,
-    ...
-  } @ inputs: let
-    inherit (self) outputs;
-    # Supported systems for your flake packages, shell, etc.
-    systems = [
-      "aarch64-linux"
-      "i686-linux"
-      "x86_64-linux"
-      "aarch64-darwin"
-      "x86_64-darwin"
-    ];
-    # This is a function that generates an attribute by calling a function you
-    # pass to it, with each system as an argument
-    forAllSystems = nixpkgs-unstable.lib.genAttrs systems;
-  in {
-    # Your custom packages
-    # Acessible through 'nix build', 'nix shell', etc
-    packages =
-      forAllSystems
-      (system: import ./pkgs nixpkgs-unstable.legacyPackages.${system});
-    # Formatter for your nix files, available through 'nix fmt'
-    # Other options beside 'alejandra' include 'nixpkgs-fmt'
-    formatter =
-      forAllSystems
-      (system: nixpkgs-unstable.legacyPackages.${system}.alejandra);
+  outputs = inputs: let
+    lib = inputs.snowfall-lib.mkLib {
+      inherit inputs;
+      src = ./.;
 
-    # Your custom packages and modifications, exported as overlays
-    overlays = import ./overlays {inherit inputs;};
-    # Reusable nixos modules you might want to export
-    # These are usually stuff you would upstream into nixpkgs
-    nixosModules = import ./modules/nixos;
-    # Reusable home-manager modules you might want to export
-    # These are usually stuff you would upstream into home-manager
-    homeManagerModules = import ./modules/home-manager;
-    checks = forAllSystems (system: {
-      pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
-        src = ./.;
-        hooks = {
-          alejandra.enable = true;
-          # statix.enable = true;
+      snowfall = {
+        meta = {
+          name = "caramelmint";
+          title = "Caramel Mint";
         };
-      };
-    });
 
-    devShells = forAllSystems (system: {
-      default = nixpkgs-unstable.legacyPackages.${system}.mkShell {
-        inherit (self.checks.${system}.pre-commit-check) shellHook;
-      };
-    });
-
-    # NixOS configuration entrypoint
-    # Available through 'nixos-rebuild --flake .#your-hostname'
-    nixosConfigurations = {
-      # FIXME replace with your hostname
-      nixos = nixpkgs-unstable.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          # inputs.stylix.nixosModules.stylix
-          inputs.musnix.nixosModules.musnix
-          ./nixos/configuration.nix
-        ];
+        namespace = "caramelmint";
       };
     };
+  in
+    lib.mkFlake {
+      channels-config = {
+        allowUnfree = true;
+        # This version of Electron is EOL, but latest Obsidian still uses it.
+        permittedInsecurePackages = [
+          "electron-25.9.0"
+        ];
+      };
 
-    # # Standalone home-manager configuration entrypoint
-    # # Available through 'home-manager --flake .#your-username@your-hostname'
-    # homeConfigurations = {
-    #   # FIXME replace with your username@hostname
-    #   "hfahmi@nixos" = home-manager.lib.homeManagerConfiguration {
-    #     pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-    #     extraSpecialArgs = {inherit inputs outputs;};
-    #     modules = [
-    #       # > Our main home-manager configuration file <
-    #       ./home-manager/home.nix
-    #     ];
-    #   };
-    # };
-  };
+      lib = with inputs; [
+        plusultra.lib
+      ];
+
+      systems.modules.nixos = with inputs; [
+        home-manager.nixosModules.home-manager
+        nix-ld.nixosModules.nix-ld
+        vault-service.nixosModules.nixos-vault-service
+        sops-nix.nixosModules.sops
+      ];
+
+      # deploy = lib.mkDeploy {inherit (inputs) self;};
+
+      # checks =
+      #   builtins.mapAttrs
+      #   (system: deploy-lib:
+      #     deploy-lib.deployChecks inputs.self.deploy)
+      #   inputs.deploy-rs.lib;
+    };
 }
