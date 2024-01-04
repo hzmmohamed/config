@@ -14,7 +14,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [docker-compose lazydocker dive];
+    environment.systemPackages = with pkgs; [docker-compose lazydocker dive nerdctl];
     caramelmint.user.extraGroups = ["docker"];
 
     # NixOS 22.05 moved NixOS Containers to a new state directory and the old
