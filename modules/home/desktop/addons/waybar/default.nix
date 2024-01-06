@@ -15,10 +15,10 @@ in {
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [waybar];
+    home.packages = with pkgs; [waybar];
 
     # TODO: Will leave jake's config and add mine later.
-    caramelmint.home.configFile."waybar/config".source = ./config;
-    caramelmint.home.configFile."waybar/style.css".source = ./style.css;
+    xdg.configFile."waybar/config".source = ./config;
+    xdg.configFile."waybar/style.css".source = ./style.css;
   };
 }

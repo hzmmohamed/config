@@ -49,6 +49,7 @@ in {
       home.file = {
         # Setup Yabridge
         # If you face issues with scanning the plugins in Ardour (e.g. Invalid ELF header), creating a clean Wine prefix and re-installing the plugins should fix it.
+        # TODO: Remove username specific parts of the paths
         ".config/yabridgectl/config.toml".text = ''
           plugin_dirs = ['/home/hfahmi/.wine/drive_c/Program\ Files/Common\ Files/VST3','/home/hfahmi/.wine/drive_c/Program\ Files/VstPlugins']
            vst2_location = 'centralized'

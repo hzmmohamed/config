@@ -17,21 +17,10 @@ in {
     # Desktop additions
     caramelmint.desktop.addons = {
       gtk = enabled;
-      alacritty = enabled;
-      gammastep = enabled;
-      mako = enabled;
-      # rofi = enabled;
-      wofi = enabled;
-      # swappy = enabled;
-      kanshi = enabled;
-      waybar = enabled;
-      wlogout = enabled;
-      # keyring = enabled;
-      # nautilus = enabled;
+      # wlogout = enabled;
       xdg-portal = enabled;
       light = enabled;
     };
-
     # plusultra.desktop.addons.electron-support = enabled;
     # TODO: Eleveate these kinds of settings that are not sway specific to desktop module
     caramelmint.hardware.touchpad = enabled;
@@ -89,6 +78,36 @@ in {
           };
 
           gaps.inner = 15;
+          keycodebindings = {
+
+            "${modifier}+38" = "focus parent";
+
+            "${modifier}+39" = "layout stacking";
+            "${modifier}+25" = "layout tabbed";
+            "${modifier}+26" = "layout toggle split";
+
+            "${modifier}+Shift+54" = "reload";
+            "${modifier}+Shift+e" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
+
+            "${modifier}+r" = "mode resize";
+            "${modifier}+Shift+24" = "kill";
+            "${modifier}+Shift+44" = "exec ${pkgs.wofi-emoji}/bin/wofi-emoji";
+            "${modifier}+43" = "splith";
+            "${modifier}+55" = "splitv";
+            "${modifier}+41" = "fullscreen toggle";
+            "${modifier}+Shift+41" = "floating toggle";
+            # change focus between tiling/floating windows
+            # "${modifier}+d" = "focus mode_toggle"
+            # focus the parent container
+            "${modifier}+33" = "focus parent";
+            "${modifier}+Shift+39" = "exec flameshot gui";
+
+            # focus the child container
+            "${modifier}+54" = "focus child";
+
+            # Jump to urgent window
+            "${modifier}+53" = "[urgent=latest] focus";
+          };
           keybindings = let
             brightnessKeybindings = mkIf config.caramelmint.desktop.addons.light.enable {
               # brightness
@@ -109,12 +128,6 @@ in {
               "${modifier}+Shift+Down" = "move down";
               "${modifier}+Shift+Up" = "move up";
               "${modifier}+Shift+Right" = "move right";
-
-              "${modifier}+a" = "focus parent";
-
-              "${modifier}+s" = "layout stacking";
-              "${modifier}+w" = "layout tabbed";
-              "${modifier}+e" = "layout toggle split";
 
               "${modifier}+1" = "workspace number 1";
               "${modifier}+2" = "workspace number 2";
@@ -139,31 +152,9 @@ in {
               "${modifier}+Shift+minus" = "move scratchpad";
               "${modifier}+minus" = "scratchpad show";
 
-              "${modifier}+Shift+c" = "reload";
-              "${modifier}+Shift+e" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
-
-              "${modifier}+r" = "mode resize";
-              "${modifier}+Return" = "exec ${terminal}";
-              "${modifier}+Shift+q" = "kill";
-              "${modifier}+Shift+j" = "wofi-emoji";
               "${modifier}+space" = "exec ${menu}";
-              "${modifier}+h" = "splith";
-              "${modifier}+v" = "splitv";
-              "${modifier}+f" = "fullscreen toggle";
-              "${modifier}+Shift+f" = "floating toggle";
-              # change focus between tiling/floating windows
-              # "${modifier}+d" = "focus mode_toggle"
-              # focus the parent container
-              "${modifier}+p" = "focus parent";
-              "${modifier}+Shift+s" = "exec flameshot gui";
-
-              # focus the child container
-              "${modifier}+c" = "focus child";
-
+              "${modifier}+Return" = "exec ${terminal}";
               "${modifier}+Shift+Return" = "exec swaymsg input 1:1:AT_Translated_Set_2_keyboard  xkb_switch_layout next";
-
-              # Jump to urgent window
-              "${modifier}+x" = "[urgent=latest] focus";
 
               "XF86AudioRaiseVolume" = "exec wpctl set-volume --limit 1 @DEFAULT_SINK@ 5%+";
               "XF86AudioLowerVolume" = "exec wpctl set-volume --limit 1 @DEFAULT_SINK@ 5%-";

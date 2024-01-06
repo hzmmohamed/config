@@ -15,13 +15,13 @@ in {
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [wofi wofi-emoji];
+    home.packages = with pkgs; [wofi wofi-emoji];
 
     # config -> .config/wofi/config
     # css -> .config/wofi/style.css
     # colors -> $XDG_CACHE_HOME/wal/colors
-    # caramelmint.home.configFile."foot/foot.ini".source = ./foot.ini;
-    caramelmint.home.configFile."wofi/config".source = ./config;
-    caramelmint.home.configFile."wofi/style.css".source = ./style.css;
+    # xdg.configFile."foot/foot.ini".source = ./foot.ini;
+    xdg.configFile."wofi/config".source = ./config;
+    xdg.configFile."wofi/style.css".source = ./style.css;
   };
 }

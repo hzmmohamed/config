@@ -8,6 +8,8 @@
     # NixPkgs Unstable (nixos-unstable)
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    nix-colors.url = "github:misterio77/nix-colors";
+
     # Home Manager (release-23.11)
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -130,6 +132,10 @@
         nix-ld.nixosModules.nix-ld
         vault-service.nixosModules.nixos-vault-service
         sops-nix.nixosModules.sops
+      ];
+
+      homes.users."hfahmi@nixos".modules = with inputs; [
+        nix-colors.homeManagerModules.default
       ];
 
       # deploy = lib.mkDeploy {inherit (inputs) self;};

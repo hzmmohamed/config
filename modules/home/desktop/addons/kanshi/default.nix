@@ -8,8 +8,6 @@
 with lib;
 with lib.plusultra; let
   cfg = config.caramelmint.desktop.addons.kanshi;
-  user = config.caramelmint.user;
-  home = config.users.users.${user.name}.home;
 in {
   options.caramelmint.desktop.addons.kanshi = with types; {
     enable =
@@ -17,17 +15,17 @@ in {
   };
 
   config = mkIf cfg.enable {
-    caramelmint.home.configFile."kanshi/config".source = ./config;
-
-    environment.systemPackages = with pkgs; [kanshi];
+    xdg.configFile."kanshi/config".source = ./config;
 
     # configuring kanshi
     systemd.user.services.kanshi = {
-      description = "Kanshi output autoconfig ";
-      wantedBy = ["graphical-session.target"];
-      partOf = ["graphical-session.target"];
-      environment = {XDG_CONFIG_HOME = "${home}/.config";};
-      serviceConfig = {
+      Unit = {
+        Description = "Kanshi output autoconfig ";
+        WantedBy = ["graphical-session.target"];
+        PartOf = ["graphical-session.target"];
+      };
+      
+      Service = {
         ExecCondition = ''
           ${pkgs.bash}/bin/bash -c '[ -n "$WAYLAND_DISPLAY" ]'
         '';

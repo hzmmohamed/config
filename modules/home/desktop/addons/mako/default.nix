@@ -14,14 +14,17 @@ in {
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [mako libnotify];
+    home.packages = with pkgs; [mako libnotify];
 
     systemd.user.services.mako = {
-      description = "Mako notification daemon";
-      wantedBy = ["graphical-session.target"];
-      partOf = ["graphical-session.target"];
-      after = ["graphical-session.target"];
-      serviceConfig = {
+      Unit = {
+        Description = "Mako notification daemon";
+        WantedBy = ["graphical-session.target"];
+        PartOf = ["graphical-session.target"];
+        After = ["graphical-session.target"];
+      };
+
+      Service = {
         Type = "dbus";
         BusName = "org.freedesktop.Notifications";
 
@@ -43,6 +46,6 @@ in {
       };
     };
 
-    caramelmint.home.configFile."mako/config".source = ./config;
+    xdg.configFile."mako/config".source = ./config;
   };
 }

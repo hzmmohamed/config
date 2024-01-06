@@ -14,14 +14,12 @@ in {
   };
 
   config = mkIf cfg.enable {
-    caramelmint.home.extraOptions = {
-      services.gammastep = {
-        #https://nixos.wiki/wiki/gamma-step
-        enable = true;
-        tray = true;
-        dawnTime = "05:00";
-        duskTime = "19:00";
-      };
+    services.gammastep = {
+      #https://nixos.wiki/wiki/gamma-step
+      enable = true;
+      tray = true;
+      dawnTime = "05:00";
+      duskTime = "19:00";
     };
   };
 }

@@ -14,11 +14,9 @@ in {
   };
 
   config = mkIf cfg.enable {
-    caramelmint.home.extraOptions = {
-      services.clipmenu = {
-        enable = true;
-        launcher = "rofi";
-      };
+    services.clipmenu = {
+      enable = true;
+      launcher = "${pkgs.wofi}/bin/wofi";
     };
   };
 }
