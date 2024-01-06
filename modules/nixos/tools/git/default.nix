@@ -20,7 +20,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [git git-dive lazygit gibo];
+    environment.systemPackages = with pkgs; [git git-dive lazygit gibo git-crypt];
 
     # TODO: Move these systempacakges to home packages?
 
