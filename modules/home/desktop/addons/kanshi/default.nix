@@ -24,7 +24,7 @@ in {
         WantedBy = ["graphical-session.target"];
         PartOf = ["graphical-session.target"];
       };
-      
+
       Service = {
         ExecCondition = ''
           ${pkgs.bash}/bin/bash -c '[ -n "$WAYLAND_DISPLAY" ]'

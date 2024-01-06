@@ -47,7 +47,14 @@ in {
       }
       // cfg.extraOptions;
 
-    caramelmint.cli-apps.fish = enabled;
+    caramelmint = {
+      cli-apps = {
+        fish = enabled;
+      };
+      services = {
+        blueman = enabled;
+      };
+    };
 
     caramelmint.home = {
       file = {

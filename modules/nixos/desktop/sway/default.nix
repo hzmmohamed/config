@@ -79,7 +79,6 @@ in {
 
           gaps.inner = 15;
           keycodebindings = {
-
             "${modifier}+38" = "focus parent";
 
             "${modifier}+39" = "layout stacking";
