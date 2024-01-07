@@ -86,9 +86,9 @@ in {
             "${modifier}+26" = "layout toggle split";
 
             "${modifier}+Shift+54" = "reload";
-            "${modifier}+Shift+e" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
+            "${modifier}+Shift+26" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
 
-            "${modifier}+r" = "mode resize";
+            "${modifier}+27" = "mode resize";
             "${modifier}+Shift+24" = "kill";
             "${modifier}+Shift+44" = "exec ${pkgs.wofi-emoji}/bin/wofi-emoji";
             "${modifier}+43" = "splith";
