@@ -47,6 +47,8 @@ in {
           distrobox
           qgis
 
+          jetbrains.idea-community
+
           dbeaver
           sway-launcher-desktop
 
@@ -60,6 +62,7 @@ in {
           openlens
           stern
           kubernetes-helm
+          kind
         ];
         home.sessionVariables = {
           AWS_VAULT_BACKEND = "file";
