@@ -21,6 +21,8 @@ in {
         package = pkgs.vscodium;
         mutableExtensionsDir = true; # default
         extensions = with pkgs.vscode-extensions; [
+          jdinhlife.gruvbox
+
           tomoki1207.pdf
           # Theming
           emmanuelbeziat.vscode-great-icons
@@ -70,7 +72,7 @@ in {
         userSettings = {
           "window.vscodeLevel" = 1;
           "workbench.sideBar.location" = "right";
-          "workbench.colorTheme" = "Quiet Light";
+          "workbench.colorTheme" = "Gruvbox Light Hard";
           "files.autoSave" = "afterDelay";
           "files.autoSaveDelay" = 1000;
           "editor.wordWrap" = "on";

@@ -9,7 +9,7 @@
 }:
 with lib;
 with lib.plusultra; {
-  colorScheme = inputs.nix-colors.colorSchemes.gruvbox-light-hard;
+  colorScheme = inputs.nix-colors.colorSchemes.gruvbox-light-medium;
   caramelmint = {
     desktop = {
       addons = {
