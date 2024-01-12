@@ -11,6 +11,9 @@ with lib;
 with lib.plusultra; {
   colorScheme = inputs.nix-colors.colorSchemes.gruvbox-light-medium;
   caramelmint = {
+    tools = {
+        zellij = enabled;
+    };
     desktop = {
       addons = {
         alacritty = enabled;
