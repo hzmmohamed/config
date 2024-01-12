@@ -18,12 +18,12 @@ with lib.plusultra; {
       design = enabled;
       media = enabled;
       games = enabled;
+      music-production = enabled;
     };
 
-
-      hardware = {
-        nvidia = enabled;
-      };
+    hardware = {
+      nvidia = enabled;
+    };
     system.power = enabled;
   };
 
