@@ -19,6 +19,11 @@ with lib.plusultra; {
       media = enabled;
       games = enabled;
     };
+
+
+      hardware = {
+        nvidia = enabled;
+      };
     system.power = enabled;
   };
 
