@@ -48,6 +48,7 @@ in {
           qgis
 
           jetbrains.idea-community
+          mongodb-compass
 
           dbeaver
           sway-launcher-desktop
