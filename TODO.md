@@ -7,21 +7,21 @@
 - [x] Set up Lens
 - [ ] Replace flameshot with shotman or grim+slurp commands or swappy https://discourse.nixos.org/t/screenshots-on-hyprland-on-nixos/29055/6?u=hfahmi
 - [ ] Set up GPG + Git commit signing like before
-- [ ] Configure dGPU
+- [x] Configure dGPU
 - [ ] Chromium settings to set:
         - Use system borders
         - No bookmarks bar
         - no home button
         - Font settings
         - Theme (I don't use a theme but I could make it use the GTK or QT theme)
-- [ ] Make my basic shortcuts like mod+q work even in the arabic keyboard layout
+- [x] Make my basic shortcuts like mod+q work even in the arabic keyboard layout
 - [ ] Tweak waybar ( Add Memory module, etc.)
-- [ ] Add swayr for feedback on changing volume or brightness
+- [ ] Add swaysr for feedback on changing volume or brightness
 - [ ] Add GillSans
 - [ ] Fix DBeaver GTK issues
 - [ ] Ricing
 - [ ] Downgrade Obsidian to latest working version
-- [ ] Zellij
+- [x] Zellij
 - kde connect
 - Collect TODOs comments in the repo
 - 
