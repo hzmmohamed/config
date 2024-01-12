@@ -62,6 +62,7 @@ in {
       gzip
       fd
       pv
+      du-dust
       gawk
       strace
       lurk # Rust alternative to strace
