@@ -49,7 +49,7 @@ in {
       ];
       services.swayidle = {enable = true;};
       programs.swaylock.enable = true;
-      services.swayr = {
+      programs.swayr = {
         enable = true;
         systemd.enable = true;
         settings = {
@@ -75,7 +75,6 @@ in {
           misc = {seq_inhibit = false;};
         };
       };
-
 
       wayland.windowManager.sway = {
         enable = true;

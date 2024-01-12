@@ -33,7 +33,7 @@ in {
       # Kernel
       kernelParams = ["i915.force_probe=46a6"];
       blacklistedKernelModules = [
-        "nouveau"
+        # "nouveau"
         # "intel_lpss_pci"
       ];
     };

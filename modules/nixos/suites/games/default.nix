@@ -30,6 +30,8 @@ in {
         mesa_drivers
         intel-ocl
         beignet
+        intel-media-driver
+        nvidia-vaapi-driver
         vaapiIntel
         vaapiVdpau
         libvdpau-va-gl

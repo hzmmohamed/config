@@ -44,6 +44,7 @@ in {
         programs = {
           chromium = {
             enable = true;
+            package = pkgs.unstable.chromium;
             extensions = [
               {id = "nngceckbapebfimnlniiiahkandclblb";} # Bitwarden
               {id = "chphlpgkkbolifaimnlloiipkdnihall";} # OneTab
@@ -59,6 +60,9 @@ in {
               {id = "nglaklhklhcoonedhgnpgddginnjdadi";} # Activity Watcher
               {id = "fpnmgdkabkmnadcjpehmlllkndpkmiak";} # Wayback Machine
             ];
+          };
+          firefox = {
+            enable = true;
           };
         };
 
