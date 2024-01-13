@@ -14,6 +14,10 @@
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # macOS Support (master)
     # darwin.url = "github:lnl7/nix-darwin";
     # darwin.inputs.nixpkgs.follows = "nixpkgs";
