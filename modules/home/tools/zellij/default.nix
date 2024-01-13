@@ -16,7 +16,7 @@ in {
   config = mkIf cfg.enable {
     programs.zellij = {
       enable = true;
-      enableFishIntegration=true;
+      enableFishIntegration = true;
       settings = {
         theme = "default";
         themes = {

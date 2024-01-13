@@ -24,11 +24,6 @@ with lib.plusultra; {
     hardware = {
       nvidia = enabled;
     };
-
-
-      hardware = {
-        nvidia = enabled;
-      };
     system.power = enabled;
   };
 

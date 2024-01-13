@@ -12,7 +12,7 @@ with lib.plusultra; {
   colorScheme = inputs.nix-colors.colorSchemes.gruvbox-light-medium;
   caramelmint = {
     tools = {
-        zellij = enabled;
+      zellij = enabled;
     };
     desktop = {
       addons = {
