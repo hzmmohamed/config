@@ -45,7 +45,7 @@ in {
       home.extraOptions = {
         home.packages = with pkgs; [
           distrobox
-          qgis
+          qgis-ltr
 
           jetbrains.idea-community
           mongodb-compass

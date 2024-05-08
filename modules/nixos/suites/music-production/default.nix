@@ -22,14 +22,19 @@ in {
       home.packages = with pkgs; [
         audacity
         ardour
+        unstable.decent-sampler
         carla
         x42-plugins
         x42-avldrums
-        #    CHOWTapeModel
-        #    ChowCentaur
-        #    ChowPhaser
-        #    # How to get decent sampler
-        #    easyeffects
+        fire
+        paulstretch
+        cardinal
+        drumgizmo
+        sooperlooper
+          #  CHOWTapeModel
+          #  ChowCentaur
+          #  ChowPhaser
+          #  easyeffects
         # helm
         surge-XT
         hydrogen
@@ -56,17 +61,17 @@ in {
         LXVST_PATH = "$HOME/.lxvst:$HOME/.nix-profile/lib/lxvst:/run/current-system/sw/lib/lxvst:/etc/profiles/per-user/$USER/lib/lxvst";
         VST_PATH = "$HOME/.vst:$HOME/.nix-profile/lib/vst:/run/current-system/sw/lib/vst:/etc/profiles/per-user/$USER/lib/vst";
       };
-      home.file = {
-        # Setup Yabridge
-        # If you face issues with scanning the plugins in Ardour (e.g. Invalid ELF header), creating a clean Wine prefix and re-installing the plugins should fix it.
-        # TODO: Remove username specific parts of the paths
-        ".config/yabridgectl/config.toml".text = ''
-          plugin_dirs = ['/home/hfahmi/.wine/drive_c/Program\ Files/Common\ Files/VST3','/home/hfahmi/.wine/drive_c/Program\ Files/VstPlugins']
-           vst2_location = 'centralized'
-           no_verify = false
-           blacklist = []
-        '';
-      };
+      # home.file = {
+      #   # Setup Yabridge
+      #   # If you face issues with scanning the plugins in Ardour (e.g. Invalid ELF header), creating a clean Wine prefix and re-installing the plugins should fix it.
+      #   # TODO: Remove username specific parts of the paths
+      #   ".config/yabridgectl/config.toml".text = ''
+      #     plugin_dirs = ['/home/hfahmi/.wine/drive_c/Program\ Files/Common\ Files/VST3','/home/hfahmi/.wine/drive_c/Program\ Files/VstPlugins']
+      #      vst2_location = 'centralized'
+      #      no_verify = false
+      #      blacklist = []
+      #   '';
+      # };
     };
   };
 }

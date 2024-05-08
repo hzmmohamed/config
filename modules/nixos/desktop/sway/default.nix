@@ -89,7 +89,7 @@ in {
 
         # Generate sway config
         config = let
-          modifier = "Mod4";
+          modifier = "Mod1";
           menu = "wofi --show drun";
           terminal = "alacritty";
         in {
@@ -283,5 +283,6 @@ in {
     services.xserver.enable = true;
     services.xserver.displayManager.sddm.enable = true;
     services.xserver.displayManager.sessionPackages = [pkgs.sway];
+    services.passSecretService.enable = true;
   };
 }

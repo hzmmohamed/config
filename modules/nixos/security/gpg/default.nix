@@ -9,15 +9,7 @@
 with lib;
 with lib.plusultra; let
   cfg = config.caramelmint.security.gpg;
-
-  gpgConf = "${inputs.gpg-base-conf}/gpg.conf";
-
-  gpgAgentConf = ''
-    enable-ssh-support
-    default-cache-ttl 60
-    max-cache-ttl 120
-    pinentry-program ${pkgs.pinentry-gnome}/bin/pinentry-gnome
-  '';
+  # gpgConf = "${inputs.gpg-base-conf}/gpg.conf";
 in {
   options.caramelmint.security.gpg = with types; {
     enable = mkBoolOpt false "Whether or not to enable GPG.";
@@ -55,16 +47,15 @@ in {
         enable = true;
         enableSSHSupport = true;
         enableExtraSocket = true;
-        pinentryFlavor = "gnome3";
+        pinentryFlavor = "qt";
       };
     };
 
-    caramelmint = {
-      home.file = {
-        ".gnupg/.keep".text = "";
-        ".gnupg/gpg.conf".source = gpgConf;
-        ".gnupg/gpg-agent.conf".text = gpgAgentConf;
-      };
-    };
+    # caramelmint = {
+    #   home.file = {
+    #     ".gnupg/.keep".text = "";
+    #     ".gnupg/gpg.conf".source = gpgConf;
+    #   };
+    # };
   };
 }

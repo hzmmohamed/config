@@ -55,6 +55,7 @@ in {
       micro
 
       # UNIX utils
+      bc
       entr
       glances
       progress

@@ -1,7 +1,7 @@
 - [ ] Migrate VSCodium declaration from HM to https://github.com/nix-community/nix-vscode-extensions
 - [ ] Add the Copy Relative Path and Line Numbers extension to VSCode
 - [ ] Add samba shares using plusultra samba module
-- [x] Add wofi-emoji
+- [x] Add wofi-emoji + keybinding
 - [ ] Add bitwarden wofi interace
 - [ ] Test decreasing value of accelSpeed
 - [x] Set up Lens
@@ -20,18 +20,50 @@
 - [ ] Add GillSans
 - [ ] Fix DBeaver GTK issues
 - [ ] Ricing
-- [ ] Downgrade Obsidian to latest working version
-- [x] Zellij
-- kde connect
-- Collect TODOs comments in the repo
-- 
-- Add K8s setup
-
+- [ ] Index all files on my laptop and be able to fuzzy search through them. Plus what if I can search images with an image like Google Images.
+- [ ] Add fire plugin, calf Plugins and other plugins from VenusTheory's video
+- [ ] Add cool cursor theme (https://www.gnome-look.org/p/2121191, https://nixos.wiki/wiki/Cursor_Themes)
+- [ ] kde connect
+- [ ] Configure firefox privacy settings defaults
+- [ ] Configure firefox default zoom to 110
+- [ ] Log system resource utilization per process with atop
+- [ ] Add preview to fzf widget commands + Change completion trigger https://www.youtube.com/watch?v=MvLQor1Ck3M
 - Codium extensions: 
 fwcd.kotlin --> Install and configure paths for JDK and stuff or disable those features altogether and use the LSP only
-
-
-
+- programs to add or master: broot, dysk, repgrep, backdown, monocle, bandwhich
+- Firefox:
+	- Add zotero connector add-on
+	- Set "Ask download location"
+	- Add add-on Highlighter + Notes
+- Fix KDE Connect connection issue
+- activity watchers to add and configure:
+	- aw-watcher-utilization
+	- aw-watcher-netstatus (This might be useful in conjunction with vnstat data to determine how much of my personal internet quota is spent on work-related things.
+- Explore potential uses for wrapper-manager from viperML
 ## Packages to try out
 - lensfun
 - timelens
+- jasp-desktop
+
+
+- Add dua to UNIX utils
+- Add systemd unit cron job that permanently deletes trashed files older than 30d
+- Zellij UX:
+	- Make the distinction between the selected terminal and the others more pronounced!
+	- Resolve conflict between Zellij Ctrl+S and that of nano. Until I use a different text editor.	
+- Add packages: gh + gh-dash
+- Comma + nix-index https://github.com/nix-community/nix-index-database?tab=readme-ov-file
+
+
+- Fix this issue https://discourse.nixos.org/t/applications-not-finding-org-freedesktop-secrets/17667/3 which is also making AnyType crash on startup.
+- Use Lutris
+- Try wayshot
+- NoiseTorch
+- pasytray
+- unixporn saves on reddit
+- Persistent (across restarts) clipboard solution ( cliphist or clipmenu) (https://wiki.archlinux.org/title/clipboard) (https://mpov.timmorgan.org/super-simple-clipboard-history-for-linux/)
+
+- Add QGIS workspace configuration to this config
+- Create user profiles for CPU frequency energy and governer. Each core can be assigned a governer separately.
+- Add DNS caching to network manager or by configuring systemd-resolvd with it.
+- Configure Shell prompt to show the current kubectl context

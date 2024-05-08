@@ -22,6 +22,7 @@ in {
       dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     };
 
+    # TODO: Replicate this in common desktop configuration
     hardware.opengl = {
       enable = true;
       driSupport = true;
@@ -35,6 +36,7 @@ in {
         vaapiIntel
         vaapiVdpau
         libvdpau-va-gl
+        dxvk
       ];
     };
 

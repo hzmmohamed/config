@@ -41,7 +41,7 @@ in {
         enable = true;
         dhcp = "internal";
         # TODO: Make this configurable
-        insertNameservers = ["1.1.1.1" "8.8.8.8"];
+        insertNameservers = ["8.8.8.8"];
       };
     };
     # TODO: Make sure that this conditional is working
