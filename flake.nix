@@ -96,6 +96,8 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    musnix  = { url = "github:musnix/musnix"; };
   };
 
   nixConfig = {
@@ -136,6 +138,7 @@
         nix-ld.nixosModules.nix-ld
         vault-service.nixosModules.nixos-vault-service
         sops-nix.nixosModules.sops
+        musnix.nixosModules.musnix
       ];
 
       homes.users."hfahmi@nixos".modules = with inputs; [

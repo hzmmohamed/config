@@ -16,12 +16,14 @@ in {
   };
 
   config = mkIf cfg.enable {
+
+    musnix = enabled;
     caramelmint.cli-apps.wine = enabled;
 
     caramelmint.home.extraOptions = {
       home.packages = with pkgs; [
         audacity
-        ardour
+        unstable.ardour
         unstable.decent-sampler
         carla
         x42-plugins
@@ -31,7 +33,8 @@ in {
         cardinal
         drumgizmo
         sooperlooper
-          #  CHOWTapeModel
+           CHOWTapeModel
+           airwindows-lv2
           #  ChowCentaur
           #  ChowPhaser
           #  easyeffects
