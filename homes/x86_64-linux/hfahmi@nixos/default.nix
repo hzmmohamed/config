@@ -8,7 +8,7 @@
   ...
 }:
 with lib;
-with lib.plusultra; {
+with lib.caramelmint; {
   colorScheme = inputs.nix-colors.colorSchemes.gruvbox-light-medium;
   caramelmint = {
     tools = {

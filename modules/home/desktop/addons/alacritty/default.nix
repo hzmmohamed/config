@@ -7,7 +7,7 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
+with lib.caramelmint; let
   cfg = config.caramelmint.desktop.addons.alacritty;
 in {
   options.caramelmint.desktop.addons.alacritty = with types; {

@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
+with lib.caramelmint; let
   cfg = config.caramelmint.tools.adb;
 in {
   options.caramelmint.tools.adb = with types; {

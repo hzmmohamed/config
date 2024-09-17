@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
+with lib.caramelmint; let
   cfg = config.caramelmint.system.power;
 in {
   options.caramelmint.system.power = with types; {

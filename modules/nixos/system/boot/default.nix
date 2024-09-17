@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
+with lib.caramelmint; let
   cfg = config.caramelmint.system.boot;
 in {
   options.caramelmint.system.boot = with types; {

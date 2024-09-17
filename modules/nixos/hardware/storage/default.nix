@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
+with lib.caramelmint; let
   cfg = config.caramelmint.hardware.storage;
 in {
   options.caramelmint.hardware.storage = with types; {

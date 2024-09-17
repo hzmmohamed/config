@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
+with lib.caramelmint; let
   cfg = config.caramelmint.suites.perf;
 in {
   options.caramelmint.suites.perf = with types; {

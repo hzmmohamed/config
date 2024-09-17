@@ -9,7 +9,7 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
+with lib.caramelmint; let
   cfg = config.caramelmint.services.openssh;
 
   user = config.users.users.${config.caramelmint.user.name};

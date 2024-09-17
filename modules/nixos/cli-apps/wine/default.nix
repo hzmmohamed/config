@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
+with lib.caramelmint; let
   cfg = config.caramelmint.cli-apps.wine;
 in {
   options.caramelmint.cli-apps.wine = with types; {

@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
+with lib.caramelmint; let
   cfg = config.caramelmint.virtualisation.podman;
 in {
   options.caramelmint.virtualisation.podman = with types; {

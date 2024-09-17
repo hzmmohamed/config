@@ -7,7 +7,7 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
+with lib.caramelmint; let
   cfg = config.caramelmint.home;
 in {
   # imports = with inputs; [

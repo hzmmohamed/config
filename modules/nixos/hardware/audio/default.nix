@@ -9,7 +9,7 @@
 # broken my setup. I'll need to invest some time to figure out how to override Alsa things
 # again...
 with lib;
-with lib.plusultra; let
+with lib.caramelmint; let
   cfg = config.caramelmint.hardware.audio;
 
   lua-format = {

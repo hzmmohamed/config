@@ -7,7 +7,7 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
+with lib.caramelmint; let
   cfg = config.caramelmint.security.gpg;
   # gpgConf = "${inputs.gpg-base-conf}/gpg.conf";
 in {

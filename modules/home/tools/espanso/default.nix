@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
+with lib.caramelmint; let
   cfg = config.caramelmint.tools.espanso;
 in {
   options.caramelmint.tools.espanso = with types; {

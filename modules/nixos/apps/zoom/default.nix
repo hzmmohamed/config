@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
+with lib.caramelmint; let
   cfg = config.caramelmint.apps.zoom;
 in {
   options.caramelmint.apps.zoom = with types; {

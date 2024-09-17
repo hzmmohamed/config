@@ -5,7 +5,7 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
+with lib.caramelmint; let
   cfg = config.caramelmint.virtualisation.kvm;
   user = config.caramelmint.user;
 in {

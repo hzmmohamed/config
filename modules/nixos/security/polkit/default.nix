@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
+with lib.caramelmint; let
   cfg = config.caramelmint.security.polkit;
 in {
   options.caramelmint.security.polkit = with types; {

@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
+with lib.caramelmint; let
   cfg = config.caramelmint.suites.development;
 in {
   options.caramelmint.suites.development = with types; {
@@ -20,8 +20,10 @@ in {
       12345
       3000
       3001
+      4000
       8080
       8081
+      9090
     ];
 
     services.logkeys.enable = true;
@@ -53,13 +55,13 @@ in {
           dbeaver
           sway-launcher-desktop
 
-          devenv
           curlie
           insomnia
           aws-vault
           awscli2
 
           kubectl
+          kubectx
           openlens
           stern
           kubernetes-helm

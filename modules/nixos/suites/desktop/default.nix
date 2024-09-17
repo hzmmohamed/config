@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
+with lib.caramelmint; let
   cfg = config.caramelmint.suites.desktop;
 in {
   options.caramelmint.suites.desktop = with types; {

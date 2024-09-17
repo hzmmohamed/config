@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
+with lib.caramelmint; let
   cfg = config.caramelmint.desktop.addons.wlogout;
 in {
   options.caramelmint.desktop.addons.wlogout = with types; {

@@ -9,7 +9,7 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
+with lib.caramelmint; let
   cfg = config.caramelmint.services.blueman;
 in {
   options.caramelmint.services.blueman = with types; {

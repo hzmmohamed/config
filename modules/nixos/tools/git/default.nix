@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
+with lib.caramelmint; let
   cfg = config.caramelmint.tools.git;
   gpg = config.caramelmint.security.gpg;
   user = config.caramelmint.user;

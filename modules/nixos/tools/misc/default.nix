@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
+with lib.caramelmint; let
   cfg = config.caramelmint.tools.misc;
 in {
   options.caramelmint.tools.misc = with types; {

@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.plusultra; {
+with lib.caramelmint; {
   imports = [./hardware.nix];
 
   caramelmint = {

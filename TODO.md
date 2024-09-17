@@ -67,3 +67,9 @@ fwcd.kotlin --> Install and configure paths for JDK and stuff or disable those f
 - Create user profiles for CPU frequency energy and governer. Each core can be assigned a governer separately.
 - Add DNS caching to network manager or by configuring systemd-resolvd with it.
 - Configure Shell prompt to show the current kubectl context
+
+
+Add usbutils or busybox.. FFS I don't have lsusb in the native env
+
+
+- So I just did a cleaning session for my cache and trash directories and freed up 60 GBs after many months off working on this computer. The tools I frequently use that build up files are pnpm, yarn, trashy. Let's create a small command that runs these commands from anywhere. I say anywhere because for example to get pnpm in my shell I had to cd to a node project to run the command from there. Not the best approach. Works for now.

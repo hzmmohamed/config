@@ -5,7 +5,7 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
+with lib.caramelmint; let
   cfg = config.caramelmint.services.tailscale;
 in {
   options.caramelmint.services.tailscale = with types; {

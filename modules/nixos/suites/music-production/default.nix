@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
+with lib.caramelmint; let
   cfg = config.caramelmint.suites.music-production;
 in {
   options.caramelmint.suites.music-production = with types; {
@@ -22,6 +22,7 @@ in {
 
     caramelmint.home.extraOptions = {
       home.packages = with pkgs; [
+        kdenlive
         audacity
         unstable.ardour
         unstable.decent-sampler

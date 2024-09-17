@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
+with lib.caramelmint; let
   cfg = config.caramelmint.suites.maker-tools;
 in {
   options.caramelmint.suites.maker-tools = with types; {

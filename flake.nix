@@ -61,11 +61,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    plusultra = {
-      url = "github:jakehamilton/config";
-      inputs.nixpkgs.follows = "unstable";
-      inputs.unstable.follows = "unstable";
-    };
 
     # # Backup management
     # icehouse = {
@@ -78,12 +73,6 @@
     gpg-base-conf = {
       url = "github:drduh/config";
       flake = false;
-    };
-
-    # Add devenv flake input
-    devenv = {
-      url = "github:cachix/devenv/latest";
-      inputs.nixpkgs.follows = "unstable";
     };
 
     # TODO: Adding this input to remind myself to learn to use it. This should be, in principle, easier than setting up formatters from pre-commit-hooks.nix
@@ -100,10 +89,6 @@
     musnix  = { url = "github:musnix/musnix"; };
   };
 
-  nixConfig = {
-    extra-trusted-public-keys = "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=";
-    extra-substituters = "https://devenv.cachix.org";
-  };
 
   outputs = inputs: let
     lib = inputs.snowfall-lib.mkLib {
@@ -128,10 +113,6 @@
           "electron-25.9.0"
         ];
       };
-
-      lib = with inputs; [
-        plusultra.lib
-      ];
 
       systems.modules.nixos = with inputs; [
         home-manager.nixosModules.home-manager

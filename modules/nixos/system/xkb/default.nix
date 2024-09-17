@@ -5,7 +5,7 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
+with lib.caramelmint; let
   cfg = config.caramelmint.system.xkb;
 in {
   options.caramelmint.system.xkb = with types; {

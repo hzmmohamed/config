@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.plusultra; let
+with lib.caramelmint; let
   cfg = config.caramelmint.virtualisation.docker;
 in {
   options.caramelmint.virtualisation.docker = with types; {
