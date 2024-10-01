@@ -167,6 +167,15 @@ in {
               ];
             };
           };
+          thunderbird = {
+            enable = true;
+            profiles = {
+              hfahmi = {
+                isDefault = true;
+
+              };
+            };
+          };
         };
 
         home.packages = with pkgs; [

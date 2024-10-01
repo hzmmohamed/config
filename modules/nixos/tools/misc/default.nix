@@ -55,6 +55,7 @@ in {
       micro
 
       # UNIX utils
+      usbutils
       bc
       entr
       glances
