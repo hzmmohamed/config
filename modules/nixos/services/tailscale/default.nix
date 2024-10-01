@@ -1,53 +1,47 @@
-{
-  lib,
-  pkgs,
-  config,
-  ...
-}:
+{ lib, pkgs, config, ... }:
 with lib;
-with lib.caramelmint; let
-  cfg = config.caramelmint.services.tailscale;
+with lib.caramelmint;
+let cfg = config.caramelmint.services.tailscale;
 in {
   options.caramelmint.services.tailscale = with types; {
     enable = mkBoolOpt false "Whether or not to configure Tailscale";
     autoconnect = {
-      enable = mkBoolOpt false "Whether or not to enable automatic connection to Tailscale";
+      enable = mkBoolOpt false
+        "Whether or not to enable automatic connection to Tailscale";
       key = mkOpt str "" "The authentication key to use";
     };
   };
 
   config = mkIf cfg.enable {
-    assertions = [
-      {
-        assertion = cfg.autoconnect.enable -> cfg.autoconnect.key != "";
-        message = "caramelmint.services.tailscale.autoconnect.key must be set";
-      }
-    ];
+    assertions = [{
+      assertion = cfg.autoconnect.enable -> cfg.autoconnect.key != "";
+      message = "caramelmint.services.tailscale.autoconnect.key must be set";
+    }];
 
-    environment.systemPackages = with pkgs; [tailscale];
+    environment.systemPackages = with pkgs; [ tailscale ];
 
     services.tailscale = enabled;
 
     networking = {
       firewall = {
-        trustedInterfaces = [config.services.tailscale.interfaceName];
+        trustedInterfaces = [ config.services.tailscale.interfaceName ];
 
-        allowedUDPPorts = [config.services.tailscale.port];
+        allowedUDPPorts = [ config.services.tailscale.port ];
 
         # Strict reverse path filtering breaks Tailscale exit node use and some subnet routing setups.
         checkReversePath = "loose";
       };
 
-      networkmanager.unmanaged = ["tailscale0"];
+      networkmanager.unmanaged = [ "tailscale0" ];
     };
 
     systemd.services.tailscale-autoconnect = mkIf cfg.autoconnect.enable {
       description = "Automatic connection to Tailscale";
 
       # Make sure tailscale is running before trying to connect to tailscale
-      after = ["network-pre.target" "tailscale.service"];
-      wants = ["network-pre.target" "tailscale.service"];
-      wantedBy = ["multi-user.target"];
+      after = [ "network-pre.target" "tailscale.service" ];
+      wants = [ "network-pre.target" "tailscale.service" ];
+      wantedBy = [ "multi-user.target" ];
 
       # Set this service as a oneshot job
       serviceConfig.Type = "oneshot";

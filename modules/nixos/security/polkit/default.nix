@@ -1,13 +1,7 @@
-{
-  options,
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ options, config, lib, pkgs, ... }:
 with lib;
-with lib.caramelmint; let
-  cfg = config.caramelmint.security.polkit;
+with lib.caramelmint;
+let cfg = config.caramelmint.security.polkit;
 in {
   options.caramelmint.security.polkit = with types; {
     enable = mkBoolOpt false "Whether to enable polkit.";
@@ -20,15 +14,16 @@ in {
       systemd.user.services.polkit-gnome = {
         Unit = {
           Description = "PolicyKit Authentication Agent";
-          After = ["graphical-session-pre.target"];
-          PartOf = ["graphical-session.target"];
+          After = [ "graphical-session-pre.target" ];
+          PartOf = [ "graphical-session.target" ];
         };
 
         Service = {
-          ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+          ExecStart =
+            "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
         };
 
-        Install = {WantedBy = ["graphical-session.target"];};
+        Install = { WantedBy = [ "graphical-session.target" ]; };
       };
     };
   };

@@ -1,13 +1,7 @@
-{
-  options,
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ options, config, lib, pkgs, ... }:
 with lib;
-with lib.caramelmint; let
-  cfg = config.caramelmint.tools.misc;
+with lib.caramelmint;
+let cfg = config.caramelmint.tools.misc;
 in {
   options.caramelmint.tools.misc = with types; {
     enable = mkBoolOpt false "Whether or not to enable common utilities.";

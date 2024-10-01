@@ -1,16 +1,11 @@
-{
-  options,
-  config,
-  pkgs,
-  lib,
-  ...
-}:
+{ options, config, pkgs, lib, ... }:
 with lib;
-with lib.caramelmint; let
-  cfg = config.caramelmint.desktop.addons.clipmenu;
+with lib.caramelmint;
+let cfg = config.caramelmint.desktop.addons.clipmenu;
 in {
   options.caramelmint.desktop.addons.clipmenu = with types; {
-    enable = mkBoolOpt false "Whether or not to install and configure clipmenu.";
+    enable =
+      mkBoolOpt false "Whether or not to install and configure clipmenu.";
   };
 
   config = mkIf cfg.enable {

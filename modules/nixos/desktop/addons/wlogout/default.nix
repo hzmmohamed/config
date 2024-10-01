@@ -1,13 +1,7 @@
-{
-  options,
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ options, config, lib, pkgs, ... }:
 with lib;
-with lib.caramelmint; let
-  cfg = config.caramelmint.desktop.addons.wlogout;
+with lib.caramelmint;
+let cfg = config.caramelmint.desktop.addons.wlogout;
 in {
   options.caramelmint.desktop.addons.wlogout = with types; {
     enable = mkBoolOpt false "Whether or not to enable wlogout.";

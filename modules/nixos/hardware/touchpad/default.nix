@@ -1,17 +1,10 @@
-{
-  options,
-  config,
-  pkgs,
-  lib,
-  ...
-}:
+{ options, config, pkgs, lib, ... }:
 with lib;
-with lib.caramelmint; let
-  cfg = config.caramelmint.hardware.touchpad;
+with lib.caramelmint;
+let cfg = config.caramelmint.hardware.touchpad;
 in {
   options.caramelmint.hardware.touchpad = with types; {
-    enable =
-      mkBoolOpt false
+    enable = mkBoolOpt false
       "Whether or not to enable and configure touchpad support.";
   };
 

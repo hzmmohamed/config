@@ -1,13 +1,7 @@
-{
-  options,
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ options, config, lib, pkgs, ... }:
 with lib;
-with lib.caramelmint; let
-  cfg = config.caramelmint.suites.common;
+with lib.caramelmint;
+let cfg = config.caramelmint.suites.common;
 in {
   options.caramelmint.suites.common = with types; {
     enable = mkBoolOpt false "Whether or not to enable common configuration.";
@@ -20,8 +14,7 @@ in {
       # @TODO(jakehamilton): Enable this once Attic is configured again.
       # cache.public = enabled;
 
-      cli-apps = {
-      };
+      cli-apps = { };
 
       tools = {
         git = enabled;

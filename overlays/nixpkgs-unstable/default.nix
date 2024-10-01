@@ -1,3 +1,1 @@
-{channels, ...}: final: prev: {
-  unstable = channels.unstable;
-}
+{ channels, ... }: final: prev: { unstable = channels.unstable; }

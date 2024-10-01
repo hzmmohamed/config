@@ -1,12 +1,7 @@
-{
-  options,
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ options, config, lib, pkgs, ... }:
 with lib;
-with lib.caramelmint; let
+with lib.caramelmint;
+let
   cfg = config.caramelmint.desktop.addons.gtk;
   gdmCfg = config.services.xserver.displayManager.gdm;
 in {
@@ -25,28 +20,22 @@ in {
     # };
 
     cursor = {
-      name =
-        mkOpt str "Bibata-Modern-Classic"
+      name = mkOpt str "Bibata-Modern-Classic"
         "The name of the cursor theme to apply.";
-      pkg = mkOpt package pkgs.bibata-cursors "The package to use for the cursor theme.";
+      pkg = mkOpt package pkgs.bibata-cursors
+        "The package to use for the cursor theme.";
     };
     icon = {
-      name =
-        mkOpt str "Papirus"
-        "The name of the icon theme to apply.";
-      pkg = mkOpt package pkgs.papirus-icon-theme "The package to use for the icon theme.";
+      name = mkOpt str "Papirus" "The name of the icon theme to apply.";
+      pkg = mkOpt package pkgs.papirus-icon-theme
+        "The package to use for the icon theme.";
     };
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [
-      cfg.icon.pkg
-      cfg.cursor.pkg
-    ];
+    environment.systemPackages = [ cfg.icon.pkg cfg.cursor.pkg ];
 
-    environment.sessionVariables = {
-      XCURSOR_THEME = cfg.cursor.name;
-    };
+    environment.sessionVariables = { XCURSOR_THEME = cfg.cursor.name; };
 
     programs.dconf = enabled;
 
@@ -65,9 +54,9 @@ in {
         theme = {
           name = "Catppuccin-Latte-Compact-Pink-Light";
           package = pkgs.catppuccin-gtk.override {
-            accents = ["pink"];
+            accents = [ "pink" ];
             size = "compact";
-            tweaks = ["rimless"];
+            tweaks = [ "rimless" ];
             variant = "macchiato";
           };
         };

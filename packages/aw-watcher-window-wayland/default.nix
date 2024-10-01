@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}:
+{ pkgs, lib, ... }:
 pkgs.rustPlatform.buildRustPackage rec {
   pname = "aw-watcher-window-wayland";
   version = "56b4296";
@@ -17,12 +13,13 @@ pkgs.rustPlatform.buildRustPackage rec {
   cargoLock = {
     lockFile = "${src}/Cargo.lock";
     outputHashes = {
-      "aw-client-rust-0.1.0" = "sha256-9tlVesnBeTlazKE2UAq6dzivjo42DT7p7XMuWXHHlnU=";
+      "aw-client-rust-0.1.0" =
+        "sha256-9tlVesnBeTlazKE2UAq6dzivjo42DT7p7XMuWXHHlnU=";
     };
   };
-  nativeBuildInputs = with pkgs; [pkg-config];
+  nativeBuildInputs = with pkgs; [ pkg-config ];
 
-  buildInputs = with pkgs; [bzip2 openssl];
+  buildInputs = with pkgs; [ bzip2 openssl ];
 
   meta = {
     description = "window and afk watcher for wayland";

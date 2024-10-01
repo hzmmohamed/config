@@ -1,16 +1,11 @@
-{
-  options,
-  config,
-  pkgs,
-  lib,
-  ...
-}:
+{ options, config, pkgs, lib, ... }:
 with lib;
-with lib.caramelmint; let
-  cfg = config.caramelmint.desktop.addons.gammastep;
+with lib.caramelmint;
+let cfg = config.caramelmint.desktop.addons.gammastep;
 in {
   options.caramelmint.desktop.addons.gammastep = with types; {
-    enable = mkBoolOpt false "Whether or not to install and configure gamma step.";
+    enable =
+      mkBoolOpt false "Whether or not to install and configure gamma step.";
   };
 
   config = mkIf cfg.enable {

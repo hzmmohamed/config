@@ -1,27 +1,17 @@
-{
-  options,
-  config,
-  lib,
-  pkgs,
-  inputs,
-  ...
-}:
+{ options, config, lib, pkgs, inputs, ... }:
 with lib;
-with lib.caramelmint; let
-  cfg = config.caramelmint.suites.office;
+with lib.caramelmint;
+let cfg = config.caramelmint.suites.office;
 in {
   options.caramelmint.suites.office = with types; {
-    enable =
-      mkBoolOpt false
+    enable = mkBoolOpt false
       "Whether or not to enable common office productivity configuration.";
   };
 
   config = mkIf cfg.enable {
     services.gnome.glib-networking = enabled;
     caramelmint = {
-      apps = {
-        vscode = enabled;
-      };
+      apps = { vscode = enabled; };
 
       tools = {
         # espanso = enabled;
@@ -29,7 +19,7 @@ in {
         activity-watch = enabled;
       };
 
-      virtualisation = {kvm = enabled;};
+      virtualisation = { kvm = enabled; };
 
       home.extraOptions = {
         home.sessionVariables = {
@@ -47,19 +37,21 @@ in {
             enable = true;
             package = pkgs.unstable.chromium;
             extensions = [
-              {id = "nngceckbapebfimnlniiiahkandclblb";} # Bitwarden
-              {id = "chphlpgkkbolifaimnlloiipkdnihall";} # OneTab
+              { id = "nngceckbapebfimnlniiiahkandclblb"; } # Bitwarden
+              { id = "chphlpgkkbolifaimnlloiipkdnihall"; } # OneTab
 
-              {id = "ekhagklcjbdpajgpjgmbionohlpdbjgc";} # Zotero Connector
-              {id = "blkggjdmcfjdbmmmlfcpplkchpeaiiab";} # Omnivore
+              { id = "ekhagklcjbdpajgpjgmbionohlpdbjgc"; } # Zotero Connector
+              { id = "blkggjdmcfjdbmmmlfcpplkchpeaiiab"; } # Omnivore
 
-              {id = "ghbmnnjooekpmoecnnnilnnbdlolhkhi";} # Google Docs Offline
+              { id = "ghbmnnjooekpmoecnnnilnnbdlolhkhi"; } # Google Docs Offline
 
-              {id = "pmjeegjhjdlccodhacdgbgfagbpmccpe";} # Clockify Time Tracker
-              {id = "oejclklollnadllgjcpaopapmckpeaim";} # Weekly Clockify
+              {
+                id = "pmjeegjhjdlccodhacdgbgfagbpmccpe";
+              } # Clockify Time Tracker
+              { id = "oejclklollnadllgjcpaopapmckpeaim"; } # Weekly Clockify
 
-              {id = "nglaklhklhcoonedhgnpgddginnjdadi";} # Activity Watcher
-              {id = "fpnmgdkabkmnadcjpehmlllkndpkmiak";} # Wayback Machine
+              { id = "nglaklhklhcoonedhgnpgddginnjdadi"; } # Activity Watcher
+              { id = "fpnmgdkabkmnadcjpehmlllkndpkmiak"; } # Wayback Machine
             ];
           };
           firefox = {
@@ -72,36 +64,34 @@ in {
             profiles.hfahmi = {
               search.engines = {
                 "Nix Packages" = {
-                  urls = [
-                    {
-                      template = "https://search.nixos.org/packages";
-                      params = [
-                        {
-                          name = "type";
-                          value = "packages";
-                        }
-                        {
-                          name = "query";
-                          value = "{searchTerms}";
-                        }
-                      ];
-                    }
-                  ];
+                  urls = [{
+                    template = "https://search.nixos.org/packages";
+                    params = [
+                      {
+                        name = "type";
+                        value = "packages";
+                      }
+                      {
+                        name = "query";
+                        value = "{searchTerms}";
+                      }
+                    ];
+                  }];
 
-                  icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                  definedAliases = ["@np"];
+                  icon =
+                    "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+                  definedAliases = [ "@np" ];
                 };
               };
               search.force = true;
 
-              bookmarks = [
-                {
-                  name = "wikipedia";
-                  tags = ["wiki"];
-                  keyword = "wiki";
-                  url = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
-                }
-              ];
+              bookmarks = [{
+                name = "wikipedia";
+                tags = [ "wiki" ];
+                keyword = "wiki";
+                url =
+                  "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
+              }];
 
               settings = {
                 "dom.security.https_only_mode" = true;

@@ -51,16 +51,17 @@
 
     # Vault Integration
     vault-service = {
-      url = "github:DeterminateSystems/nixos-vault-service/a9f2a1c5577491da73d2c13f9bafff529445b760";
+      url =
+        "github:DeterminateSystems/nixos-vault-service/a9f2a1c5577491da73d2c13f9bafff529445b760";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Flake Hygiene
     flake-checker = {
-      url = "github:DeterminateSystems/flake-checker/46b02e6172ed961113d336a035688ac12c96d9f4";
+      url =
+        "github:DeterminateSystems/flake-checker/46b02e6172ed961113d336a035688ac12c96d9f4";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
 
     # # Backup management
     # icehouse = {
@@ -86,32 +87,29 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    musnix  = { url = "github:musnix/musnix"; };
+    musnix = { url = "github:musnix/musnix"; };
   };
 
+  outputs = inputs:
+    let
+      lib = inputs.snowfall-lib.mkLib {
+        inherit inputs;
+        src = ./.;
 
-  outputs = inputs: let
-    lib = inputs.snowfall-lib.mkLib {
-      inherit inputs;
-      src = ./.;
+        snowfall = {
+          meta = {
+            name = "caramelmint";
+            title = "Caramel Mint";
+          };
 
-      snowfall = {
-        meta = {
-          name = "caramelmint";
-          title = "Caramel Mint";
+          namespace = "caramelmint";
         };
-
-        namespace = "caramelmint";
       };
-    };
-  in
-    lib.mkFlake {
+    in lib.mkFlake {
       channels-config = {
         allowUnfree = true;
         # This version of Electron is EOL, but latest Obsidian still uses it.
-        permittedInsecurePackages = [
-          "electron-25.9.0"
-        ];
+        permittedInsecurePackages = [ "electron-25.9.0" ];
       };
 
       systems.modules.nixos = with inputs; [
@@ -122,9 +120,8 @@
         musnix.nixosModules.musnix
       ];
 
-      homes.users."hfahmi@nixos".modules = with inputs; [
-        nix-colors.homeManagerModules.default
-      ];
+      homes.users."hfahmi@nixos".modules = with inputs;
+        [ nix-colors.homeManagerModules.default ];
 
       # deploy = lib.mkDeploy {inherit (inputs) self;};
 

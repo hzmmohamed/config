@@ -1,25 +1,20 @@
-{
-  options,
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ options, config, lib, pkgs, ... }:
 with lib;
-with lib.caramelmint; let
-  cfg = config.caramelmint.suites.games;
+with lib.caramelmint;
+let cfg = config.caramelmint.suites.games;
 in {
   options.caramelmint.suites.games = with types; {
-    enable =
-      mkBoolOpt false
+    enable = mkBoolOpt false
       "Whether or not to enable common configuration for games.";
   };
 
   config = mkIf cfg.enable {
     programs.steam = {
       enable = true;
-      remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-      dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+      remotePlay.openFirewall =
+        true; # Open ports in the firewall for Steam Remote Play
+      dedicatedServer.openFirewall =
+        true; # Open ports in the firewall for Source Dedicated Server
     };
 
     # TODO: Replicate this in common desktop configuration

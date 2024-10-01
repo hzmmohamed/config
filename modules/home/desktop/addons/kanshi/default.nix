@@ -1,13 +1,7 @@
-{
-  options,
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ options, config, lib, pkgs, ... }:
 with lib;
-with lib.caramelmint; let
-  cfg = config.caramelmint.desktop.addons.kanshi;
+with lib.caramelmint;
+let cfg = config.caramelmint.desktop.addons.kanshi;
 in {
   options.caramelmint.desktop.addons.kanshi = with types; {
     enable =
@@ -21,15 +15,13 @@ in {
       enable = true;
       profiles = {
         laptop = {
-          outputs = [
-            {
-              mode = "1920x1080@60Hz";
-              scale = 1.2;
-              position = "0,0";
-              status = "enable";
-              criteria = "eDP-1";
-            }
-          ];
+          outputs = [{
+            mode = "1920x1080@60Hz";
+            scale = 1.2;
+            position = "0,0";
+            status = "enable";
+            criteria = "eDP-1";
+          }];
         };
       };
     };

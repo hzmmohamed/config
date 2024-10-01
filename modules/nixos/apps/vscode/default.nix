@@ -1,13 +1,7 @@
-{
-  options,
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ options, config, lib, pkgs, ... }:
 with lib;
-with lib.caramelmint; let
-  cfg = config.caramelmint.apps.vscode;
+with lib.caramelmint;
+let cfg = config.caramelmint.apps.vscode;
 in {
   options.caramelmint.apps.vscode = with types; {
     enable = mkBoolOpt false "Whether to enable and configure VSCode.";
@@ -83,11 +77,13 @@ in {
         userSettingsDirPath = "/home/hfahmi/.config/${configDir}/User";
         userSettingsFilePath = "${userSettingsDirPath}/settings.json";
       in {
-        after = ["writeBoundary"];
-        before = [];
+        after = [ "writeBoundary" ];
+        before = [ ];
         data = ''
           mkdir -p ${userSettingsDirPath}
-          cat ${pkgs.writeText "tmp_vscode_settings" (builtins.toJSON userSettings)} | ${pkgs.jq}/bin/jq --monochrome-output > ${userSettingsFilePath}
+          cat ${
+            pkgs.writeText "tmp_vscode_settings" (builtins.toJSON userSettings)
+          } | ${pkgs.jq}/bin/jq --monochrome-output > ${userSettingsFilePath}
         '';
       };
     };

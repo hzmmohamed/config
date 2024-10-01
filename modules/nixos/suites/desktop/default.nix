@@ -1,13 +1,7 @@
-{
-  options,
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ options, config, lib, pkgs, ... }:
 with lib;
-with lib.caramelmint; let
-  cfg = config.caramelmint.suites.desktop;
+with lib.caramelmint;
+let cfg = config.caramelmint.suites.desktop;
 in {
   options.caramelmint.suites.desktop = with types; {
     enable =
@@ -16,15 +10,11 @@ in {
 
   config = mkIf cfg.enable {
     services.flatpak.enable = true;
-    environment.systemPackages = with pkgs; [
-      appimage-run
-    ];
+    environment.systemPackages = with pkgs; [ appimage-run ];
     caramelmint = {
       desktop = {
         sway = enabled;
-        addons = {
-          xdg-portal = enabled;
-        };
+        addons = { xdg-portal = enabled; };
       };
     };
   };

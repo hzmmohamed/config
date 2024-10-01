@@ -1,20 +1,15 @@
-{
-  options,
-  config,
-  pkgs,
-  lib,
-  ...
-}:
+{ options, config, pkgs, lib, ... }:
 with lib;
-with lib.caramelmint; let
-  cfg = config.caramelmint.desktop.addons.light;
+with lib.caramelmint;
+let cfg = config.caramelmint.desktop.addons.light;
 in {
   options.caramelmint.desktop.addons.light = with types; {
-    enable = mkBoolOpt false "Whether or not to install and configure light for brightness management.";
+    enable = mkBoolOpt false
+      "Whether or not to install and configure light for brightness management.";
   };
 
   config = mkIf cfg.enable {
     programs.light.enable = true;
-    caramelmint.user.extraGroups = ["video"];
+    caramelmint.user.extraGroups = [ "video" ];
   };
 }

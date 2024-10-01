@@ -1,12 +1,7 @@
-{
-  options,
-  config,
-  lib,
-  ...
-}:
+{ options, config, lib, ... }:
 with lib;
-with lib.caramelmint; let
-  cfg = config.caramelmint.system.xkb;
+with lib.caramelmint;
+let cfg = config.caramelmint.system.xkb;
 in {
   options.caramelmint.system.xkb = with types; {
     enable = mkBoolOpt false "Whether or not to configure xkb.";

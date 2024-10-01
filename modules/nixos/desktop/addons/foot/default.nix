@@ -1,20 +1,14 @@
-{
-  options,
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ options, config, lib, pkgs, ... }:
 with lib;
-with lib.caramelmint; let
-  cfg = config.caramelmint.desktop.addons.foot;
+with lib.caramelmint;
+let cfg = config.caramelmint.desktop.addons.foot;
 in {
   options.caramelmint.desktop.addons.foot = with types; {
     enable = mkBoolOpt false "Whether to enable the foot terminal emulator.";
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [pkgs.foot];
+    environment.systemPackages = [ pkgs.foot ];
     caramelmint.home.extraOptions = {
       programs.foot = {
         enable = true;

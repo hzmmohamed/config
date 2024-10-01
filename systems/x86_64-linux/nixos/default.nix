@@ -1,13 +1,7 @@
-{
-  pkgs,
-  config,
-  lib,
-  channel,
-  ...
-}:
+{ pkgs, config, lib, channel, ... }:
 with lib;
 with lib.caramelmint; {
-  imports = [./hardware.nix];
+  imports = [ ./hardware.nix ];
 
   caramelmint = {
     suites = {
@@ -21,9 +15,7 @@ with lib.caramelmint; {
       music-production = enabled;
     };
 
-    hardware = {
-      nvidia = enabled;
-    };
+    hardware = { nvidia = enabled; };
     system.power = enabled;
   };
 

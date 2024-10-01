@@ -1,27 +1,21 @@
-{
-  options,
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ options, config, lib, pkgs, ... }:
 with lib;
-with lib.caramelmint; let
-  cfg = config.caramelmint.desktop.addons.mako;
+with lib.caramelmint;
+let cfg = config.caramelmint.desktop.addons.mako;
 in {
   options.caramelmint.desktop.addons.mako = with types; {
     enable = mkBoolOpt false "Whether to enable Mako in Sway.";
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [mako libnotify];
+    home.packages = with pkgs; [ mako libnotify ];
 
     systemd.user.services.mako = {
       Unit = {
         Description = "Mako notification daemon";
-        WantedBy = ["graphical-session.target"];
-        PartOf = ["graphical-session.target"];
-        After = ["graphical-session.target"];
+        WantedBy = [ "graphical-session.target" ];
+        PartOf = [ "graphical-session.target" ];
+        After = [ "graphical-session.target" ];
       };
 
       Service = {

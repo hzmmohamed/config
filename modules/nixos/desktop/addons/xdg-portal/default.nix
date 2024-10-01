@@ -1,13 +1,7 @@
-{
-  options,
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ options, config, lib, pkgs, ... }:
 with lib;
-with lib.caramelmint; let
-  cfg = config.caramelmint.desktop.addons.xdg-portal;
+with lib.caramelmint;
+let cfg = config.caramelmint.desktop.addons.xdg-portal;
 in {
   options.caramelmint.desktop.addons.xdg-portal = with types; {
     enable = mkBoolOpt false "Whether or not to add support for xdg portal.";

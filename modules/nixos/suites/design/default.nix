@@ -1,17 +1,10 @@
-{
-  options,
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ options, config, lib, pkgs, ... }:
 with lib;
-with lib.caramelmint; let
-  cfg = config.caramelmint.suites.design;
+with lib.caramelmint;
+let cfg = config.caramelmint.suites.design;
 in {
   options.caramelmint.suites.design = with types; {
-    enable =
-      mkBoolOpt false
+    enable = mkBoolOpt false
       "Whether or not to enable common configuration for maker tools.";
   };
 

@@ -1,17 +1,10 @@
-{
-  options,
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ options, config, lib, pkgs, ... }:
 with lib;
-with lib.caramelmint; let
-  cfg = config.caramelmint.suites.media;
+with lib.caramelmint;
+let cfg = config.caramelmint.suites.media;
 in {
   options.caramelmint.suites.media = with types; {
-    enable =
-      mkBoolOpt false
+    enable = mkBoolOpt false
       "Whether or not to enable common configuration for media tools.";
   };
 

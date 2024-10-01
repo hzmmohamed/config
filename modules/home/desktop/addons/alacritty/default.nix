@@ -1,18 +1,13 @@
-{
-  options,
-  config,
-  lib,
-  pkgs,
-  inputs,
-  ...
-}:
+{ options, config, lib, pkgs, inputs, ... }:
 with lib;
-with lib.caramelmint; let
-  cfg = config.caramelmint.desktop.addons.alacritty;
+with lib.caramelmint;
+let cfg = config.caramelmint.desktop.addons.alacritty;
 in {
   options.caramelmint.desktop.addons.alacritty = with types; {
-    enable = mkBoolOpt false "Whether or not to enable and configure alacritty.";
-    defaultTerm = mkBoolOpt false "Whether to make the default terminal for WM.";
+    enable =
+      mkBoolOpt false "Whether or not to enable and configure alacritty.";
+    defaultTerm =
+      mkBoolOpt false "Whether to make the default terminal for WM.";
   };
 
   config = mkIf cfg.enable {

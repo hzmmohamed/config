@@ -1,23 +1,17 @@
-{
-  options,
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ options, config, lib, pkgs, ... }:
 with lib;
-with lib.caramelmint; let
-  cfg = config.caramelmint.virtualisation.podman;
+with lib.caramelmint;
+let cfg = config.caramelmint.virtualisation.podman;
 in {
   options.caramelmint.virtualisation.podman = with types; {
     enable = mkBoolOpt false "Whether or not to enable Podman.";
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [podman-compose lazydocker dive];
+    environment.systemPackages = with pkgs; [ podman-compose lazydocker dive ];
 
     caramelmint.home.extraOptions = {
-      home.shellAliases = {"docker-compose" = "podman-compose";};
+      home.shellAliases = { "docker-compose" = "podman-compose"; };
     };
 
     # NixOS 22.05 moved NixOS Containers to a new state directory and the old
