@@ -11,7 +11,8 @@ in {
     # Desktop additions
     caramelmint.desktop.addons = {
       gtk = enabled;
-      # wlogout = enabled;
+      wlogout = enabled;
+      cliphist = enabled;
       xdg-portal = enabled;
       light = enabled;
     };

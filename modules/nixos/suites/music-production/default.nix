@@ -18,7 +18,7 @@ in {
         kdenlive
         audacity
         unstable.ardour
-        unstable.decent-sampler
+        # unstable.decent-sampler
         carla
         x42-plugins
         x42-avldrums

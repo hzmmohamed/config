@@ -12,7 +12,7 @@ in {
       enable = true;
       enableFishIntegration = true;
       settings = {
-        theme = "default";
+        # theme = "default";
         themes = {
           default = with config.colorScheme.colors; {
             bg = "#${base00}";

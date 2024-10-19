@@ -25,7 +25,6 @@ in {
       extraPackages = with pkgs; [
         mesa_drivers
         intel-ocl
-        beignet
         intel-media-driver
         nvidia-vaapi-driver
         vaapiIntel

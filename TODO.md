@@ -35,6 +35,7 @@ fwcd.kotlin --> Install and configure paths for JDK and stuff or disable those f
 	- Set "Ask download location"
 	- Add add-on Highlighter + Notes
 - Fix KDE Connect connection issue
+
 - activity watchers to add and configure:
 	- aw-watcher-utilization
 	- aw-watcher-netstatus (This might be useful in conjunction with vnstat data to determine how much of my personal internet quota is spent on work-related things.
@@ -42,7 +43,6 @@ fwcd.kotlin --> Install and configure paths for JDK and stuff or disable those f
 ## Packages to try out
 - lensfun
 - timelens
-- jasp-desktop
 
 
 - Add dua to UNIX utils
@@ -76,4 +76,4 @@ fwcd.kotlin --> Install and configure paths for JDK and stuff or disable those f
 - User Vim keybindings again
 - Emoji selector with wofi
 
-- Restart my note-taking practice
+- Use activity-watch home manager module

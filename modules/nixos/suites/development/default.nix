@@ -36,7 +36,7 @@ in {
           jetbrains.idea-community
           mongodb-compass
 
-          dbeaver
+          dbeaver-bin
           sway-launcher-desktop
 
           curlie

@@ -3,15 +3,16 @@
 
   inputs = {
     # NixPkgs (nixos-23.11)
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
     # NixPkgs Unstable (nixos-unstable)
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nix-colors.url = "github:misterio77/nix-colors";
+    catppuccin.url = "github:catppuccin/nix";
 
     # Home Manager (release-23.11)
-    home-manager.url = "github:nix-community/home-manager/release-23.11";
+    home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     firefox-addons = {
@@ -35,19 +36,7 @@
 
     # Snowfall Flake
     flake.url = "github:snowfallorg/flake";
-    flake.inputs.nixpkgs.follows = "unstable";
-
-    # Comma
-    comma.url = "github:nix-community/comma";
-    comma.inputs.nixpkgs.follows = "unstable";
-
-    # System Deployment
-    deploy-rs.url = "github:serokell/deploy-rs";
-    deploy-rs.inputs.nixpkgs.follows = "unstable";
-
-    # Run unpatched dynamically compiled binaries
-    nix-ld.url = "github:Mic92/nix-ld";
-    nix-ld.inputs.nixpkgs.follows = "unstable";
+    flake.inputs.nixpkgs.follows = "nixpkgs";
 
     # Vault Integration
     vault-service = {
@@ -113,15 +102,17 @@
       };
 
       systems.modules.nixos = with inputs; [
+        catppuccin.nixosModules.catppuccin
         home-manager.nixosModules.home-manager
-        nix-ld.nixosModules.nix-ld
         vault-service.nixosModules.nixos-vault-service
         sops-nix.nixosModules.sops
         musnix.nixosModules.musnix
       ];
 
-      homes.users."hfahmi@nixos".modules = with inputs;
-        [ nix-colors.homeManagerModules.default ];
+      homes.users."hfahmi@nixos".modules = with inputs; [
+        nix-colors.homeManagerModules.default
+        catppuccin.homeManagerModules.catppuccin
+      ];
 
       # deploy = lib.mkDeploy {inherit (inputs) self;};
 

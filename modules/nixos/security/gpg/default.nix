@@ -44,7 +44,7 @@ in {
         enable = true;
         enableSSHSupport = true;
         enableExtraSocket = true;
-        pinentryFlavor = "qt";
+        # pinentryPackage = "qt";
       };
     };
 

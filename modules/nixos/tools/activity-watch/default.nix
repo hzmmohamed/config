@@ -34,7 +34,7 @@ in {
 
           Service = {
             ExecStart =
-              "${pkgs.caramelmint.aw-watcher-window-wayland}/bin/aw-watcher-window-wayland";
+              "${pkgs.aw-watcher-window-wayland}/bin/aw-watcher-window-wayland";
           };
 
           Install = { WantedBy = [ "graphical-session.target" ]; };

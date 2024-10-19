@@ -25,6 +25,7 @@ in {
     home-manager = {
       useUserPackages = true;
       useGlobalPkgs = true;
+      backupFileExtension = "backup";
 
       users.${config.caramelmint.user.name} =
         mkAliasDefinitions options.caramelmint.home.extraOptions;
