@@ -7,5 +7,11 @@ in {
     enable = mkBoolOpt false "Whether or not to enable catppuccin theme.";
   };
 
-  config = mkIf cfg.enable { catppuccin = { enable = true; }; };
+  config = mkIf cfg.enable {
+    catppuccin = {
+      enable = true;
+      flavor = "latte";
+      accent = "green";
+    };
+  };
 }

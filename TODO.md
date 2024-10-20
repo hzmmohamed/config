@@ -73,7 +73,6 @@ fwcd.kotlin --> Install and configure paths for JDK and stuff or disable those f
 
 - So I just did a cleaning session for my cache and trash directories and freed up 60 GBs after many months off working on this computer. The tools I frequently use that build up files are pnpm, yarn, trashy. Let's create a small command that runs these commands from anywhere. I say anywhere because for example to get pnpm in my shell I had to cd to a node project to run the command from there. Not the best approach. Works for now.
 - Set up vscode with the other method that fetches extensions from the official repository
+ 
 - User Vim keybindings again
 - Emoji selector with wofi
-
-- Use activity-watch home manager module

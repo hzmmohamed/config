@@ -13,7 +13,7 @@ in {
       tools = { git = enabled; };
 
       home.extraOptions = {
-        home.packages = with pkgs; [ freecad kicad gimp inkscape ];
+        home.packages = with pkgs; [ freecad kicad gimp inkscape openscad ];
       };
     };
   };

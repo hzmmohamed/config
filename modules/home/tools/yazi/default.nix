@@ -26,9 +26,6 @@ in {
 
     # Extra packages for preview functionality
     # https://yazi-rs.github.io/docs/installation/
-    home.packages = with pkgs; [
-      imagemagick
-      poppler #
-    ];
+    home.packages = with pkgs; [ imagemagick poppler ];
   };
 }
