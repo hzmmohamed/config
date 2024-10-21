@@ -76,3 +76,7 @@ fwcd.kotlin --> Install and configure paths for JDK and stuff or disable those f
  
 - User Vim keybindings again
 - Emoji selector with wofi
+
+
+- Add `cl` as alias for clear
+- Configure birdtray or look into thunderbird's system tray feature in the latest version. Probably will need to get it from nix-unstable/nix-latest.
