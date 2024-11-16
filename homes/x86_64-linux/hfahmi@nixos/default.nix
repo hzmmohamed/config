@@ -7,7 +7,7 @@ with lib.caramelmint; {
       zellij = enabled;
       yazi = enabled;
     };
-    theme = enabled;
+    # theme = enabled;
     desktop = {
       addons = {
         alacritty = enabled;
