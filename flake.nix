@@ -11,6 +11,8 @@
     nix-colors.url = "github:misterio77/nix-colors";
     catppuccin.url = "github:catppuccin/nix";
 
+    nv.url = "github:hzmmohamed/nv";
+
     # Home Manager (release-23.11)
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
