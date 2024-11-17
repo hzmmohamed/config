@@ -1,4 +1,4 @@
-{ options, config, lib, pkgs, ... }:
+{ options, config, lib, pkgs, inputs, ... }:
 with lib;
 with lib.caramelmint;
 let cfg = config.caramelmint.suites.development;
@@ -30,6 +30,7 @@ in {
 
       home.extraOptions = {
         home.packages = with pkgs; [
+          inputs.nv.packages.${pkgs.system}.default
           distrobox
           qgis-ltr
 
