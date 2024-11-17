@@ -1,13 +1,4 @@
-{ options, config, pkgs, lib, ... }:
-with lib;
-with lib.caramelmint;
-let cfg = config.caramelmint.system.boot;
-in {
-  options.caramelmint.system.boot = with types; {
-    enable = mkBoolOpt false "Whether or not to enable booting.";
-  };
-
-  config = mkIf cfg.enable {
+{ options, config, pkgs, lib, ... }: {
     boot = {
       # Bootloader
       loader.systemd-boot.enable = true;
@@ -33,5 +24,5 @@ in {
         # "intel_lpss_pci"
       ];
     };
-  };
+  
 }

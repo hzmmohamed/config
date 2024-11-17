@@ -1,7 +1,7 @@
 { pkgs, config, lib, channel, ... }:
 with lib;
 with lib.caramelmint; {
-  imports = [ ./hardware.nix ];
+  imports = [ ./hardware.nix ./boot.nix];
 
   caramelmint = {
     suites = {
