@@ -111,7 +111,7 @@
         musnix.nixosModules.musnix
       ];
 
-      homes.users."hfahmi@nixos".modules = with inputs; [
+      homes.users.hfahmi.modules = with inputs; [
         nix-colors.homeManagerModules.default
         catppuccin.homeManagerModules.catppuccin
       ];
