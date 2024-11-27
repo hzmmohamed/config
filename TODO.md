@@ -66,8 +66,6 @@ fwcd.kotlin --> Install and configure paths for JDK and stuff or disable those f
 - Create user profiles for CPU frequency energy and governer. Each core can be assigned a governer separately.
 - Add DNS caching to network manager or by configuring systemd-resolvd with it.
 - Configure Shell prompt to show the current kubectl context
-- Set up tailscale and connect my laptops
-
 
 
 
@@ -80,3 +78,11 @@ fwcd.kotlin --> Install and configure paths for JDK and stuff or disable those f
 
 - Add `cl` as alias for clear
 - Configure birdtray or look into thunderbird's system tray feature in the latest version. Probably will need to get it from nix-unstable/nix-latest.
+
+- Create one interface for both the asusctl profile and the cpu-power profile. Probably through a wofi selector and with a system-tray indicator
+- Enable automatic-timezoned or localtimed
+- Make the laptop log out of my account when it goes to sleep
+
+
+- Add auto-cpu freq
+- Add udiskie again
