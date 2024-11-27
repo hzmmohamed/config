@@ -10,6 +10,7 @@ in {
 
   config = mkIf cfg.enable {
     services.gnome.glib-networking = enabled;
+    services.vnstat = enabled;
     caramelmint = {
       apps = { vscode = enabled; };
 
