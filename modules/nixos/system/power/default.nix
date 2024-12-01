@@ -11,9 +11,21 @@ in {
   config = mkIf cfg.enable {
     services = {
       logind = {
+        
+        powerKey = "ignore";
+        suspendKey = "ignore";
+        rebootKey = "ignore";
+        hibernateKey = "ignore";
+
+        powerKeyLongPress = "ignore";
+        suspendKeyLongPress = "ignore";
+        rebootKeyLongPress = "ignore";
+        hibernateKeyLongPress = "ignore";
+        
         lidSwitch = "suspend-then-hibernate";
         lidSwitchDocked = "ignore";
         lidSwitchExternalPower = "suspend-then-hibernate";
+
         extraConfig = ''
           # don’t shutdown when power button is short-pressed
           HandlePowerKey=wlogout

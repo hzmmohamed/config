@@ -10,7 +10,7 @@ in {
 
   config = mkIf cfg.enable {
     caramelmint.home.extraOptions = {
-      # programs.mpv.enable = true;
+      programs.mpv.enable = true;
 
       services.playerctld.enable = true;
       # services.mpris-proxy.enable = true;
@@ -22,7 +22,6 @@ in {
         ytfzf
         ffmpeg_5
         handbrake
-        freetube
         playerctl
       ];
     };

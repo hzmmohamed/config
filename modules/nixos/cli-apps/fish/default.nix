@@ -25,6 +25,8 @@ in {
             o = "open";
             lg = "lazygit";
             kc = "kubectl";
+            cl = "clear";
+            yz = "yazi";
           };
           plugins = with pkgs.fishPlugins; [
             {

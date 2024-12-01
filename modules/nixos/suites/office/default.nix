@@ -99,6 +99,8 @@ in {
                 "browser.download.panel.shown" = true;
                 "identity.fxaccounts.enabled" = false;
                 "signon.rememberSignons" = false;
+                # This setting disables default configuration to download silently in to Downloads dir. A dialog is shown asking for the download location.
+                 "browser.download.useDownloadDir" = false;
               };
 
               # userChrome = ''
@@ -176,11 +178,14 @@ in {
           onedriver
           glib-networking
           pcmanfm
-          # lf should be moved to a module with an elaborate configuration
+          
+          zathura
+          pdfgrep
+
+          # TODO: lf should be moved to a module with an elaborate configuration
           lf
           ktorrent
           unstable.anytype
-          pdfgrep
           spotify
 
           fontfor

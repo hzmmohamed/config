@@ -8,6 +8,7 @@ in {
   };
 
   config = mkIf cfg.enable {
+    services.automatic-timezoned = enabled;
     caramelmint = {
       nix = enabled;
 

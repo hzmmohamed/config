@@ -9,6 +9,7 @@ in {
   };
 
   config = mkIf cfg.enable {
+    services.auto-cpufreq = enabled;
     environment.systemPackages = with pkgs; [
       powertop
 
