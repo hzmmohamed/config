@@ -80,6 +80,9 @@ fwcd.kotlin --> Install and configure paths for JDK and stuff or disable those f
 	- Add add-on Highlighter + Notes 
 
 - Add wifi-qr to config
+- Add newsflash and subscribe to RSS feeds that I care about.
+- Look for the userland daemon for shortcuts and migrate shortcuts from sway to it!
+- Add a wallpaper and make the top bar more pretty
 - [x] Comma + nix-index https://github.com/nix-community/nix-index-database?tab=readme-ov-file
 
 - [x] Make my basic shortcuts like mod+q work even in the arabic keyboard layout
