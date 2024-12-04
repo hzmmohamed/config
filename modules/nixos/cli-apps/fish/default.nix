@@ -27,6 +27,7 @@ in {
             kc = "kubectl";
             cl = "clear";
             yz = "yazi";
+            zj = "zellij";
           };
           plugins = with pkgs.fishPlugins; [
             {
