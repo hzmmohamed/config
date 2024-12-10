@@ -20,10 +20,8 @@ in {
     # TODO: Replicate this in common desktop configuration
     hardware.opengl = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
       extraPackages = with pkgs; [
-        mesa_drivers
+        mesa.drivers
         intel-ocl
         intel-media-driver
         nvidia-vaapi-driver

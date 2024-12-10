@@ -100,7 +100,7 @@ in {
                 "identity.fxaccounts.enabled" = false;
                 "signon.rememberSignons" = false;
                 # This setting disables default configuration to download silently in to Downloads dir. A dialog is shown asking for the download location.
-                 "browser.download.useDownloadDir" = false;
+                "browser.download.useDownloadDir" = false;
               };
 
               # userChrome = ''
@@ -178,7 +178,7 @@ in {
           onedriver
           glib-networking
           pcmanfm
-          
+
           zathura
           pdfgrep
 

@@ -10,9 +10,9 @@ in {
   config = mkIf cfg.enable {
     caramelmint.home.configFile."wgetrc".text = "";
     caramelmint.home.extraOptions = {
-      
+
       programs = {
-        nix-index-database.comma.enable = true; 
+        nix-index-database.comma.enable = true;
         # https://github.com/eth-p/bat-extras
         btop.enable = true;
         # TODO: Make a module that includes all my main terminal workflows configured

@@ -74,6 +74,8 @@ fwcd.kotlin --> Install and configure paths for JDK and stuff or disable those f
 
 
 
+- [ ] Make sure that Obsidian send files to system trash. Currently seems like it doesn't do that. Find out where it sends deleted files.
+
 - Firefox:
 	- Add zotero connector add-on to config
 	- [x] Set "Ask download location"
@@ -97,3 +99,6 @@ fwcd.kotlin --> Install and configure paths for JDK and stuff or disable those f
 
 - [x] Add auto-cpu freq
 - [x] Add udiskie again
+
+
+- Add clamav

@@ -47,7 +47,7 @@ in {
 
           kubectl
           kubectx
-          openlens
+          lens
           stern
           kubernetes-helm
           kind

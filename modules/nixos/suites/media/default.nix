@@ -21,7 +21,7 @@ in {
         digikam
         ytfzf
         yt-dlp
-        ffmpeg_5
+        ffmpeg_6
         handbrake
         playerctl
       ];

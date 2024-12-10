@@ -44,7 +44,6 @@ in {
       system = {
         fonts = enabled;
         locale = enabled;
-        time = enabled;
         xkb = enabled;
       };
     };
