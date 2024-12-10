@@ -56,6 +56,7 @@ in {
       entr
       glances
       progress
+      lsof
       p7zip
       gzip
       fd

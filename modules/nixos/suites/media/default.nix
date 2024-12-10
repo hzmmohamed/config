@@ -20,6 +20,7 @@ in {
         vlc
         digikam
         ytfzf
+        yt-dlp
         ffmpeg_5
         handbrake
         playerctl
