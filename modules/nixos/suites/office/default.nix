@@ -188,6 +188,9 @@ in {
           unstable.anytype
           spotify
 
+          obs-studio
+          obs-studio-plugins.obs-backgroundremoval
+
           fontfor
           fontforge
           font-manager

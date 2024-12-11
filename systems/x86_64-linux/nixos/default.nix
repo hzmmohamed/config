@@ -14,6 +14,7 @@ with lib.caramelmint; {
       games = enabled;
       music-production = enabled;
       maker-tools = enabled;
+      ai = enabled;
     };
 
     hardware = { nvidia = enabled; };
