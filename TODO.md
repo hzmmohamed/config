@@ -104,3 +104,6 @@ fwcd.kotlin --> Install and configure paths for JDK and stuff or disable those f
 - Add clamav
 - Quick workflow to get the transcription of a video into an Obsidian note, and start editing.
 - Run an LLM locally and fine tune it on a TfC report.
+
+
+create alias for docker delete all images

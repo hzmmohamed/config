@@ -17,6 +17,35 @@ in {
         true; # Open ports in the firewall for Source Dedicated Server
     };
 
+    # Configure wired XBox Controller
+    hardware.xone = enabled;
+
+
+    # Configure wireless bluetooth controller (Failed attempt)
+    # Refs: 
+    # https://www.reddit.com/r/linux_gaming/comments/smxqm2/how_to_use_xpadneo_with_an_xbox_series_controller/
+
+    # hardware.bluetooth.settings = {
+    #   General = {
+    #     Privacy = "device";
+    #     JustWorksRepairing = "always";
+    #     Class = "0x000100";
+    #     FastConnectable = true;
+    #     # ControllerMode = "bredr";
+    #   };
+
+    #   LE = {
+    #     MinConnectionInterval = 7;
+    #     MaxConnectionInterval = 9;
+    #     ConnectionLatency = 0;
+    #   };
+
+    #   GATT = {
+    #     ReconnectIntervals = "1,1,2,3,5,8,13,21,34,55";
+    #     AutoEnable = true;
+    #   };
+    # };
+
     # TODO: Replicate this in common desktop configuration
     hardware.opengl = {
       enable = true;
@@ -33,6 +62,9 @@ in {
     };
 
     environment.systemPackages = with pkgs; [
+
+      evtest-qt # GUI Controller tester
+
       # Lutris
       lutris
       # Needed for some installers like League of Legends
