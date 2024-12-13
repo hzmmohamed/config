@@ -9,6 +9,10 @@ in {
   };
 
   config = mkIf cfg.enable {
+
+    caramelmint.home.extraOptions.home.packages =
+      mkIf config.caramelmint.suites.desktop.enable [ pkgs.cpupower-gui ];
+
     services = {
       logind = {
 
@@ -40,13 +44,11 @@ in {
         enable = true;
         criticalPowerAction = "Hibernate";
       };
-      asusd = {
-        enable = true;
-        enableUserService = true;
-      };
 
       thermald = enabled;
-      cpupower-gui = enabled;
+
+      cpupower-gui = mkIf config.caramelmint.suites.desktop.enable enabled;
+
       system76-scheduler = enabled;
 
       tlp = {

@@ -20,6 +20,10 @@ with lib.caramelmint; {
     hardware = { nvidia = enabled; };
     system.power = enabled;
   };
+  services.asusd = {
+    enable = true;
+    enableUserService = true;
+  };
 
   # WiFi is typically unused on the desktop. Enable this service
   # if it's no longer only using a wired connection.
