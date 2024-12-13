@@ -107,3 +107,5 @@ fwcd.kotlin --> Install and configure paths for JDK and stuff or disable those f
 
 
 create alias for docker delete all images
+
+I want to return the systemd generations menu on 
