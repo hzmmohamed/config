@@ -41,8 +41,18 @@ in {
       nixfmt
       alejandra
       nix-index
+
       nix-prefetch-git
+
+      nix-du
+
       nix-output-monitor
+      nix-top
+      nh
+
+      nix-inspect
+      nix-melt
+
       flake-checker
       hydra-check
     ];

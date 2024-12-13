@@ -22,6 +22,12 @@ in {
           enable = true;
           enableFishIntegration = true;
         };
+
+        atuin = {
+          enable = true;
+          enableFishIntegration = true;
+        };
+
         lsd = {
           enable = true;
           enableAliases = true;
