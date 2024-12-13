@@ -8,6 +8,12 @@ in {
   };
 
   config = mkIf cfg.enable {
+
+    # Replace nix-serve with the more performant nix-serve-ng
+    # https://github.com/aristanetworks/nix-serve-ng?tab=readme-ov-file#variant-a
+    services.nix-serve.enable = true;
+    services.nix-serve.package = pkgs.nix-serve-ng;
+
     # services.automatic-timezoned = enabled;
     caramelmint = {
       nix = enabled;
