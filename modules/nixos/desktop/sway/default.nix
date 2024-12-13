@@ -308,8 +308,8 @@ in {
     };
 
     services.xserver.enable = true;
-    services.xserver.displayManager.sddm.enable = true;
-    services.xserver.displayManager.sessionPackages = [ pkgs.sway ];
+    services.displayManager.sddm.enable = true;
+    services.displayManager.sessionPackages = [ pkgs.sway ];
     services.passSecretService.enable = true;
   };
 }

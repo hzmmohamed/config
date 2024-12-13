@@ -10,7 +10,7 @@ in {
   config = mkIf cfg.enable {
     console.useXkbConfig = true;
     services.xserver = {
-      layout = "us,ara";
+      xkb.layout = "us,ara";
 
       # xkbOptions = "caps:escape";
     };

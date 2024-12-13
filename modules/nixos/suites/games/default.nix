@@ -47,7 +47,7 @@ in {
     # };
 
     # TODO: Replicate this in common desktop configuration
-    hardware.opengl = {
+    hardware.graphics = {
       enable = true;
       extraPackages = with pkgs; [
         mesa.drivers
@@ -69,7 +69,7 @@ in {
       lutris
       # Needed for some installers like League of Legends
       openssl
-      gnome.zenity
+      zenity
 
       prismlauncher
 

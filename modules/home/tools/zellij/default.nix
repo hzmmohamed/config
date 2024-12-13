@@ -14,7 +14,7 @@ in {
       settings = {
         # theme = "default";
         themes = {
-          default = with config.colorScheme.colors; {
+          default = with config.colorScheme.palette; {
             bg = "#${base00}";
             fg = "#${base05}";
             black = "#${base01}";

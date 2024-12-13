@@ -49,7 +49,7 @@ in {
       spice-protocol
       win-virtio
       win-spice
-      gnome.adwaita-icon-theme
+      adwaita-icon-theme
 
       # Needed for Windows 11
       swtpm
