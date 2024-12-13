@@ -20,7 +20,6 @@ in {
     # Configure wired XBox Controller
     hardware.xone = enabled;
 
-
     # Configure wireless bluetooth controller (Failed attempt)
     # Refs: 
     # https://www.reddit.com/r/linux_gaming/comments/smxqm2/how_to_use_xpadneo_with_an_xbox_series_controller/

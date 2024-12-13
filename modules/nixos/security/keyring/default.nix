@@ -8,9 +8,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      gnome-keyring
-      libgnome-keyring
-    ];
+    environment.systemPackages = with pkgs; [ gnome-keyring libgnome-keyring ];
   };
 }

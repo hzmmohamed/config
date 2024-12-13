@@ -11,8 +11,12 @@ in {
 
     # Replace nix-serve with the more performant nix-serve-ng
     # https://github.com/aristanetworks/nix-serve-ng?tab=readme-ov-file#variant-a
-    services.nix-serve.enable = true;
-    services.nix-serve.package = pkgs.nix-serve-ng;
+    services.nix-serve = {
+      enable = true;
+      package = pkgs.nix-serve-ng;
+      openFirewall = true;
+
+    };
 
     # services.automatic-timezoned = enabled;
     caramelmint = {
