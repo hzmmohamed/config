@@ -22,44 +22,23 @@ in {
 
     services.tailscale = enabled;
 
-    networking = {
-      firewall = {
-        trustedInterfaces = [ config.services.tailscale.interfaceName ];
+    # Ref: https://tailscale.com/kb/1096/nixos-minecraft
+    networking.firewall = {
+      # enable the firewall
+      enable = true;
 
-        allowedUDPPorts = [ config.services.tailscale.port ];
+      # always allow traffic from your Tailscale network
+      trustedInterfaces = [ config.services.tailscale.interfaceName ];
 
-        # Strict reverse path filtering breaks Tailscale exit node use and some subnet routing setups.
-        checkReversePath = "loose";
-      };
+      # Strict reverse path filtering breaks Tailscale exit node use and some subnet routing setups.
+      checkReversePath = "loose";
 
-      networkmanager.unmanaged = [ "tailscale0" ];
-    };
+      # allow the Tailscale UDP port through the firewall
+      allowedUDPPorts = [ config.services.tailscale.port ];
 
-    systemd.services.tailscale-autoconnect = mkIf cfg.autoconnect.enable {
-      description = "Automatic connection to Tailscale";
-
-      # Make sure tailscale is running before trying to connect to tailscale
-      after = [ "network-pre.target" "tailscale.service" ];
-      wants = [ "network-pre.target" "tailscale.service" ];
-      wantedBy = [ "multi-user.target" ];
-
-      # Set this service as a oneshot job
-      serviceConfig.Type = "oneshot";
-
-      # Have the job run this shell script
-      script = with pkgs; ''
-        # Wait for tailscaled to settle
-        sleep 2
-
-        # Check if we are already authenticated to tailscale
-        status="$(${tailscale}/bin/tailscale status -json | ${jq}/bin/jq -r .BackendState)"
-        if [ $status = "Running" ]; then # if so, then do nothing
-          exit 0
-        fi
-
-        # Otherwise authenticate with tailscale
-        ${tailscale}/bin/tailscale up -authkey "${cfg.autoconnect.key}"
-      '';
+      # let you SSH in over the public internet
+      allowedTCPPorts = [ 22 ];
     };
   };
+
 }
