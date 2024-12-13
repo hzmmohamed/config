@@ -5,6 +5,13 @@
     # NixPkgs (nixos-24.11)
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
 
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
+
     # NixPkgs Unstable (nixos-unstable)
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -109,9 +116,18 @@
       systems.modules.nixos = with inputs; [
         catppuccin.nixosModules.catppuccin
         home-manager.nixosModules.home-manager
-        vault-service.nixosModules.nixos-vault-service
         sops-nix.nixosModules.sops
         musnix.nixosModules.musnix
+        disko.nixosModules.disko
+        ./hardware-configuration.nix
+        # nixos-facter-modules.nixosModules.facter
+        # {
+        #   config.facter.reportPath = if builtins.pathExists ./facter.json then
+        #     ./facter.json
+        #   else
+        #     throw
+        #     "Have you forgotten to run nixos-anywhere with `--generate-hardware-config nixos-facter ./facter.json`?";
+        # }
       ];
 
       homes.users.hfahmi.modules = with inputs; [
@@ -120,7 +136,7 @@
         nix-index-database.hmModules.nix-index
       ];
 
-      # deploy = lib.mkDeploy {inherit (inputs) self;};
+      deploy = lib.mkDeploy { inherit (inputs) self; };
 
       # checks =
       #   builtins.mapAttrs
