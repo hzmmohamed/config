@@ -10,7 +10,7 @@ with lib.caramelmint; {
   caramelmint.nix.extra-substituters = {
     "http://butternut:5000" = {
       # Any value for the key
-      key = "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=";
+      key = "key-name:Yw+1o1lzT36cy43pSDordWvOZ/4RJhljNplO9aqlbf0=";
     };
   };
 
