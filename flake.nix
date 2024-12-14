@@ -12,6 +12,10 @@
 
     nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
 
+    # System Deployment
+    deploy-rs.url = "github:serokell/deploy-rs";
+    deploy-rs.inputs.nixpkgs.follows = "nixpkgs";
+
     # NixPkgs Unstable (nixos-unstable)
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -126,10 +130,8 @@
 
       deploy = lib.mkDeploy { inherit (inputs) self; };
 
-      # checks =
-      #   builtins.mapAttrs
-      #   (system: deploy-lib:
-      #     deploy-lib.deployChecks inputs.self.deploy)
-      #   inputs.deploy-rs.lib;
+      checks = builtins.mapAttrs
+        (system: deploy-lib: deploy-lib.deployChecks inputs.self.deploy)
+        inputs.deploy-rs.lib;
     };
 }

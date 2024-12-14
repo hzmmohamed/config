@@ -126,3 +126,9 @@ Figure out cliphist
 Yazi is acting weird in alacritty
 
 Switch to foot?
+
+Fix tlp config
+fix gnome-keyring startup isssues
+
+
+Parallel Disk Usage is blazingly fast in returning a result, but it's off by a huuuuge margin.

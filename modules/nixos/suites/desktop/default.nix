@@ -22,6 +22,8 @@ in {
     # Necessary for udiskie
     services.udisks2 = enabled;
 
+    services.glance = { enable = true; };
+
     environment.systemPackages = with pkgs; [
       appimage-run
 
@@ -33,7 +35,10 @@ in {
 
     caramelmint = {
 
-      home.extraOptions = { services.udiskie = enabled; };
+      home.extraOptions = {
+        home.packages = with pkgs; [ glance ];
+        services.udiskie = enabled;
+      };
       desktop = {
         sway = enabled;
         addons = { xdg-portal = enabled; };

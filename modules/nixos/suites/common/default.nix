@@ -40,7 +40,7 @@ in {
 
       services = {
         printing = enabled;
-        openssh = enabled;
+        # openssh = enabled;
         tailscale = enabled;
       };
 
