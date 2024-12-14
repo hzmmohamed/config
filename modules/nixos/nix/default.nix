@@ -43,7 +43,7 @@ in {
       nix-index
 
       nix-prefetch-git
-      
+
       nvd
       nix-diff
       nh

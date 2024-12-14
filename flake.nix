@@ -110,7 +110,7 @@
         musnix.nixosModules.musnix
         disko.nixosModules.disko
       ];
-    
+
       homes.users.hfahmi.modules = with inputs; [
         nix-colors.homeManagerModules.default
         catppuccin.homeManagerModules.catppuccin
