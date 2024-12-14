@@ -7,7 +7,12 @@ with lib.caramelmint; {
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMhxcLHsjikNd2JG4vRp55lEaJpUZNYS3TdjQ9aIii9T hzmmohamed@gmail.com"
   ];
 
-  caramelmint.nix.extra-substituters = [{ url = "http://butternut:5000"; }];
+  caramelmint.nix.extra-substituters = {
+    "http://butternut:5000" = {
+      # Any value for the key
+      key = "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=";
+    };
+  };
 
   caramelmint = {
     suites = {

@@ -43,15 +43,17 @@ in {
       nix-index
 
       nix-prefetch-git
-
-      nix-du
-
-      nix-output-monitor
+      
       nvd
+      nix-diff
       nh
+      nix-output-monitor
 
       nix-inspect
+      nix-du
       nix-melt
+
+      nixos-facter
 
       flake-checker
       hydra-check
