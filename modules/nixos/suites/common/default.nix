@@ -15,7 +15,6 @@ in {
       enable = true;
       package = pkgs.nix-serve-ng;
       openFirewall = true;
-
     };
 
     # services.automatic-timezoned = enabled;

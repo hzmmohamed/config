@@ -11,6 +11,7 @@ with lib.caramelmint; {
     desktop = {
       addons = {
         alacritty = enabled;
+        # foot = enabled;
         gammastep = enabled;
         mako = enabled;
         wofi = enabled;

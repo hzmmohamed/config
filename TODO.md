@@ -109,3 +109,20 @@ fwcd.kotlin --> Install and configure paths for JDK and stuff or disable those f
 create alias for docker delete all images
 
 I want to return the systemd generations menu on 
+
+Use the ipermanence module
+
+Use SOPS-nix:
+	- Password
+	- wifi passwords
+	- share ssh key?
+
+
+Factor out the arabic compatibility settings (if any) like RTL support in terminal or such into a separate module!
+
+Factor out firewall/opensnitch into its own module
+Figure out cliphist
+
+Yazi is acting weird in alacritty
+
+Switch to foot?

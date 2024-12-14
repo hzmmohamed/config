@@ -1,13 +1,16 @@
 { pkgs, config, lib, channel, ... }:
 with lib;
 with lib.caramelmint; {
-  imports = [ ./hardware.nix ./boot.nix ];
-
+  imports = [ ./disk-config.nix ];
+  users.users.root.openssh.authorizedKeys.keys = [
+    # change this to your ssh key
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMhxcLHsjikNd2JG4vRp55lEaJpUZNYS3TdjQ9aIii9T hzmmohamed@gmail.com"
+  ];
   caramelmint = {
     suites = {
       common = enabled;
-      desktop = enabled;
-      development = enabled;
+      # desktop = enabled;
+      # development = enabled;
       # office = enabled;
       # design = enabled;
       # media = enabled;
@@ -16,7 +19,7 @@ with lib.caramelmint; {
       # maker-tools = enabled;
     };
 
-    hardware = { nvidia = enabled; };
+    # hardware = { nvidia = enabled; };
     system.power = enabled;
   };
 

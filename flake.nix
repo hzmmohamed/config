@@ -50,26 +50,12 @@
     flake.url = "github:snowfallorg/flake";
     flake.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Vault Integration
-    vault-service = {
-      url =
-        "github:DeterminateSystems/nixos-vault-service/a9f2a1c5577491da73d2c13f9bafff529445b760";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Flake Hygiene
     flake-checker = {
       url =
         "github:DeterminateSystems/flake-checker/46b02e6172ed961113d336a035688ac12c96d9f4";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # # Backup management
-    # icehouse = {
-    #   url = "github:snowfallorg/icehouse";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    #   inputs.unstable.follows = "unstable";
-    # };
 
     # GPG default configuration
     gpg-base-conf = {
@@ -119,17 +105,19 @@
         sops-nix.nixosModules.sops
         musnix.nixosModules.musnix
         disko.nixosModules.disko
-        ./hardware-configuration.nix
-        # nixos-facter-modules.nixosModules.facter
-        # {
-        #   config.facter.reportPath = if builtins.pathExists ./facter.json then
-        #     ./facter.json
-        #   else
-        #     throw
-        #     "Have you forgotten to run nixos-anywhere with `--generate-hardware-config nixos-facter ./facter.json`?";
-        # }
       ];
 
+      maple = with inputs;
+        [
+          (nixos-facter-modules.nixosModules.facter {
+            config.facter.reportPath =
+              if builtins.pathExists ./systems/maple/facter.json then
+                ./systems/maple/facter.json
+              else
+                throw
+                "Have you forgotten to run nixos-anywhere with `--generate-hardware-config nixos-facter ./systems/maple/facter.json`?";
+          })
+        ];
       homes.users.hfahmi.modules = with inputs; [
         nix-colors.homeManagerModules.default
         catppuccin.homeManagerModules.catppuccin

@@ -20,7 +20,17 @@ in {
 
     environment.systemPackages = with pkgs; [ tailscale ];
 
-    services.tailscale = enabled;
+    services.tailscale = {
+      enable = true;
+      extraUpFlags = [ "--ssh" ];
+    };
+
+    # Attempt to run OpenSnitch with the intention of using it to monitor the network requests coming into the firewall. 
+    # services.opensnitch = {
+    #   enable = true;
+    #   # settings.Firewall = "iptables";
+    # };
+    # caramelmint.home.extraOptions = { services.opensnitch-ui = enabled; };
 
     # Ref: https://tailscale.com/kb/1096/nixos-minecraft
     networking.firewall = {

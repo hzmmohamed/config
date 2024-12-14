@@ -10,7 +10,6 @@ in {
 
   config = mkIf cfg.enable {
     services.flatpak.enable = true;
-    environment.systemPackages = with pkgs; [ appimage-run ];
     services.logind.extraConfig = ''
       HandlePowerKey=suspend
       IdleAction=suspend
@@ -22,6 +21,15 @@ in {
 
     # Necessary for udiskie
     services.udisks2 = enabled;
+
+    environment.systemPackages = with pkgs; [
+      appimage-run
+
+      # Miracast
+      gnome-network-displays
+    ];
+    networking.firewall.allowedTCPPorts = [ 7236 7250 ];
+    networking.firewall.allowedUDPPorts = [ 7236 5353 ];
 
     caramelmint = {
 

@@ -68,6 +68,7 @@ in {
       fd
       pv
       du-dust
+      parallel-disk-usage
       dua
       gawk
       strace

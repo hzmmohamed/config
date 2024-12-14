@@ -47,7 +47,7 @@ in {
       nix-du
 
       nix-output-monitor
-      nix-top
+      nvd
       nh
 
       nix-inspect

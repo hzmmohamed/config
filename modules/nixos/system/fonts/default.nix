@@ -20,7 +20,7 @@ in {
       defaultFonts = {
         serif = [ "FreeSerif" ];
         sansSerif = [ "Roboto" ];
-        monospace = [ "JetBrainsMono" ];
+        monospace = [ "JetBrainsMono" "Kawkab Mono" ];
       };
     };
 

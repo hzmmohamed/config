@@ -1,5 +1,18 @@
 # Example to create a bios compatible gpt partition
 { lib, ... }: {
+
+  boot = {
+    # Bootloader
+    loader.systemd-boot.enable = true;
+    loader.systemd-boot.configurationLimit = 5;
+    loader.efi.canTouchEfiVariables = true;
+    loader.efi.efiSysMountPoint = "/boot";
+
+    # https://github.com/NixOS/nixpkgs/blob/c32c39d6f3b1fe6514598fa40ad2cf9ce22c3fb7/nixos/modules/system/boot/loader/systemd-boot/systemd-boot.nix#L66
+    loader.systemd-boot.editor = false;
+
+  };
+
   disko.devices = {
     disk = {
       main = {
@@ -23,45 +36,16 @@
               content = {
                 type = "luks";
                 name = "crypted";
-                extraOpenArgs = [ ];
-                settings = {
-                  # if you want to use the key for interactive login be sure there is no trailing newline
-                  # for example use `echo -n "password" > /tmp/secret.key`
-                  keyFile = "/tmp/keyfile";
-                  allowDiscards = true;
-                };
+                settings.allowDiscards = true;
+                passwordFile = "/tmp/secret.key";
                 content = {
-                  type = "lvm_pv";
-                  vg = "pool";
+                  type = "filesystem";
+                  format = "ext4";
+                  mountpoint = "/";
                 };
               };
             };
           };
-        };
-      };
-    };
-    lvm_vg = {
-      pool = {
-        type = "lvm_vg";
-        lvs = {
-          root = {
-            size = "100%";
-            content = {
-              type = "filesystem";
-              format = "ext4";
-              mountpoint = "/";
-              mountOptions = [ "defaults" ];
-            };
-          };
-          home = {
-            size = "10M";
-            content = {
-              type = "filesystem";
-              format = "ext4";
-              mountpoint = "/home";
-            };
-          };
-          raw = { size = "10M"; };
         };
       };
     };
