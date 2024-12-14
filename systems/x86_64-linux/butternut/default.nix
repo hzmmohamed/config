@@ -3,6 +3,8 @@ with lib;
 with lib.caramelmint; {
   imports = [ ./hardware.nix ./boot.nix ];
 
+  # Kernel
+  boot.kernelParams = [ "i915.force_probe=46a6" ];
   caramelmint = {
     suites = {
       common = enabled;
