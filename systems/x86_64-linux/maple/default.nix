@@ -17,14 +17,14 @@ with lib.caramelmint; {
   caramelmint = {
     suites = {
       common = enabled;
-      # desktop = enabled;
-      # development = enabled;
-      # office = enabled;
+      desktop = enabled;
+      development = enabled;
+      office = enabled;
       # design = enabled;
-      # media = enabled;
+      media = enabled;
       # games = enabled;
       # music-production = enabled;
-      # maker-tools = enabled;
+      maker-tools = enabled;
     };
 
     hardware = { nvidia = enabled; };

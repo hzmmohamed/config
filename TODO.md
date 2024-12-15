@@ -56,7 +56,7 @@ fwcd.kotlin --> Install and configure paths for JDK and stuff or disable those f
 - Add DNS caching to network manager or by configuring systemd-resolvd with it.
 
 
-- Configure Shell prompt to show the current kubectl context
+- Configure Shell prompt to show the current kubectl context (Looks like it's automatically configured.)
 
 
 
@@ -102,9 +102,6 @@ fwcd.kotlin --> Install and configure paths for JDK and stuff or disable those f
 
 
 - Add clamav
-- Quick workflow to get the transcription of a video into an Obsidian note, and start editing.
-- Run an LLM locally and fine tune it on a TfC report.
-
 
 create alias for docker delete all images
 
@@ -123,7 +120,7 @@ Factor out the arabic compatibility settings (if any) like RTL support in termin
 Factor out firewall/opensnitch into its own module
 Figure out cliphist
 
-Yazi is acting weird in alacritty
+Yazi is acting weird in alacritty. No it's not alacritty it's due to zellij
 
 Switch to foot?
 
@@ -132,3 +129,10 @@ fix gnome-keyring startup isssues
 
 
 Parallel Disk Usage is blazingly fast in returning a result, but it's off by a huuuuge margin.
+
+Add desktop entry to open glance in the web browser on localhost:8080. How about adding a local DNS entry for it. Doesn't matter that much anyway.
+Try out sshx?
+
+Install oryx or sniffnet
+
+Move gamemode to a separate specialisation with the sync mode for the GPU just for gaming. Main specializatin only has sway.

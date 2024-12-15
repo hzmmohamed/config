@@ -11,11 +11,14 @@ in {
   config = mkIf cfg.enable {
     programs.steam = {
       enable = true;
+      gamescopeSession.enable = true;
       remotePlay.openFirewall =
         true; # Open ports in the firewall for Steam Remote Play
       dedicatedServer.openFirewall =
         true; # Open ports in the firewall for Source Dedicated Server
     };
+
+    programs.gamemode = enabled;
 
     # Configure wired XBox Controller
     hardware.xone = enabled;
@@ -64,16 +67,27 @@ in {
 
       evtest-qt # GUI Controller tester
 
-      # Lutris
-      lutris
       # Needed for some installers like League of Legends
       openssl
       zenity
 
-      prismlauncher
-
-      protontricks
+      mangohud
     ];
+
+    caramelmint.home.extraOptions = {
+      home.packages = with pkgs; [
+        # Lutris
+        unstable.lutris
+
+        # Proton
+        protonup
+        protontricks
+      ];
+      home.sessionVariables = {
+        STEAM_EXTRA_COMPAT_TOOLS_PATHS =
+          "\\\${HOME}/.steam/root/compatibilitytools.d";
+      };
+    };
 
     caramelmint.cli-apps.wine = enabled;
   };

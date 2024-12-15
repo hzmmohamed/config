@@ -3,14 +3,15 @@ with lib;
 with lib.caramelmint; {
   imports = [ ./hardware.nix ./boot.nix ];
 
-    # Replace nix-serve with the more performant nix-serve-ng
-    # https://github.com/aristanetworks/nix-serve-ng?tab=readme-ov-file#variant-a
-    services.nix-serve = {
-      enable = true;
-      package = pkgs.nix-serve-ng;
-      openFirewall = true;
-      secretKeyFile = ./secret-key-file
-    };
+  # Replace nix-serve with the more performant nix-serve-ng
+  # https://github.com/aristanetworks/nix-serve-ng?tab=readme-ov-file#variant-a
+  services.nix-serve = {
+    enable = true;
+    package = pkgs.nix-serve-ng;
+    openFirewall = true;
+    secretKeyFile =
+      "/home/hfahmi/personal/config/systems/x86_64-linux/butternut/secret-key-file";
+  };
 
   caramelmint = {
     suites = {
