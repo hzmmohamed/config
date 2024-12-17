@@ -144,3 +144,6 @@ Move gamemode to a separate specialisation with the sync mode for the GPU just f
 	- Enable GPU correctly
 		Currently, Ollama logs "no compatible GPUs found" on startup.
 	- Can I fix Vulkan support along the way?
+	- Make the Smart Connections work fully
+
+How to get states in btop or otherwise on iGPU stats?
