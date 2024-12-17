@@ -136,3 +136,11 @@ Try out sshx?
 Install oryx or sniffnet
 
 Move gamemode to a separate specialisation with the sync mode for the GPU just for gaming. Main specializatin only has sway.
+- Configure clock to 24-hr.
+
+
+- Fix Ollama Setup
+	- Downloaded larger model
+	- Enable GPU correctly
+		Currently, Ollama logs "no compatible GPUs found" on startup.
+	- Can I fix Vulkan support along the way?
