@@ -9,6 +9,14 @@ in {
   };
 
   config = mkIf cfg.enable {
+
+    # Ref: https://github.com/lutris/docs/blob/master/HowToEsync.md
+    security.pam.loginLimits = [{
+      domain = "hfahmi";
+      item = "nofile";
+      type = "hard";
+      value = "524288";
+    }];
     programs.steam = {
       enable = true;
       gamescopeSession.enable = true;

@@ -76,6 +76,7 @@ in {
       glances
       progress
       lsof
+      lshw
       p7zip
       gzip
       fd

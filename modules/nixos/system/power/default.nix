@@ -13,6 +13,8 @@ in {
     caramelmint.home.extraOptions.home.packages =
       mkIf config.caramelmint.suites.desktop.enable [ pkgs.cpupower-gui ];
 
+    environment.systemPackages = with pkgs; [ powertop ];
+
     services = {
       logind = {
 
