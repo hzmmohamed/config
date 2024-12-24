@@ -1,3 +1,4 @@
+
 - [ ] Migrate VSCodium declaration from HM to https://github.com/nix-community/nix-vscode-extensions
 - [ ] Add the Copy Relative Path and Line Numbers extension to VSCode
 - [ ] Add samba shares using plusultra samba module
@@ -147,3 +148,13 @@ Move gamemode to a separate specialisation with the sync mode for the GPU just f
 	- Make the Smart Connections work fully
 
 How to get states in btop or otherwise on iGPU stats?
+- Compare kube-tui and k9s
+- Try packaging helm-tui
+
+
+- Secret Management
+https://0xda.de/blog/2024/07/framework-and-nixos-sops-nix-secrets-management/
+
+
+- Why not try daily-driving one of the alternative/hackable browsers like Nyxt or Qutebrowser?
+- Also try daily-driving the vim keybindings for chromium or firefox.

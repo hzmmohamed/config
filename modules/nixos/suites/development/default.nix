@@ -31,7 +31,6 @@ in {
       home.extraOptions = {
         home.packages = with pkgs; [
           inputs.nv.packages.${pkgs.system}.default
-          distrobox
           qgis-ltr
 
           jetbrains.idea-community
@@ -45,11 +44,16 @@ in {
           aws-vault
           awscli2
 
+          # K8s/Cloud Management tools
           kubectl
+          kubernetes-helm
           kubectx
           lens
           stern
-          kubernetes-helm
+          k9s
+
+          cloudlens
+
           kind
         ];
         home.sessionVariables = { AWS_VAULT_BACKEND = "file"; };

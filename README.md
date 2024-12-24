@@ -26,3 +26,18 @@ Spotify/Chromium or other Electron apps might stop working when changing configs
 
 `rm -rf ~/.cache/spotify/Singleton*`
 `rm -rf ~/.config/chromium/Singleton*`
+
+
+
+### Zotero Config
+Currently, there's no established method for configuring Zotero decalratively. In the meantime, I'm documentating my configuration here:
+
+- Plugins
+    - Better BibTex
+    - Zotero Action Tags
+- Tags
+    - /unread
+    - /read
+
+Current workflow questions I have:
+- What do I actually use collections for? I currently have Inbox, Up Next, and Read. I'd rather use tags for read and unread status. Maybe a collection for "Up Next". What do people usually use collections for? Is there a plugin to automatically manage the collections? Are collections completely separate namespaces? What are the pros and cons for separate collections vs. one big collection?
