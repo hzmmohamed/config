@@ -158,3 +158,53 @@ https://0xda.de/blog/2024/07/framework-and-nixos-sops-nix-secrets-management/
 
 - Why not try daily-driving one of the alternative/hackable browsers like Nyxt or Qutebrowser?
 - Also try daily-driving the vim keybindings for chromium or firefox.
+
+
+- What if I can save soe key qpwgraph configurations and commit them to my config repo here. I imagine for example a configuration for running Carla standalone. I don' t know I can also look up some ideas online!
+- Setup the Desktop MIME type handlers. File manager and browser.
+
+- Set up dynamic fan profile based on CPU temperature.
+
+
+- Try out waypipe over the Tailscale VPN
+
+- Configure nix-ld or nix-alien
+
+
+- Shift system to night mode with wl-sunset
+
+
+
+power/system management
+- Add intel gpu tools and get used to using gpu top along with btop. Maybe I can
+- Save btop configuration done from the menu to config repo
+- TLP configure iGPU settings
+- Make sure that battery thresholds are configured in the config or using rog-control-center
+- Start rog-control-center on start
+- Read up on fan curves for different power profiles
+
+- Set up ultra low power specialization that deactivates most CPUs for ultra low battery drain
+- Use aw-watcher-utilization
+- Setup HW monitor in Waybar for CPU temp, Memory usage, IO rate
+
+
+Zotero attachments with zotmoov + syncing them across devices with syncthing
+
+
+
+Sync requirements:
+
+One way from phone:
+- Recordings
+- Notes
+- Photos?
+
+
+Photo Management:
+- Add exiftool
+
+
+I should put my album on GitHub with a NixOS Config to open it.
+
+
+add wifi-qr
