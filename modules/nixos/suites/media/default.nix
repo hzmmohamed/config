@@ -19,6 +19,7 @@ in {
         # media
         vlc
         digikam
+        exiftool
         ytfzf
         yt-dlp
         ffmpeg_6

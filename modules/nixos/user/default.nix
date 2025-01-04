@@ -38,7 +38,10 @@ in {
     } // cfg.extraOptions;
 
     caramelmint = {
-      cli-apps = { fish = enabled; };
+      cli-apps = {
+        fish = enabled;
+        shell-history = enabled;
+      };
       services = { blueman = enabled; };
     };
 

@@ -82,7 +82,6 @@ fwcd.kotlin --> Install and configure paths for JDK and stuff or disable those f
 	- [x] Set "Ask download location"
 	- Add add-on Highlighter + Notes 
 
-- Add wifi-qr to config
 - Add newsflash and subscribe to RSS feeds that I care about.
 - Look for the userland daemon for shortcuts and migrate shortcuts from sway to it!
 - Add a wallpaper and make the top bar more pretty
@@ -123,7 +122,6 @@ Figure out cliphist
 
 Yazi is acting weird in alacritty. No it's not alacritty it's due to zellij
 
-Switch to foot?
 
 Fix tlp config
 fix gnome-keyring startup isssues
@@ -200,11 +198,7 @@ One way from phone:
 - Photos?
 
 
-Photo Management:
-- Add exiftool
+
+I should put Timeless Pine Love on GitHub with a NixOS Config to open it.
 
 
-I should put my album on GitHub with a NixOS Config to open it.
-
-
-add wifi-qr

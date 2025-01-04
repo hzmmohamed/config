@@ -17,6 +17,9 @@ in {
       smartmontools
       intel-gpu-tools
       lm_sensors
+      pciutils
+      ethtool
+      iperf
     ];
   };
 }

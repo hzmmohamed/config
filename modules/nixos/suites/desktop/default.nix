@@ -36,7 +36,7 @@ in {
     caramelmint = {
 
       home.extraOptions = {
-        home.packages = with pkgs; [ glance ];
+        home.packages = with pkgs; [ glance wifi-qr ];
         services.udiskie = enabled;
       };
       desktop = {
