@@ -11,7 +11,7 @@ in {
     sops.secrets.atuin_key = {
       sopsFile = ./secrets.yaml;
       owner = config.caramelmint.user.name;
-      path = "~/.local/share/atuin/key";
+      mode = "0400";
     };
     caramelmint.secrets.enable = lib.mkForce true;
     caramelmint.home.extraOptions = {
@@ -23,6 +23,7 @@ in {
             auto_sync = true;
             sync_frequency = "5m";
             sync_address = "https://api.atuin.sh";
+            key_path = "/run/secrets/atuin_key";
             inline_height = 15;
             enter_accept = false;
             keymap_mode = "vim-insert";

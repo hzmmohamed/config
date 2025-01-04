@@ -42,7 +42,6 @@ in {
               { id = "chphlpgkkbolifaimnlloiipkdnihall"; } # OneTab
 
               { id = "ekhagklcjbdpajgpjgmbionohlpdbjgc"; } # Zotero Connector
-              { id = "blkggjdmcfjdbmmmlfcpplkchpeaiiab"; } # Omnivore
 
               { id = "ghbmnnjooekpmoecnnnilnnbdlolhkhi"; } # Google Docs Offline
 
