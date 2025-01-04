@@ -35,6 +35,12 @@ with lib.caramelmint; {
     enableUserService = true;
   };
 
+  services.syncthing = {
+    enable = true;
+    key = "/home/hfahmi/personal/config/systems/x86_64-linux/butternut/syncthing/key.pem";
+    cert = "/home/hfahmi/personal/config/systems/x86_64-linux/butternut/syncthing/cert.pem";
+  };
+
   # WiFi is typically unused on the desktop. Enable this service
   # if it's no longer only using a wired connection.
   # systemd.services.network-addresses-wlp41s0.enable = false;
