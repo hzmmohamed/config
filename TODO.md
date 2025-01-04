@@ -202,3 +202,6 @@ One way from phone:
 I should put Timeless Pine Love on GitHub with a NixOS Config to open it.
 
 
+
+
+On a new machine, I have to run `sudo git config --global --add safe.directory '*'`. Find a way to configure git config for the root user. Or for all users on the system for that matter.

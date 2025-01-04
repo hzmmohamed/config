@@ -37,9 +37,7 @@ in {
       settings = {
         devices = {
           "butternut" = {
-            id = ''
-              SJ4NR4M-QBWK5ZD-OILYP7A-DMZPT4B-OX4I47D-GBKHM
-              GT-3NXJNID-4Q42EA6'';
+            id = "SJ4NR4M-QBWK5ZD-OILYP7A-DMZPT4B-OX4I47D-GBKHMGT-3NXJNID-4Q42EA6";
           };
           "maple" = {
             id =

@@ -37,10 +37,19 @@ with lib.caramelmint; {
 
   services.syncthing = {
     enable = true;
-    key =
-      "/home/hfahmi/personal/config/systems/x86_64-linux/butternut/syncthing/key.pem";
-    cert =
-      "/home/hfahmi/personal/config/systems/x86_64-linux/butternut/syncthing/cert.pem";
+    key = "/run/secrets/syncthing/key";
+    cert = "/run/secrets/syncthing/cert";
+  };
+  sops.secrets."syncthing/key" = {
+    sopsFile = ./syncthing/secrets.yaml;
+    owner = "syncthing";
+    mode = "0400";
+  };
+
+  sops.secrets."syncthing/cert" = {
+    sopsFile = ./syncthing/secrets.yaml;
+    owner = "syncthing";
+    mode = "0400";
   };
 
   # WiFi is typically unused on the desktop. Enable this service

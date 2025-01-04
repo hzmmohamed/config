@@ -31,6 +31,23 @@ with lib.caramelmint; {
     system.power = enabled;
   };
 
+  sops.secrets."syncthing/key" = {
+    sopsFile = ./syncthing/secrets.yaml;
+  owner = "syncthing";
+    mode = "0440";
+  };
+
+  sops.secrets."syncthing/cert" = {
+    sopsFile = ./syncthing/secrets.yaml;
+  owner = "syncthing";
+    mode = "0440";
+  };
+  services.syncthing = {
+    enable = true;
+    key = "/run/secrets/syncthing/key";
+    cert = "/run/secrets/syncthing/cert";
+  };
+
   # WiFi is typically unused on the desktop. Enable this service
   # if it's no longer only using a wired connection.
   # systemd.services.network-addresses-wlp41s0.enable = false;

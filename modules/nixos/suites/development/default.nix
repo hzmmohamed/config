@@ -43,6 +43,7 @@ in {
           insomnia
           aws-vault
           awscli2
+          eksctl
 
           # K8s/Cloud Management tools
           kubectl
