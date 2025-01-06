@@ -55,25 +55,35 @@ in {
       usbutils
       bc
       entr
-      glances
+      glances # top/btop alternative
       progress
+      unstable.lazyjournal
+
       lsof
       lshw
+      pciutils
+
       p7zip
       gzip
-      fd
+
       pv
       du-dust
       parallel-disk-usage
       dua
-      gawk
+      
       strace
       lurk # Rust alternative to strace
-      tree
+
+
       ripgrep
       ripgrep-all
+
+      gawk
+      fd
+      tree      
       rsync
       gnused
+
       killall
       bind # https://releases.nixos.org/nix-dev/2015-September/018037.html
     ];

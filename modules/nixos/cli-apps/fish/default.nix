@@ -25,9 +25,14 @@ in {
             o = "open";
             lg = "lazygit";
             kc = "kubectl";
+            kx = "kubectx";
             cl = "clear";
             yz = "yazi";
             zj = "zellij";
+            
+            jtl = "journalctl";
+            stl = "systemctl";
+            "lj" = "lazyjournal";
           };
           plugins = with pkgs.fishPlugins; [
             {
