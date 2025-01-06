@@ -34,16 +34,17 @@ with lib.caramelmint; {
   sops.secrets."syncthing/key" = {
     sopsFile = ./syncthing/secrets.yaml;
   owner = "syncthing";
-    mode = "0440";
+    mode = "0400";
   };
 
   sops.secrets."syncthing/cert" = {
     sopsFile = ./syncthing/secrets.yaml;
   owner = "syncthing";
-    mode = "0440";
+    mode = "0400";
   };
   services.syncthing = {
     enable = true;
+    user = "syncthing";
     key = "/run/secrets/syncthing/key";
     cert = "/run/secrets/syncthing/cert";
   };

@@ -37,6 +37,7 @@ with lib.caramelmint; {
 
   services.syncthing = {
     enable = true;
+    user = "syncthing";
     key = "/run/secrets/syncthing/key";
     cert = "/run/secrets/syncthing/cert";
   };
