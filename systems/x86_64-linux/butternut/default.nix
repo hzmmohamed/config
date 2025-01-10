@@ -7,7 +7,7 @@
 }:
 with lib;
 with lib.caramelmint; {
-  imports = [./hardware.nix ./boot.nix ./disk-config];
+  imports = [./disk-config.nix ./hardware.nix];
 
   # Replaced nix-serve with the more performant nix-serve-ng
   # Ref: https://github.com/aristanetworks/nix-serve-ng?tab=readme-ov-file#variant-a
