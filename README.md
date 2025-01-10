@@ -45,3 +45,8 @@ Currently, there's no established method for configuring Zotero decalratively. I
     
 Current workflow questions I have:
 - What do I actually use collections for? I currently have Inbox, Up Next, and Read. I'd rather use tags for read and unread status. Maybe a collection for "Up Next". What do people usually use collections for? Is there a plugin to automatically manage the collections? Are collections completely separate namespaces? What are the pros and cons for separate collections vs. one big collection?
+
+
+
+## Remote Installation
+https://github.com/nix-community/nixos-anywhere/blob/main/docs/howtos/secrets.md#example-uploading-disk-encryption-secrets

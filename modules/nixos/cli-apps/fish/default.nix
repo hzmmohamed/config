@@ -29,7 +29,7 @@ in {
             cl = "clear";
             yz = "yazi";
             zj = "zellij";
-            
+
             jtl = "journalctl";
             stl = "systemctl";
             "lj" = "lazyjournal";

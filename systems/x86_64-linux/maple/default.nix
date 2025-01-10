@@ -1,18 +1,33 @@
-{ pkgs, config, lib, channel, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  channel,
+  ...
+}:
 with lib;
 with lib.caramelmint; {
-  imports = [ ./disk-config.nix ./hardware.nix ];
+  imports = [./disk-config.nix ./hardware.nix];
   users.users.root.openssh.authorizedKeys.keys = [
     # change this to your ssh key
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMhxcLHsjikNd2JG4vRp55lEaJpUZNYS3TdjQ9aIii9T hzmmohamed@gmail.com"
   ];
-
-  caramelmint.nix.extra-substituters = {
-    "http://butternut:5000" = {
-      # Any value for the key
-      key = "key-name:Yw+1o1lzT36cy43pSDordWvOZ/4RJhljNplO9aqlbf0=";
-    };
+  services.nix-serve = {
+    enable = true;
+    package = pkgs.nix-serve-ng;
+    openFirewall = true;
+    secretKeyFile = "/run/secrets/nix-serve-secret-key";
   };
+  sops.secrets."nix-serve-secret-key" = {
+    sopsFile = ./nix-serve/secrets.yaml;
+  };
+
+  # caramelmint.nix.extra-substituters = {
+  #   "http://butternut:5000" = {
+  #     # Any value for the key
+  #     key = "butternut:uXXUBdRO9KP5DDdmrN80171HDGjqRB5zsey1I7Db8XM=";
+  #   };
+  # };
 
   caramelmint = {
     suites = {
@@ -27,19 +42,19 @@ with lib.caramelmint; {
       maker-tools = enabled;
     };
 
-    hardware = { nvidia = enabled; };
+    hardware = {nvidia = enabled;};
     system.power = enabled;
   };
 
   sops.secrets."syncthing/key" = {
     sopsFile = ./syncthing/secrets.yaml;
-  owner = "syncthing";
+    owner = "syncthing";
     mode = "0400";
   };
 
   sops.secrets."syncthing/cert" = {
     sopsFile = ./syncthing/secrets.yaml;
-  owner = "syncthing";
+    owner = "syncthing";
     mode = "0400";
   };
   services.syncthing = {

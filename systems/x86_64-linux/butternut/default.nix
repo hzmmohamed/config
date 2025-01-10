@@ -1,16 +1,28 @@
-{ pkgs, config, lib, channel, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  channel,
+  ...
+}:
 with lib;
 with lib.caramelmint; {
-  imports = [ ./hardware.nix ./boot.nix ];
+  imports = [./hardware.nix ./boot.nix ./disk-config];
 
-  # Replace nix-serve with the more performant nix-serve-ng
-  # https://github.com/aristanetworks/nix-serve-ng?tab=readme-ov-file#variant-a
+  # Replaced nix-serve with the more performant nix-serve-ng
+  # Ref: https://github.com/aristanetworks/nix-serve-ng?tab=readme-ov-file#variant-a
   services.nix-serve = {
     enable = true;
     package = pkgs.nix-serve-ng;
     openFirewall = true;
-    secretKeyFile =
-      "/home/hfahmi/personal/config/systems/x86_64-linux/butternut/secret-key-file";
+    secretKeyFile = "/run/secrets/nix-serve-secret-key";
+  };
+
+  caramelmint.nix.extra-substituters = {
+    "http://maple:5000" = {
+      # The public key corresponding to the secret key configured for maple's cache
+      key = "maple:jZJsItwJA6yR/faOnUm+r+mMAEmUDWtu31Pp23MsNsM=";
+    };
   };
 
   caramelmint = {
@@ -27,7 +39,7 @@ with lib.caramelmint; {
       ai = enabled;
     };
 
-    hardware = { nvidia = enabled; };
+    hardware = {nvidia = enabled;};
     system.power = enabled;
   };
   services.asusd = {

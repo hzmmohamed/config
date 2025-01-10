@@ -79,10 +79,18 @@ in {
           ++ (mapAttrsToList (name: value: name) cfg.extra-substituters);
         trusted-public-keys = [ cfg.default-substituter.key ]
           ++ (mapAttrsToList (name: value: value.key) cfg.extra-substituters);
-      } // (lib.optionalAttrs config.caramelmint.tools.direnv.enable {
-        keep-outputs = true;
-        keep-derivations = true;
-      });
+      };
+      extraOptions = ''
+        keep-outputs = true
+        keep-derivations = true
+        fallback = true
+        connect-timeout = 5
+      '';
+      # ++ (if config.caramelmint.tools.direnv.enable == true then ''
+      #   keep-outputs = true;
+      #   keep-derivations = true;
+      # '' else
+      #   "");
 
       gc = {
         automatic = true;

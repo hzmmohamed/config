@@ -70,17 +70,16 @@ in {
       du-dust
       parallel-disk-usage
       dua
-      
+
       strace
       lurk # Rust alternative to strace
-
 
       ripgrep
       ripgrep-all
 
       gawk
       fd
-      tree      
+      tree
       rsync
       gnused
 
