@@ -209,3 +209,13 @@ On a new machine, I have to run `sudo git config --global --add safe.directory '
 Try skim instead of fzf
 
 Configure local DNS resolution for services running on localhost (e.g. syncthing.local)
+
+
+Fonts to add:
+- https://github.com/ipython/xkcd-font
+- typodermicfonts
+- https://input.djr.com/
+- https://tobiasjung.name/profont/
+- https://go.dev/blog/go-fonts
+- http://www.eastfarthing.com/luculent/
+- https://ctan.org/pkg/tapir
