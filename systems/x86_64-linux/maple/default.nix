@@ -1,13 +1,7 @@
-{
-  pkgs,
-  config,
-  lib,
-  channel,
-  ...
-}:
+{ pkgs, config, lib, channel, ... }:
 with lib;
 with lib.caramelmint; {
-  imports = [./disk-config.nix ./hardware.nix];
+  imports = [ ./disk-config.nix ./hardware.nix ];
   users.users.root.openssh.authorizedKeys.keys = [
     # change this to your ssh key
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMhxcLHsjikNd2JG4vRp55lEaJpUZNYS3TdjQ9aIii9T hzmmohamed@gmail.com"
@@ -42,7 +36,7 @@ with lib.caramelmint; {
       maker-tools = enabled;
     };
 
-    hardware = {nvidia = enabled;};
+    hardware = { nvidia = enabled; };
     system.power = enabled;
   };
 

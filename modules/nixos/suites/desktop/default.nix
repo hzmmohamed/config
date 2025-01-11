@@ -32,6 +32,10 @@ in {
     ];
     networking.firewall.allowedTCPPorts = [ 7236 7250 ];
     networking.firewall.allowedUDPPorts = [ 7236 5353 ];
+    services.earlyoom = {
+      enable = true;
+      enableNotifications = true;
+    };
 
     caramelmint = {
 

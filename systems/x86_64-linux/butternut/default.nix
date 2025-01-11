@@ -1,13 +1,7 @@
-{
-  pkgs,
-  config,
-  lib,
-  channel,
-  ...
-}:
+{ pkgs, config, lib, channel, ... }:
 with lib;
 with lib.caramelmint; {
-  imports = [./disk-config.nix ./hardware.nix];
+  imports = [ ./disk-config.nix ./hardware.nix ];
 
   # Replaced nix-serve with the more performant nix-serve-ng
   # Ref: https://github.com/aristanetworks/nix-serve-ng?tab=readme-ov-file#variant-a
@@ -17,6 +11,11 @@ with lib.caramelmint; {
     openFirewall = true;
     secretKeyFile = "/run/secrets/nix-serve-secret-key";
   };
+  sops.secrets."nix-serve-secret-key" = {
+    sopsFile = ./nix-serve/secrets.yaml;
+  };
+
+  services.actual = enabled;
 
   caramelmint.nix.extra-substituters = {
     "http://maple:5000" = {
@@ -39,7 +38,7 @@ with lib.caramelmint; {
       ai = enabled;
     };
 
-    hardware = {nvidia = enabled;};
+    hardware = { nvidia = enabled; };
     system.power = enabled;
   };
   services.asusd = {

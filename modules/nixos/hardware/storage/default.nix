@@ -11,7 +11,10 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ ntfs3g fuseiso ];
-    services.smartd = enabled;
+    services.smartd = {
+      enable = true;
+      notifications.systembus-notify.enable = true;
+    };
     caramelmint.home.extraOptions = {
       services.udiskie = mkIf cfg.autoMount {
         enable = true;

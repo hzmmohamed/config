@@ -151,6 +151,7 @@ in {
                 tree-style-tab
                 aw-watcher-web
                 youtube-shorts-block
+                zotero-connector
                 # tridactyl
 
                 # block-origin
