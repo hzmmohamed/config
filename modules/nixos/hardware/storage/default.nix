@@ -10,7 +10,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [ ntfs3g fuseiso ];
+    environment.systemPackages = with pkgs; [ ntfs3g fuseiso smartmontools ];
     services.smartd = {
       enable = true;
       notifications.systembus-notify.enable = true;

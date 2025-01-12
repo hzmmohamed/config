@@ -15,14 +15,14 @@ with lib.caramelmint; {
     sopsFile = ./nix-serve/secrets.yaml;
   };
 
-  services.actual = enabled;
+  # services.actual = enabled;
 
-  caramelmint.nix.extra-substituters = {
-    "http://maple:5000" = {
-      # The public key corresponding to the secret key configured for maple's cache
-      key = "maple:jZJsItwJA6yR/faOnUm+r+mMAEmUDWtu31Pp23MsNsM=";
-    };
-  };
+  # caramelmint.nix.extra-substituters = {
+  #   "http://maple:5000" = {
+  #     # The public key corresponding to the secret key configured for maple's cache
+  #     key = "maple:jZJsItwJA6yR/faOnUm+r+mMAEmUDWtu31Pp23MsNsM=";
+  #   };
+  # };
 
   caramelmint = {
     suites = {
