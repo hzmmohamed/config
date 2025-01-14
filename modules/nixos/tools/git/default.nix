@@ -19,6 +19,7 @@ in {
       git
       git-dive
       lazygit
+      gitui
       gibo
       git-crypt
     ];

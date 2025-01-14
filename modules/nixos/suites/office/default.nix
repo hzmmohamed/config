@@ -184,9 +184,11 @@ in {
 
           # TODO: lf should be moved to a module with an elaborate configuration
           lf
+          csv-tui
           ktorrent
           unstable.anytype
           spotify
+          spotify-player
 
           obs-studio
           obs-studio-plugins.obs-backgroundremoval

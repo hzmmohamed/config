@@ -58,6 +58,7 @@ in {
       glances # top/btop alternative
       progress
       unstable.lazyjournal
+      systemctl-tui
 
       lsof
       lshw

@@ -20,7 +20,7 @@ in {
       defaultFonts = {
         serif = [ "FreeSerif" ];
         sansSerif = [ "Roboto" ];
-        monospace = [ "JetBrainsMono" "Kawkab Mono" ];
+        monospace = [ "Maple Mono" "Kawkab Mono" ];
       };
     };
 
@@ -48,6 +48,8 @@ in {
         open-sans
         cabin
         junction-font
+
+        maple-mono-NF
 
         # Meslo Nerd fonts package contains all the needed glyphs for the tide prompt
         meslo-lgs-nf
