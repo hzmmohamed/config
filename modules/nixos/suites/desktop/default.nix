@@ -1,7 +1,13 @@
-{ options, config, lib, pkgs, ... }:
+{
+  options,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
-with lib.caramelmint;
-let cfg = config.caramelmint.suites.desktop;
+with lib.caramelmint; let
+  cfg = config.caramelmint.suites.desktop;
 in {
   options.caramelmint.suites.desktop = with types; {
     enable =
@@ -22,7 +28,7 @@ in {
     # Necessary for udiskie
     services.udisks2 = enabled;
 
-    services.glance = { enable = true; };
+    services.glance = {enable = true;};
 
     environment.systemPackages = with pkgs; [
       appimage-run
@@ -38,14 +44,20 @@ in {
     };
 
     caramelmint = {
-
       home.extraOptions = {
-        home.packages = with pkgs; [ glance wifi-qr nwg-displays ];
+        home.packages = with pkgs; [
+          glance
+          wifi-qr
+          nwg-displays
+          wl-screenrec
+          # TODO: Move color picker to design suite and add global shortcut to get it any time.
+          wl-color-picker
+        ];
         services.udiskie = enabled;
       };
       desktop = {
         sway = enabled;
-        addons = { xdg-portal = enabled; };
+        addons = {xdg-portal = enabled;};
       };
     };
   };
