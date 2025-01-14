@@ -13,10 +13,7 @@ in {
       services.activitywatch = {
         enable = true;
         watchers = {
-          aw-watcher-afk = {
-            name = "aw-watcher-afk";
-            package = pkgs.aw-watcher-afk;
-          };
+          # Reports both window and afk status to separate buckets
           aw-watcher-window-wayland = {
             name = "aw-watcher-window-wayland";
             package = pkgs.aw-watcher-window-wayland;

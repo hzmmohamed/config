@@ -13,21 +13,21 @@ in {
       enableFishIntegration = true;
       settings = {
         # theme = "default";
-        themes = {
-          default = with config.colorScheme.palette; {
-            bg = "#${base00}";
-            fg = "#${base05}";
-            black = "#${base01}";
-            white = "#${base06}";
-            red = "#${base08}";
-            yellow = "#${base09}";
-            green = "#${base0B}";
-            cyan = "#${base0C}";
-            blue = "#${base0D}";
-            magenta = "#${base0E}";
-            orange = "#${base0F}";
-          };
-        };
+        # themes = {
+        #   default = with config.colorScheme.palette; {
+        #     bg = "#${base00}";
+        #     fg = "#${base05}";
+        #     black = "#${base01}";
+        #     white = "#${base06}";
+        #     red = "#${base08}";
+        #     yellow = "#${base09}";
+        #     green = "#${base0B}";
+        #     cyan = "#${base0C}";
+        #     blue = "#${base0D}";
+        #     magenta = "#${base0E}";
+        #     orange = "#${base0F}";
+        #   };
+        # };
       };
     };
   };

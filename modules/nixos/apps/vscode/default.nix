@@ -52,6 +52,9 @@ in {
 
           marp-team.marp-vscode
 
+          catppuccin.catppuccin-vsc
+          catppuccin.catppuccin-vsc-icons
+
           # To add
           # - Markdown table formatter
           # - aw-watcher-vscode
@@ -66,7 +69,7 @@ in {
         userSettings = {
           "window.vscodeLevel" = 1;
           "workbench.sideBar.location" = "right";
-          "workbench.colorTheme" = "Gruvbox Light Hard";
+          "workbench.colorTheme" = "Catppuccin Latte";
           "files.autoSave" = "afterDelay";
           "files.autoSaveDelay" = 1000;
           "editor.wordWrap" = "on";

@@ -35,7 +35,7 @@ with lib.caramelmint; {
       # music-production = enabled;
       maker-tools = enabled;
     };
-
+    theme = enabled;
     hardware = { nvidia = enabled; };
     system.power = enabled;
   };
@@ -58,8 +58,8 @@ with lib.caramelmint; {
     cert = "/run/secrets/syncthing/cert";
   };
 
-
-  services.tlp.settings.CPU_ENERGY_PERF_POLICY_ON_BAT = lib.mkForce "performance";
+  services.tlp.settings.CPU_ENERGY_PERF_POLICY_ON_BAT =
+    lib.mkForce "performance";
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

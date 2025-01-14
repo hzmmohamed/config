@@ -39,10 +39,10 @@ in {
       # })
       deploy-rs
       nixfmt
-      alejandra
+      # alejandra
       nix-index
 
-      nix-prefetch-git
+      nix-prefetch-scripts
 
       nvd
       nix-diff

@@ -24,16 +24,27 @@ in {
           "position" = "right";
           "margin" = "5 2 5 0";
           "reload_style_on_change" = true;
-          "modules-left" = [
-            "custom/updates"
+          "modules-center" = [
             "sway/workspaces"
-            # "group/info"
           ];
           "modules-right" = [
             "custom/recorder"
             "privacy"
+
             # "group/brightness"
+            "backlight"
+            "backlight/slider"
+
             # "group/sound"
+            "pulseaudio"
+            "pulseaudio#mic"
+            "pulseaudio/slider"
+            "network"
+            # "network#speed"
+            "bluetooth"
+            "bluetooth#status"
+            "battery"
+            "power-profiles-daemon"
             # "group/connection"
             # "group/together"
             # "group/cnoti"
@@ -443,7 +454,6 @@ in {
           };
         };
       };
-
     };
 
     # # TODO: Will leave jake's config and add mine later.

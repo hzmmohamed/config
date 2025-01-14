@@ -15,7 +15,7 @@ in {
     # css -> .config/wofi/style.css
     # colors -> $XDG_CACHE_HOME/wal/colors
     # xdg.configFile."foot/foot.ini".source = ./foot.ini;
-    xdg.configFile."wofi/config".source = ./config;
-    xdg.configFile."wofi/style.css".source = ./style.css;
+    # xdg.configFile."wofi/config".source = ./config;
+    # xdg.configFile."wofi/style.css".source = ./style.css;
   };
 }

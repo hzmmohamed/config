@@ -1,13 +1,7 @@
-{
-  options,
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ options, config, lib, pkgs, ... }:
 with lib;
-with lib.caramelmint; let
-  cfg = config.caramelmint.suites.desktop;
+with lib.caramelmint;
+let cfg = config.caramelmint.suites.desktop;
 in {
   options.caramelmint.suites.desktop = with types; {
     enable =
@@ -28,7 +22,7 @@ in {
     # Necessary for udiskie
     services.udisks2 = enabled;
 
-    services.glance = {enable = true;};
+    services.glance = { enable = true; };
 
     environment.systemPackages = with pkgs; [
       appimage-run
@@ -57,7 +51,7 @@ in {
       };
       desktop = {
         sway = enabled;
-        addons = {xdg-portal = enabled;};
+        addons = { xdg-portal = enabled; };
       };
     };
   };

@@ -1,13 +1,7 @@
-{
-  options,
-  config,
-  pkgs,
-  lib,
-  ...
-}:
+{ options, config, pkgs, lib, ... }:
 with lib;
-with lib.caramelmint; let
-  cfg = config.caramelmint.cli-apps.fish;
+with lib.caramelmint;
+let cfg = config.caramelmint.cli-apps.fish;
 in {
   options.caramelmint.cli-apps.fish = with types; {
     enable =

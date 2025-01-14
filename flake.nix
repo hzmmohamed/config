@@ -5,6 +5,8 @@
     # NixPkgs (nixos-24.11)
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
 
+    stylix.url = "github:danth/stylix/release-24.11";
+
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -109,12 +111,14 @@
         sops-nix.nixosModules.sops
         musnix.nixosModules.musnix
         disko.nixosModules.disko
+        stylix.nixosModules.stylix
       ];
 
       homes.users.hfahmi.modules = with inputs; [
         nix-colors.homeManagerModules.default
         catppuccin.homeManagerModules.catppuccin
         nix-index-database.hmModules.nix-index
+        stylix.homeManagerModules.stylix
       ];
 
       deploy = lib.mkDeploy { inherit (inputs) self; };

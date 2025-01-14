@@ -75,12 +75,6 @@ fwcd.kotlin --> Install and configure paths for JDK and stuff or disable those f
 
 
 
-- [ ] Make sure that Obsidian send files to system trash. Currently seems like it doesn't do that. Find out where it sends deleted files.
-
-- Firefox:
-	- Add zotero connector add-on to config
-	- [x] Set "Ask download location"
-	- Add add-on Highlighter + Notes 
 
 - Add newsflash and subscribe to RSS feeds that I care about.
 - Look for the userland daemon for shortcuts and migrate shortcuts from sway to it!
