@@ -68,6 +68,14 @@ in {
             # By default, Syncthing doesn't sync file permissions. This line enables it for this folder.
             ignorePerms = false;
           };
+           "flower-choir" = {
+            path = "${
+                config.users.users.${config.caramelmint.user.name}.home
+              }/personal/flower-choir";
+            devices = [ "butternut" "maple" ];
+            # By default, Syncthing doesn't sync file permissions. This line enables it for this folder.
+            ignorePerms = false;
+          };
         };
       };
 
