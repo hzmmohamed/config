@@ -40,28 +40,38 @@ with lib.caramelmint; {
 
     hardware = { nvidia = enabled; };
     system.power = enabled;
-  };
-  services.asusd = {
-    enable = true;
-    enableUserService = true;
-  };
 
-  services.syncthing = {
-    enable = true;
-    user = "syncthing";
-    key = "/run/secrets/syncthing/key";
-    cert = "/run/secrets/syncthing/cert";
+    # Start Syncthing Config
+    services.unified-syncthing-config = {
+      enable = true;
+      myCredentials = {
+        key = config.sops.secrets."syncthing/key".path;
+        cert = config.sops.secrets."syncthing/cert".path;
+      };
+
+    };
   };
   sops.secrets."syncthing/key" = {
     sopsFile = ./syncthing/secrets.yaml;
-    owner = "syncthing";
+    owner = config.caramelmint.user.name;
+    group = config.users.users.${config.caramelmint.user.name}.group;
     mode = "0400";
+    restartUnits = [ "syncthing.service" ];
   };
 
   sops.secrets."syncthing/cert" = {
     sopsFile = ./syncthing/secrets.yaml;
-    owner = "syncthing";
+    owner = config.caramelmint.user.name;
+    group = config.users.users.${config.caramelmint.user.name}.group;
     mode = "0400";
+    restartUnits = [ "syncthing.service" ];
+  };
+
+  # End Syncthing Config
+
+  services.asusd = {
+    enable = true;
+    enableUserService = true;
   };
 
   # WiFi is typically unused on the desktop. Enable this service
