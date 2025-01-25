@@ -1,13 +1,7 @@
-{
-  options,
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ options, config, lib, pkgs, ... }:
 with lib;
-with lib.caramelmint; let
-  cfg = config.caramelmint.desktop.addons.waybar;
+with lib.caramelmint;
+let cfg = config.caramelmint.desktop.addons.waybar;
 in {
   options.caramelmint.desktop.addons.waybar = with types; {
     enable =
@@ -24,9 +18,7 @@ in {
           "position" = "right";
           "margin" = "5 2 5 0";
           "reload_style_on_change" = true;
-          "modules-center" = [
-            "sway/workspaces"
-          ];
+          "modules-center" = [ "sway/workspaces" ];
           "modules-right" = [
             "custom/recorder"
             "privacy"
@@ -125,13 +117,11 @@ in {
             "icon-spacing" = 4;
             "icon-size" = 14;
             "transition-duration" = 250;
-            "modules" = [
-              {
-                "type" = "screenshare";
-                "tooltip" = true;
-                "tooltip-icon-size" = 24;
-              }
-            ];
+            "modules" = [{
+              "type" = "screenshare";
+              "tooltip" = true;
+              "tooltip-icon-size" = 24;
+            }];
           };
           # "group/brightness" = {
           #   "orientation" = "inherit";
@@ -144,7 +134,8 @@ in {
           "backlight" = {
             "device" = "intel_backlight";
             "format" = "{icon}";
-            "format-icons" = ["" "" "" "" "" "" "" "" "" "" "" "" "" "" ""];
+            "format-icons" =
+              [ "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" ];
             "on-scroll-down" = "light -U 2";
             "on-scroll-up" = "light -A 2";
             "tooltip" = true;
@@ -246,7 +237,7 @@ in {
               "phone" = "";
               "portable" = "";
               "car" = " ";
-              "default" = ["󰕿" "󰖀" "󰕾"];
+              "default" = [ "󰕿" "󰖀" "󰕾" ];
             };
             "on-click" = "volume mute";
             "on-click-middle" = "pavucontrol";
@@ -271,16 +262,17 @@ in {
           "network" = {
             "format" = "{icon}";
             "format-icons" = {
-              "wifi" = ["󰤨"];
-              "ethernet" = ["󰈀"];
-              "disconnected" = ["󰖪"];
+              "wifi" = [ "󰤨" ];
+              "ethernet" = [ "󰈀" ];
+              "disconnected" = [ "󰖪" ];
             };
             "format-wifi" = "󰤨";
             "format-ethernet" = "󰈀";
             "format-disconnected" = "󰖪";
             "format-linked" = "󰈁";
             "tooltip" = false;
-            "on-click" = "pgrep -x rofi &>/dev/null && notify-send rofi || networkmanager_dmenu";
+            "on-click" =
+              "pgrep -x rofi &>/dev/null && notify-send rofi || networkmanager_dmenu";
           };
           "network#speed" = {
             "format" = " {bandwidthDownBits} ";
@@ -293,9 +285,11 @@ in {
             "tooltip-format-ethernet" = ''
               {ifname} 󰈀 
               {ipaddr} | {frequency} MHz{icon} '';
-            "tooltip-format-disconnected" = "Not Connected to any type of Network";
+            "tooltip-format-disconnected" =
+              "Not Connected to any type of Network";
             "tooltip" = true;
-            "on-click" = "pgrep -x rofi &>/dev/null && notify-send rofi || networkmanager_dmenu";
+            "on-click" =
+              "pgrep -x rofi &>/dev/null && notify-send rofi || networkmanager_dmenu";
           };
           "bluetooth" = {
             "format-on" = "";
@@ -312,16 +306,20 @@ in {
               {num_connections} connected
 
               {device_enumerate}'';
-            "tooltip-format-enumerate-connected" = "{device_alias}	{device_address}";
-            "tooltip-format-enumerate-connected-battery" = "{device_alias}	{device_address}	{device_battery_percentage}%";
-            "on-click" = "rofi-bluetooth -config ~/.config/rofi/menu.d/network.rasi -i";
+            "tooltip-format-enumerate-connected" =
+              "{device_alias}	{device_address}";
+            "tooltip-format-enumerate-connected-battery" =
+              "{device_alias}	{device_address}	{device_battery_percentage}%";
+            "on-click" =
+              "rofi-bluetooth -config ~/.config/rofi/menu.d/network.rasi -i";
           };
           "bluetooth#status" = {
             "format-on" = "";
             "format-off" = "";
             "format-disabled" = "";
             "format-connected" = "<b>{num_connections}</b>";
-            "format-connected-battery" = "<small><b>{device_battery_percentage}%</b></small>";
+            "format-connected-battery" =
+              "<small><b>{device_battery_percentage}%</b></small>";
             "tooltip-format" = ''
               {controller_alias}	{controller_address}
 
@@ -332,9 +330,12 @@ in {
               {num_connections} connected
 
               {device_enumerate}'';
-            "tooltip-format-enumerate-connected" = "{device_alias}	{device_address}";
-            "tooltip-format-enumerate-connected-battery" = "{device_alias}	{device_address}	{device_battery_percentage}%";
-            "on-click" = "rofi-bluetooth -config ~/.config/rofi/menu.d/network.rasi -i";
+            "tooltip-format-enumerate-connected" =
+              "{device_alias}	{device_address}";
+            "tooltip-format-enumerate-connected-battery" =
+              "{device_alias}	{device_address}	{device_battery_percentage}%";
+            "on-click" =
+              "rofi-bluetooth -config ~/.config/rofi/menu.d/network.rasi -i";
           };
           "battery" = {
             "rotate" = 270;
@@ -346,7 +347,7 @@ in {
             "format" = "{icon}";
             "format-charging" = "<b>{icon} </b>";
             "format-full" = "<span color='#82A55F'><b>{icon}</b></span>";
-            "format-icons" = ["󰁻" "󰁼" "󰁾" "󰂀" "󰂂" "󰁹"];
+            "format-icons" = [ "󰁻" "󰁼" "󰁾" "󰂀" "󰂂" "󰁹" ];
             "tooltip-format" = "{timeTo} {capacity} % | {power} W";
           };
           "clock" = {

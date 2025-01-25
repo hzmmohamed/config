@@ -213,3 +213,7 @@ Fonts to add:
 - https://go.dev/blog/go-fonts
 - http://www.eastfarthing.com/luculent/
 - https://ctan.org/pkg/tapir
+
+
+
+Configure rbw using home-manager + add rofi-rbw-wayland

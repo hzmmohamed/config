@@ -15,7 +15,7 @@ in {
         accent = "green";
       };
     };
-    
+
     # stylix = {
     #   enable = true;
     #   image = ./wp8457216-solarpunk-wallpapers.jpg;

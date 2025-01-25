@@ -164,10 +164,9 @@ in {
           };
           gaps.inner = 16;
 
-
           focus.forceWrapping = false;
           focus.followMouse = true;
-          
+
           terminal = terminal;
           # TODO: Create the term package or find another way
           # terminal = config.caramelmint.desktop.addons.term.pkg.name;
@@ -320,7 +319,9 @@ in {
               xkb_layout us,ara
           }
 
-          output * background ${../../theme/wp8457216-solarpunk-wallpapers.jpg} fill
+          output * background ${
+            ../../theme/wp8457216-solarpunk-wallpapers.jpg
+          } fill
         '';
         extraSessionCommands = ''
           # Reason for not setting this variable: https://github.com/NixOS/nixpkgs/issues/83603#issuecomment-1312652937
