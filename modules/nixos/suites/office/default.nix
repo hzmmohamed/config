@@ -11,6 +11,17 @@ in {
   config = mkIf cfg.enable {
     services.gnome.glib-networking = enabled;
     services.vnstat = enabled;
+
+    # For KDE Connect 
+    #TODO: Move to separate module
+    networking.firewall = rec {
+      allowedTCPPortRanges = [{
+        from = 1714;
+        to = 1764;
+      }];
+      allowedUDPPortRanges = allowedTCPPortRanges;
+    };
+
     caramelmint = {
       apps = { vscode = enabled; };
 

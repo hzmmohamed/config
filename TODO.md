@@ -19,7 +19,6 @@
 - [ ] Index all files on my laptop and be able to fuzzy search through them. Plus what if I can search images with an image like Google Images.
 - [ ] Add fire plugin, calf Plugins and other plugins from VenusTheory's video
 - [ ] Add cool cursor theme (https://www.gnome-look.org/p/2121191, https://nixos.wiki/wiki/Cursor_Themes)
-- [ ] kde connect
 - [ ] Configure firefox privacy settings defaults
 - [ ] Log system resource utilization per process with atop
 - [ ] Add preview to fzf widget commands + Change completion trigger https://www.youtube.com/watch?v=MvLQor1Ck3M

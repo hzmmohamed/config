@@ -65,11 +65,6 @@ Other features to add:
 - Add the ability to disable lidswitch close action in an ad hoc way, for situations where I'd like to the keep the computer running after closing the lid 
 - Hibernate right away if battery under threshold ---> solution: https://gist.github.com/mattdenner/befcf099f5cfcc06ea04dcdd4969a221
 
-- Nvidia support
-- second display support + Kanshi
-- virtualbox + windows vm + ubuntu vm
-
-- clipboard management
 
 
 - Configure notification daemon styles and font
@@ -98,18 +93,6 @@ Other features to add:
 -- Amazing accidental discovery:
 When the dGPU is completely turned off, battery life is greatly extended. Since I rarely use it, I should definitely use the boot variations, one without dPGU and the other with PRIME Sync or offload. There's even more: 
 
-
-Packages to add:
-- slides
-- zbar
-
-
-
-I tried it and it worked. Let's packageit for nixpkgs.
-- wifi-qr (package it for nixpkgs or NUR) (It's easy, it's just a simple shell script) (Check this post https://www.ertt.ca/nix/shell-scripts/)
-
-
-
 - Document the windows plugins I use:
 	- Valhalla Supermassive, Swanky Amp
 https://midination.com/vst/free-vst-plugins/best-free-vst-plugins/
@@ -136,7 +119,6 @@ Dynamic themes by time of day for the whole system: https://www.reddit.com/r/Nix
 https://discourse.nixos.org/t/how-to-enable-global-dark-mode-using-home-manager-in-nixos/28348
 
 - change networking.networkmanager.insertNameservers to cloudflare and google
-- VSCodium add the back and forward shortcuts in the settings config
 - Add Sway Notification Center
 - Add RSS Reader and configure my selected new sources
 
