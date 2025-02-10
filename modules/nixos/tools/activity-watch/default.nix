@@ -18,13 +18,6 @@ in {
       services.activitywatch = {
         enable = true;
         watchers = {
-          aw-watcher-afk = {
-            package = pkgs.activitywatch;
-            settings = {
-              timeout = 300;
-              poll_time = 2;
-            };
-          };
           # Reports both window and afk status to separate buckets
           awatcher = {
             name = "awatcher";
