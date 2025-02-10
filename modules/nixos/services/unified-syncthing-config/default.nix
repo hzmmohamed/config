@@ -44,7 +44,7 @@ in {
         devices = {
           "butternut" = {
             id =
-              "SJ4NR4M-QBWK5ZD-OILYP7A-DMZPT4B-OX4I47D-GBKHMGT-3NXJNID-4Q42EA6";
+              "MRJSBVI-MRVAT7V-WHLSZBC-5LX6KFD-VGCYP4E-W265N3K-B5URBIH-RPUTWQK";
           };
           "maple" = {
             id =
