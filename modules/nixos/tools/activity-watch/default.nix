@@ -14,9 +14,9 @@ in {
         enable = true;
         watchers = {
           # Reports both window and afk status to separate buckets
-          aw-watcher-window-wayland = {
-            name = "aw-watcher-window-wayland";
-            package = pkgs.aw-watcher-window-wayland;
+          awatcher = {
+            name = "awatcher";
+            package = pkgs.awatcher;
           };
         };
       };
