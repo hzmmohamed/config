@@ -24,6 +24,8 @@ in {
 
     services.glance = { enable = true; };
 
+    # services.whoogle-search = enabled;
+
     environment.systemPackages = with pkgs; [
       appimage-run
 

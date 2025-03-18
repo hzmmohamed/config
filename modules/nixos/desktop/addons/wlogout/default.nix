@@ -38,7 +38,7 @@ in {
             keybind = "e";
           }
         ];
-        style = ''
+        style = lib.mkForce ''
           # @import '../../.cache/wal/colors-waybar.css';
 
           window {

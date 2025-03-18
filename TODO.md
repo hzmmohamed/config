@@ -216,3 +216,10 @@ Fonts to add:
 
 
 Configure rbw using home-manager + add rofi-rbw-wayland
+
+Try out rainfrog
+
+
+Make the awatcher run after `graphical.target`, or simply have it keep restarting after it's dead.
+
+- Configure notifications about dead systemd units.

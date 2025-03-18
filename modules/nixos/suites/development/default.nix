@@ -49,7 +49,7 @@ in {
           kubectl
           kubernetes-helm
           kubectx
-          lens
+          unstable.lens
           stern
           k9s
 

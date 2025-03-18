@@ -50,6 +50,8 @@ in {
           kamadorueda.alejandra
           jnoortheen.nix-ide
 
+          redhat.vscode-yaml
+
           marp-team.marp-vscode
 
           catppuccin.catppuccin-vsc
