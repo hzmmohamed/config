@@ -6,6 +6,7 @@ with lib.caramelmint; {
     tools = {
       zellij = enabled;
       yazi = enabled;
+      freetube = enabled;
     };
     desktop = {
       addons = {
