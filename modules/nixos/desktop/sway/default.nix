@@ -15,6 +15,7 @@ in {
       cliphist = enabled;
       xdg-portal = enabled;
       light = enabled;
+      rbw = enabled;
     };
     # plusultra.desktop.addons.electron-support = enabled;
     # TODO: Eleveate these kinds of settings that are not sway specific to desktop module
