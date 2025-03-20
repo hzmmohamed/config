@@ -173,16 +173,18 @@ in {
               ];
             };
           };
-          thunderbird = {
-            enable = true;
-            profiles = { hfahmi = { isDefault = true; }; };
-          };
+
         };
 
         home.packages = with pkgs; [
-          unstable.obsidian
           zotero
+          
+          typstwriter
+          typst
+          
           libreoffice
+
+          unstable.obsidian
           onedriver
           glib-networking
           pcmanfm
@@ -195,6 +197,7 @@ in {
           csv-tui
           ktorrent
           unstable.anytype
+
           spotify
           spotify-player
 

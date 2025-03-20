@@ -38,6 +38,7 @@ in {
     } // cfg.extraOptions;
 
     caramelmint = {
+      mail = enabled;
       cli-apps = {
         fish = enabled;
         shell-history = enabled;
