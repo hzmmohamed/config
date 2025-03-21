@@ -35,7 +35,10 @@ with lib.caramelmint; {
       # music-production = enabled;
       maker-tools = enabled;
     };
-    theme = enabled;
+    theme = {
+      desktop = enabled;
+      boot = enabled;
+    };
     hardware = { nvidia = enabled; };
     system.power = enabled;
 
