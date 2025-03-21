@@ -16,5 +16,31 @@ in {
       dawnTime = "05:00";
       duskTime = "19:00";
     };
+
+    services.darkman = {
+      enable = true;
+      darkModeScripts = {
+        gtk-theme = ''
+          ${pkgs.dconf}/bin/dconf write \
+              /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
+        '';
+        vscode-theme = ''
+          ${pkgs.gnused} -i -e 's/"workbench.colorTheme": ".*"/"workbench.colorTheme": "Catppuccin Mocha"/g' "$HOME/.config/Code/User/settings.json"
+
+        '';
+      };
+      lightModeScripts = {
+        gtk-theme = ''
+          ${pkgs.dconf}/bin/dconf write \
+              /org/gnome/desktop/interface/color-scheme "'prefer-light'"
+        '';
+        vscode-theme = ''
+          ${pkgs.gnused} -i -e 's/"workbench.colorTheme": ".*"/"workbench.colorTheme": "Catppuccin Latte"/g' "$HOME/.config/Code/User/settings.json"
+
+        '';
+
+      };
+    };
+
   };
 }

@@ -178,10 +178,10 @@ in {
 
         home.packages = with pkgs; [
           zotero
-          
+
           typstwriter
           typst
-          
+
           libreoffice
 
           unstable.obsidian
