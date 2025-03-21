@@ -40,7 +40,7 @@ with lib.caramelmint; {
 
     theme = {
       desktop = enabled;
-      boot = enabled;
+      boot = { enable = false; };
     };
 
     hardware = { nvidia = enabled; };

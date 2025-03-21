@@ -51,7 +51,7 @@ in {
             thunderbird = {
               enable = true;
               profiles = [ "hfahmi" ];
-              settings = id: { 
+              settings = id: {
                 "mail.server.server_${id}.authMethod" = 10;
                 "mail.smtpserver.smtp_${id}.authMethod" = 10;
               };
