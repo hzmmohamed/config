@@ -10,6 +10,7 @@ in {
 
   config = mkIf cfg.enable {
     caramelmint.home.extraOptions = {
+
       programs.rbw = {
         enable = true;
         settings = {
@@ -17,6 +18,9 @@ in {
           pinentry = pkgs.pinentry-qt;
         };
       };
+
+      home.packages = with pkgs; [ rofi-rbw-wayland ];
+
     };
   };
 }
