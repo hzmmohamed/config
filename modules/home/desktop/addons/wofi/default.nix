@@ -26,7 +26,7 @@ in {
       };
       lightModeScripts = {
         wofi-theme = ''
-          ${pkgs.coreutils-full}/bin/ln --symbolic --force $HOME/.config/wofi/style-dark.css $HOME/.config/wofi/style.css
+          ${pkgs.coreutils-full}/bin/ln --symbolic --force $HOME/.config/wofi/style-light.css $HOME/.config/wofi/style.css
         '';
       };
     };
