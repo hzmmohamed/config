@@ -24,8 +24,8 @@ in {
           ${pkgs.dconf}/bin/dconf write \
               /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
         '';
-        vscode-theme = ''
-          ${pkgs.gnused} -i -e 's/"workbench.colorTheme": ".*"/"workbench.colorTheme": "Catppuccin Mocha"/g' "$HOME/.config/Code/User/settings.json"
+        vscodium-theme = ''
+          ${pkgs.gnused}/bin/sed -i -e 's/"workbench.colorTheme": ".*"/"workbench.colorTheme": "Catppuccin Mocha"/g' "$HOME/.config/VSCodium/User/settings.json"
 
         '';
       };
@@ -34,8 +34,8 @@ in {
           ${pkgs.dconf}/bin/dconf write \
               /org/gnome/desktop/interface/color-scheme "'prefer-light'"
         '';
-        vscode-theme = ''
-          ${pkgs.gnused} -i -e 's/"workbench.colorTheme": ".*"/"workbench.colorTheme": "Catppuccin Latte"/g' "$HOME/.config/Code/User/settings.json"
+        vscodium-theme = ''
+          ${pkgs.gnused}/bin/sed -i -e 's/"workbench.colorTheme": ".*"/"workbench.colorTheme": "Catppuccin Latte"/g' "$HOME/.config/VSCodium/User/settings.json"
 
         '';
 
