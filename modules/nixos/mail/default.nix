@@ -45,6 +45,27 @@ in {
               showSignature = "append";
             };
           };
+          work = {
+            address = "h.fahmi@transportforcairo.com";
+            flavor = "outlook.office365.com";
+            thunderbird = {
+              enable = true;
+              profiles = [ "hfahmi" ];
+              settings = id: { 
+                "mail.server.server_${id}.authMethod" = 10;
+                "mail.smtpserver.smtp_${id}.authMethod" = 10;
+              };
+            };
+            realName = "Hazem Fahmi";
+            signature = {
+              delimiter = "--";
+              text = ''
+                Hazem Fahmi
+                Senior Research Software Engineer
+              '';
+              showSignature = "append";
+            };
+          };
         };
       };
     };
