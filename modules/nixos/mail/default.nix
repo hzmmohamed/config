@@ -31,6 +31,8 @@ in {
                 # 10 is a code for OAuth2. I tried all the numbers from 1 through 10 to finally find that out. You're welcome!
                 "mail.server.server_${id}.authMethod" = 10;
                 "mail.smtpserver.smtp_${id}.authMethod" = 10;
+
+                "mail.server.server_${id}.autosync_max_age_days" = 30;
               };
             };
             primary = true;
