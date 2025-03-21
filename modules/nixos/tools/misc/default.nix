@@ -47,6 +47,8 @@ in {
       wget
       trashy
 
+      tealdeer
+
       # Basic text editor
       nano
       micro

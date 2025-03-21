@@ -38,6 +38,11 @@ with lib.caramelmint; {
       ai = enabled;
     };
 
+    theme = {
+      desktop = enabled;
+      boot = enabled;
+    };
+
     hardware = { nvidia = enabled; };
     system.power = enabled;
 

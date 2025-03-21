@@ -14,12 +14,6 @@ in {
       themePackages = [ pkgs.plymouth-matrix-theme ];
       theme = "matrix";
     };
-
-    # stylix = {
-    #   enable = true;
-    #   image = ./wp8457216-solarpunk-wallpapers.jpg;
-    #   polarity = "light";
-    #   base16Scheme = lib.mkForce "${pkgs.base16-schemes}/share/themes/measured-light.yaml";
-    # };
+    
   };
 }
