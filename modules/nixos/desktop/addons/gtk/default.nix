@@ -51,15 +51,15 @@ in {
         #   name = cfg.theme.name;
         #   package = cfg.theme.pkg;
         # };
-        theme = {
-          name = "Catppuccin-Latte-Compact-Pink-Light";
-          package = pkgs.catppuccin-gtk.override {
-            accents = [ "pink" ];
-            size = "compact";
-            tweaks = [ "rimless" ];
-            variant = "macchiato";
-          };
-        };
+        # theme = {
+        #   name = "Catppuccin-Latte-Compact-Pink-Light";
+        #   package = pkgs.catppuccin-gtk.override {
+        #     accents = [ "pink" ];
+        #     size = "compact";
+        #     tweaks = [ "rimless" ];
+        #     variant = "macchiato";
+        #   };
+        # };
 
         cursorTheme = {
           name = cfg.cursor.name;

@@ -9,6 +9,9 @@ in {
   };
 
   config = mkIf cfg.enable {
+    # TODO: Figure out why the touchpad driver conflicts with this driver. Otherwise, it works perfectly with the Deco 01
+    # I also tried libsForQt5.xp-pen-deco-01-v2-driver and the build failed to download the driver files from XP Pen
+    # hardware.opentabletdriver = enabled;
     caramelmint = {
       home.extraOptions = {
         home.packages = with pkgs; [
@@ -20,6 +23,7 @@ in {
           fontfor
           fontforge
           font-manager
+
         ];
       };
     };

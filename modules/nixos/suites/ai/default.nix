@@ -17,6 +17,11 @@ in {
       enable = true;
       port = 3030;
     };
-    environment.systemPackages = with pkgs; [ openai-whisper-cpp ];
+
+    environment.systemPackages = with pkgs.unstable; [
+      whisper-cpp
+      whisper-cpp-vulkan
+      subtitlr
+    ];
   };
 }

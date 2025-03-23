@@ -22,11 +22,14 @@
 - [ ] Configure firefox privacy settings defaults
 - [ ] Log system resource utilization per process with atop
 - [ ] Add preview to fzf widget commands + Change completion trigger https://www.youtube.com/watch?v=MvLQor1Ck3M
+- [ ] Use xdg-desktop-portal-shana
+- [ ] Temporarily solve the aw-wayland race condition issue by restarting on sway startup
+- [ ] *-
 - Codium extensions: 
 fwcd.kotlin --> Install and configure paths for JDK and stuff or disable those features altogether and use the LSP only
 
 - Add treefmt to dev env
-- Build a good workflow with Thunderbird as my flow
++- Build a good workflow with Thunderbird as my flow
 
 - programs to add or master: broot, dysk, repgrep, backdown, monocle, bandwhich
 - Fix KDE Connect connection issue
@@ -83,7 +86,7 @@ fwcd.kotlin --> Install and configure paths for JDK and stuff or disable those f
 - [x] Make my basic shortcuts like mod+q work even in the arabic keyboard layout
 - [x] Add dua to UNIX utils
 
-- [x] Emoji selector with wofi
+-zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz\z [x] Emoji selector with wofi
 
 - [x] Add `cl` as alias for clear
 - [x] Enable automatic-timezoned or localtimed

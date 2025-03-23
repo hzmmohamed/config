@@ -12,23 +12,24 @@ in {
       portal = {
         enable = true;
         wlr.enable = true;
-        config.common.default = "*";
+        config.common.default = "wlr";
 
         extraPortals = with pkgs; [
+          unstable.xdg-desktop-portal-termfilechooser
           xdg-desktop-portal-wlr
-          xdg-desktop-portal-gtk
-          xdg-desktop-portal-kde
         ];
       };
     };
     caramelmint.home.extraOptions = {
-      xdg.configFile."xdg-desktop-portal-wlr/config".text = ''
-        [screencast]
-        output_name=
-        max_fps=30
-        chooser_cmd=${pkgs.slurp}/bin/slurp -f %o -or
-        chooser_type=simple
-      '';
+      home.packages = with pkgs; [ ashpd-demo ];
+
+      # xdg.configFile."xdg-desktop-portal-wlr/config".text = ''
+      #   [screencast]
+      #   output_name=
+      #   max_fps=30
+      #   chooser_cmd=${pkgs.slurp}/bin/slurp -f %o -or
+      #   chooser_type=simple
+      # '';
     };
   };
 }

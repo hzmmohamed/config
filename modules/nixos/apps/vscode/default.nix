@@ -8,7 +8,10 @@ in {
   };
 
   config = mkIf cfg.enable {
+
     caramelmint.home.extraOptions = {
+      catppuccin = { vscode.enable = false; };
+
       #  Install and Configure VSCodium
       programs.vscode = {
         enable = true;
@@ -63,6 +66,7 @@ in {
 
           # vscodevim.vim
         ];
+
       };
 
       # Allow mutable settings.json at runtime, and rewritten on running `home-manager switch`
