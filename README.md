@@ -6,6 +6,7 @@ My personal multi-system configuration using Nix and Home Manager.
 
 ![Screenshot 1](./screenshot-1.png)
 ![Screenshot 2](./screenshot-2.png)
+[Wallpaper](https://www.reddit.com/r/wallpapers/comments/1itxais/foundation_farms_by_lucas_ambs_3840x2160/#lightbox)
 
 ## Highlights
 - Customized + modular configuration with [Snowfall Lib](https://github.com/snowfallorg/lib) (Thanks [Jake](https://github.com/jakehamilton)!)
