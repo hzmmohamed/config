@@ -1,4 +1,29 @@
-Other configs I referenced
+# config
+My personal multi-system configuration.
+
+![Screenshot 1](./screenshot-1.png)
+![Screenshot 2](./screenshot-2.png)
+
+## Highlights
+- Customized + modular configuration with [Snowfall Lib](https://github.com/snowfallorg/lib) (Thanks [Jake](https://github.com/jakehamilton)!)
+- Secret management with sops-nix
+- Syncthing setup between machines
+- Declarative disk layout with disko
+- Day/Night Theme variation with darkman
+
+
+## Configs / References
+Other Configs:
+- https://github.com/KubqoA/dotfiles
+- https://github.com/hlissner/dotfiles
+- https://github.com/jakehamilton/config
+- https://codeberg.org/sena/nixfiles-old
+- https://github.com/xenoxanite/flakes
+- https://codeberg.org/imMaturana/dotfiles/src/branch/main/home/features/nvim/default.nix
+
+- Waybar config adapted from https://github.com/elifouts/Dotfiles/tree/main/.config/waybarq
+
+
 - https://alexpearce.me/2021/07/managing-dotfiles-with-nix/
 - https://github.com/MatthiasBenaets/nixos-config
 - https://github.com/LunNova/nixos-configs
@@ -6,19 +31,6 @@ Other configs I referenced
 Other references:
 - https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html#implementation
 - https://github.com/drduh/config
-
-
-
-
-## Resources
-
-- Other Configs:
-    - https://github.com/KubqoA/dotfiles
-    - https://github.com/hlissner/dotfiles
-    - https://github.com/jakehamilton/config
-    - https://codeberg.org/sena/nixfiles-old
-    - https://github.com/xenoxanite/flakes
-    - https://codeberg.org/imMaturana/dotfiles/src/branch/main/home/features/nvim/default.nix
 
 
 

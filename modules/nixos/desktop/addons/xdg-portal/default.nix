@@ -15,8 +15,10 @@ in {
         config.common.default = "wlr";
 
         extraPortals = with pkgs; [
-          unstable.xdg-desktop-portal-termfilechooser
+          # unstable.xdg-desktop-portal-termfilechooser
           xdg-desktop-portal-wlr
+          xdg-desktop-portal-gtk
+          xdg-desktop-portal-kde
         ];
       };
     };

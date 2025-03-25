@@ -18,9 +18,9 @@ in {
 
     fonts.fontconfig = {
       defaultFonts = {
-        serif = [ "FreeSerif" ];
-        sansSerif = [ "Roboto" ];
-        monospace = [ "Maple Mono" "Kawkab Mono" ];
+        serif = [ "TeX Gyre Pagella" ];
+        sansSerif = [ "DroidSansM Nerd Font" ];
+        monospace = [ "FiraCode Nerd Font Mono" "Kawkab Mono" ];
       };
     };
 

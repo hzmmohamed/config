@@ -100,7 +100,7 @@ in {
         };
       };
       services.swaync = {
-        enable = false;
+        enable = true;
         settings = {
           positionX = "right";
           positionY = "top";
@@ -118,24 +118,24 @@ in {
           notification-body-image-height = 100;
           notification-body-image-width = 200;
         };
-        style = ''
-          .notification-row {
-            outline: none;
-          }
+        # style = ''
+        #   .notification-row {
+        #     outline: none;
+        #   }
 
-          .notification-row:focus,
-          .notification-row:hover {
-            background: @noti-bg-focus;
-          }
+        #   .notification-row:focus,
+        #   .notification-row:hover {
+        #     background: @noti-bg-focus;
+        #   }
 
-          .notification {
-            border-radius: 12px;
-            margin: 6px 12px;
-            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.7),
-              0 2px 6px 2px rgba(0, 0, 0, 0.3);
-            padding: 0;
-          }
-        '';
+        #   .notification {
+        #     border-radius: 12px;
+        #     margin: 6px 12px;
+        #     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.7),
+        #       0 2px 6px 2px rgba(0, 0, 0, 0.3);
+        #     padding: 0;
+        #   }
+        # '';
       };
 
       wayland.windowManager.sway = {
@@ -152,29 +152,63 @@ in {
         # Generate sway config
         config = let
           modifier = "Mod4";
-          menu = "wofi --show drun";
           terminal = "alacritty";
+          menu = "wofi --show drun";
+
         in {
           modifier = modifier;
           floating.modifier = modifier;
-          floating.border = 0;
-          # Theming the default windows
+
+          gaps.inner = 8;
+          floating.border = 1;
           window = {
             titlebar = false;
             border = 4;
           };
-          gaps.inner = 16;
+
+          bars = [ ];
+
+          colors = {
+            focused = {
+              # title = "$lavender";
+              background = "$lavender";
+              text = "$text ";
+              indicator = "$rosewater";
+              childBorder = "$lavender";
+              border = "$lavender";
+            };
+            focusedInactive = {
+              # title = "$overlay0";
+              background = "$base";
+              text = "$text";
+              indicator = "$rosewater";
+              childBorder = "$overlay0";
+              border = "$overlay0";
+            };
+            unfocused = {
+              # title = "overlay0";
+              background = "$base";
+              text = "$text";
+              indicator = "$rosewater";
+              childBorder = "$overlay0";
+              border = "$overlay0";
+            };
+            urgent = {
+              # title = "peach";
+              background = "$base";
+              text = "$peach";
+              indicator = "$overlay0";
+              childBorder = "$peach";
+              border = "$peach";
+            };
+            background = "$base";
+          };
 
           focus.forceWrapping = false;
           focus.followMouse = true;
 
           terminal = terminal;
-          # TODO: Create the term package or find another way
-          # terminal = config.caramelmint.desktop.addons.term.pkg.name;
-          startup = [ ];
-
           menu = menu;
-
           modes.resize = {
             Escape = "mode default";
             Return = "mode default";
@@ -183,7 +217,6 @@ in {
             "Right" = "resize grow width 10 px or 10 ppt";
             "Up" = "resize shrink height 10 px or 10 ppt";
           };
-
           keycodebindings = {
             "${modifier}+38" = "focus parent";
 
@@ -320,9 +353,7 @@ in {
               xkb_layout us,ara
           }
 
-          output * background ${
-            ../../theme/wp8457216-solarpunk-wallpapers.jpg
-          } fill
+          output * background ${../../theme/desktop/9uj3962seake1.png} fill
         '';
         extraSessionCommands = ''
           # Reason for not setting this variable: https://github.com/NixOS/nixpkgs/issues/83603#issuecomment-1312652937

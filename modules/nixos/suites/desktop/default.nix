@@ -42,6 +42,10 @@ in {
     caramelmint = {
       home.extraOptions = {
         home.packages = with pkgs; [
+          # Comms
+          vesktop
+          element-desktop
+
           glance
           wifi-qr
           nwg-displays

@@ -80,6 +80,8 @@ in {
           "files.autoSaveDelay" = 1000;
           "editor.wordWrap" = "on";
           "nix.serverPath" = "nil";
+          "editor.fontFamily" =
+            "'FiraCode Nerd Font Mono', 'monospace', monospace";
         };
         configDir = "VSCodium";
         # TODO: High Priority: Find a way to access the final home-manager config
