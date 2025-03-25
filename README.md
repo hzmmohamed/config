@@ -1,5 +1,8 @@
 # config
-My personal multi-system configuration.
+My personal multi-system configuration using Nix and Home Manager.
+
+> Nix was my cure from distrohopping. It's the way all software should have been done from the start. — Yours truly
+
 
 ![Screenshot 1](./screenshot-1.png)
 ![Screenshot 2](./screenshot-2.png)
