@@ -19,7 +19,7 @@ in {
     fonts.fontconfig = {
       defaultFonts = {
         serif = [ "TeX Gyre Pagella" ];
-        sansSerif = [ "DroidSansM Nerd Font" ];
+        sansSerif = [ "Noto Sans" ];
         monospace = [ "FiraCode Nerd Font Mono" "Kawkab Mono" ];
       };
     };

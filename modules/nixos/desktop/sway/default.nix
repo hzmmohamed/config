@@ -228,11 +228,17 @@ in {
             "${modifier}+Shift+26" =
               "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
 
+
+            "${modifier}+43" = "focus left";
+            "${modifier}+44" = "focus down";
+            "${modifier}+45" = "focus up";
+            "${modifier}+46" = "focus right";
+
             "${modifier}+27" = "mode resize";
             "${modifier}+Shift+24" = "kill";
             "${modifier}+Shift+44" = "exec ${pkgs.wofi-emoji}/bin/wofi-emoji";
-            "${modifier}+43" = "splith";
-            "${modifier}+55" = "splitv";
+            # "${modifier}+43" = "splith";
+            # "${modifier}+55" = "splitv";
             "${modifier}+41" = "fullscreen toggle";
             "${modifier}+Shift+41" = "floating toggle";
             # change focus between tiling/floating windows
