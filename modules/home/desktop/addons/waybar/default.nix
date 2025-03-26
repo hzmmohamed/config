@@ -33,7 +33,8 @@ in {
           "custom/notification" = {
             tooltip = false;
             format = "";
-            on-click = "swaync-client -t -sw";
+            on-click =
+              "${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw";
             escape = true;
           };
           clock = {

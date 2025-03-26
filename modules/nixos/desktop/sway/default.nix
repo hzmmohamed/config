@@ -251,6 +251,10 @@ in {
 
             # Jump to urgent window
             "${modifier}+53" = "[urgent=latest] focus";
+
+            # Toggle notification center
+            "${modifier}+57" =
+              "${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw";
           };
           keybindings = let
             brightnessKeybindings =
