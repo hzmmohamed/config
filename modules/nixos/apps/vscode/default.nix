@@ -82,6 +82,7 @@ in {
           "nix.serverPath" = "nil";
           "editor.fontFamily" =
             "'FiraCode Nerd Font Mono', 'monospace', monospace";
+          "workbench.startupEditor" = "none";
         };
         configDir = "VSCodium";
         # TODO: High Priority: Find a way to access the final home-manager config

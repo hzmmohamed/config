@@ -228,7 +228,6 @@ in {
             "${modifier}+Shift+26" =
               "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
 
-
             "${modifier}+43" = "focus left";
             "${modifier}+44" = "focus down";
             "${modifier}+45" = "focus up";

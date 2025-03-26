@@ -54,9 +54,7 @@ in {
                 today = "<span color='#ff6699'><b><u>{}</u></b></span>";
               };
             };
-            actions = {
-              on-click-right = "mode";
-            };
+            actions = { on-click-right = "mode"; };
           };
           network = {
             format-wifi = "";
