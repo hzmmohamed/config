@@ -39,7 +39,7 @@ with lib.caramelmint; {
       desktop = enabled;
       boot = enabled;
     };
-    hardware = { nvidia = enabled; };
+    # hardware = { nvidia = enabled; };
     system.power = enabled;
 
     # Start Syncthing Config
