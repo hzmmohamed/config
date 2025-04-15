@@ -86,7 +86,7 @@ in {
       home.packages = with pkgs; [
         # Lutris
         unstable.lutris
-
+        pcsx2
         # Proton
         protonup
         protontricks
