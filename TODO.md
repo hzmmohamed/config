@@ -1,10 +1,28 @@
+VSCode:
+- Migrate VSCodium declaration from HM to https://github.com/nix-community/nix-vscode-extensions
+- Add the Copy Relative Path and Line Numbers extension to VSCode
+- VSCode shortcuts for backward and forward
+- Codium extensions: 
+fwcd.kotlin --> Install and configure paths for JDK and stuff or disable those features altogether and use the LSP only
 
-- [ ] Migrate VSCodium declaration from HM to https://github.com/nix-community/nix-vscode-extensions
-- [ ] Add the Copy Relative Path and Line Numbers extension to VSCode
-- [ ] Add samba shares using plusultra samba module
+QGIS:
+- Add QGIS workspace configuration to this config
+
+Music:
+	- qpwgraph configs
+
+Other:
+	- Darkman complete setup with all of my main tools themed (GTK apps not changing theme)
+	- Fix Emoji selector to produce Unicode
+	- Obisidian doesn't render emoji from emoji selector
+
+
+- Add samba shares using plusultra samba module
+
 - [ ] Add bitwarden wofi interace
-- [ ] Test decreasing value of accelSpeed
+
 - [ ] Set up GPG + Git commit signing like before
+
 - [ ] Chromium settings to set:
         - Use system borders
         - No bookmarks bar
@@ -25,8 +43,6 @@
 - [ ] Use xdg-desktop-portal-shana
 - [ ] Temporarily solve the aw-wayland race condition issue by restarting on sway startup
 - [ ] *-
-- Codium extensions: 
-fwcd.kotlin --> Install and configure paths for JDK and stuff or disable those features altogether and use the LSP only
 
 - Add treefmt to dev env
 +- Build a good workflow with Thunderbird as my flow
@@ -52,29 +68,18 @@ fwcd.kotlin --> Install and configure paths for JDK and stuff or disable those f
 - pasytray
 - Persistent (across restarts) clipboard solution ( cliphist or clipmenu) (https://wiki.archlinux.org/title/clipboard) (https://mpov.timmorgan.org/super-simple-clipboard-history-for-linux/)
 
-- Add QGIS workspace configuration to this config
 
 - Create user profiles for CPU frequency energy and governer. Each core can be assigned a governer separately.
 
 - Add DNS caching to network manager or by configuring systemd-resolvd with it.
 
-
-- Configure Shell prompt to show the current kubectl context (Looks like it's automatically configured.)
-
-
-
 - So I just did a cleaning session for my cache and trash directories and freed up 60 GBs after many months off working on this computer. The tools I frequently use that build up files are pnpm, yarn, trashy. Let's create a small command that runs these commands from anywhere. I say anywhere because for example to get pnpm in my shell I had to cd to a node project to run the command from there. Not the best approach. Works for now.
-- Set up vscode with the other method that fetches extensions from the official repository
  
-
-
-
 
 
 
 - Create one interface for both the asusctl profile and the cpu-power profile. Probably through a wofi selector and with a system-tray indicator
 - Configure birdtray or look into thunderbird's system tray feature in the latest version. Probably will need to get it from nix-unstable/nix-latest.
-
 
 
 
@@ -86,7 +91,6 @@ fwcd.kotlin --> Install and configure paths for JDK and stuff or disable those f
 - [x] Make my basic shortcuts like mod+q work even in the arabic keyboard layout
 - [x] Add dua to UNIX utils
 
--zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz\z [x] Emoji selector with wofi
 
 - [x] Add `cl` as alias for clear
 - [x] Enable automatic-timezoned or localtimed
@@ -116,14 +120,10 @@ Factor out the arabic compatibility settings (if any) like RTL support in termin
 Factor out firewall/opensnitch into its own module
 Figure out cliphist
 
-Yazi is acting weird in alacritty. No it's not alacritty it's due to zellij
-
-
 Fix tlp config
 fix gnome-keyring startup isssues
 
 
-Parallel Disk Usage is blazingly fast in returning a result, but it's off by a huuuuge margin.
 
 Add desktop entry to open glance in the web browser on localhost:8080. How about adding a local DNS entry for it. Doesn't matter that much anyway.
 Try out sshx?
@@ -154,7 +154,6 @@ https://0xda.de/blog/2024/07/framework-and-nixos-sops-nix-secrets-management/
 - Also try daily-driving the vim keybindings for chromium or firefox.
 
 
-- What if I can save soe key qpwgraph configurations and commit them to my config repo here. I imagine for example a configuration for running Carla standalone. I don' t know I can also look up some ideas online!
 - Setup the Desktop MIME type handlers. File manager and browser.
 
 - Set up dynamic fan profile based on CPU temperature.
@@ -163,10 +162,6 @@ https://0xda.de/blog/2024/07/framework-and-nixos-sops-nix-secrets-management/
 - Try out waypipe over the Tailscale VPN
 
 - Configure nix-ld or nix-alien
-
-
-- Shift system to night mode with wl-sunset
-
 
 
 power/system management
