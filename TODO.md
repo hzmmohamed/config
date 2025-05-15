@@ -11,6 +11,9 @@ QGIS:
 Music:
 	- qpwgraph configs
 
+Workflow:
+	- Set up running Jupyter on butternut and accessing it from VSCode on maple
+
 Other:
 	- Darkman complete setup with all of my main tools themed (GTK apps not changing theme)
 	- Fix Emoji selector to produce Unicode
