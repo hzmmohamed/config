@@ -18,7 +18,6 @@ in {
         package = pkgs.vscodium;
         mutableExtensionsDir = true; # default
         extensions = with pkgs.vscode-extensions; [
-          jdinhlife.gruvbox
 
           tomoki1207.pdf
           # Theming
@@ -32,6 +31,7 @@ in {
           editorconfig.editorconfig
           naumovs.color-highlight
           vincaslt.highlight-matching-tag
+          yoavbls.pretty-ts-errors
 
           # Programming language tooling
           # Python
@@ -60,11 +60,19 @@ in {
           catppuccin.catppuccin-vsc
           catppuccin.catppuccin-vsc-icons
 
-          # To add
-          # - Markdown table formatter
-          # - aw-watcher-vscode
+          joaompinto.vscode-graphviz
 
-          # vscodevim.vim
+          mkhl.direnv
+          aw-watcher-vscode
+
+          graphql.vscode-graphql
+          graphql.vscode-graphql-syntax
+
+          openfga.openfga-vscode
+
+          vscode-tree-sitter-query
+
+          fcrespo82.markdown-table-formatter
         ];
 
       };
