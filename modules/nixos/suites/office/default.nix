@@ -98,13 +98,15 @@ in {
               };
               search.force = true;
 
-              bookmarks = [{
+              bookmarks = {
+                force = true;
+                settings = [{
                 name = "wikipedia";
                 tags = [ "wiki" ];
                 keyword = "wiki";
                 url =
                   "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
-              }];
+              }];};
 
               settings = {
                 "dom.security.https_only_mode" = true;
@@ -157,7 +159,7 @@ in {
               # '';
 
               # TODO: Remove platform specific string here
-              extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
+              extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [
                 bitwarden
 
                 # TODO: Put the vertical tabs configuraiton behind a single flag in a dedicated module
@@ -195,7 +197,7 @@ in {
           # TODO: lf should be moved to a module with an elaborate configuration
           lf
           csv-tui
-          ktorrent
+          kdePackages.ktorrent
           unstable.anytype
 
           spotify

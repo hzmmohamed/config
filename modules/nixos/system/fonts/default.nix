@@ -32,7 +32,9 @@ in {
         noto-fonts-cjk-serif
         noto-fonts-emoji
         font-awesome
-        (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+
+        nerd-fonts.fira-code
+        nerd-fonts.droid-sans-mono
 
         kawkab-mono-font
 
@@ -49,7 +51,7 @@ in {
         cabin
         junction-font
 
-        maple-mono-NF
+        maple-mono.NF
 
         # Meslo Nerd fonts package contains all the needed glyphs for the tide prompt
         meslo-lgs-nf

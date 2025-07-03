@@ -2,10 +2,10 @@
   description = "Caramel Mint";
 
   inputs = {
-    # NixPkgs (nixos-24.11)
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    # NixPkgs (nixos-25.05)
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
 
-    stylix.url = "github:danth/stylix/release-24.11";
+    stylix.url = "github:danth/stylix/release-25.05";
 
     disko = {
       url = "github:nix-community/disko";
@@ -27,7 +27,7 @@
     nv.url = "github:hzmmohamed/nv";
 
     # Home Manager (release-23.11)
-    home-manager.url = "github:nix-community/home-manager/release-24.11";
+    home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-index-database.url = "github:nix-community/nix-index-database";
@@ -111,14 +111,14 @@
         sops-nix.nixosModules.sops
         musnix.nixosModules.musnix
         disko.nixosModules.disko
-        stylix.nixosModules.stylix
+        # stylix.nixosModules.stylix
       ];
 
       homes.users.hfahmi.modules = with inputs; [
         nix-colors.homeManagerModules.default
-        catppuccin.homeManagerModules.catppuccin
+        catppuccin.homeModules.catppuccin
         nix-index-database.hmModules.nix-index
-        stylix.homeManagerModules.stylix
+        # stylix.homeModules.stylix
       ];
 
       deploy = lib.mkDeploy { inherit (inputs) self; };

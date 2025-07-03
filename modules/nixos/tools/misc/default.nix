@@ -25,7 +25,6 @@ in {
 
         lsd = {
           enable = true;
-          enableAliases = true;
         };
 
         lf.enable = true;

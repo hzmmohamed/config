@@ -18,7 +18,7 @@ in {
           # unstable.xdg-desktop-portal-termfilechooser
           xdg-desktop-portal-wlr
           xdg-desktop-portal-gtk
-          xdg-desktop-portal-kde
+          kdePackages.xdg-desktop-portal-kde
         ];
       };
     };

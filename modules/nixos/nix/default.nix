@@ -55,7 +55,7 @@ in {
 
       nixos-facter
 
-      flake-checker
+      # flake-checker
       hydra-check
     ];
 

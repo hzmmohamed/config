@@ -14,7 +14,7 @@ in {
         profiles = {
           hfahmi = {
             isDefault = true;
-            search.default = "DuckDuckGo";
+            search.default = "ddg";
           };
         };
       };

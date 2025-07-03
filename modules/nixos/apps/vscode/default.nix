@@ -17,7 +17,7 @@ in {
         enable = true;
         package = pkgs.vscodium;
         mutableExtensionsDir = true; # default
-        extensions = with pkgs.vscode-extensions; [
+        profiles.default.extensions = with pkgs.vscode-extensions; [
 
           tomoki1207.pdf
           # Theming
@@ -60,19 +60,20 @@ in {
           catppuccin.catppuccin-vsc
           catppuccin.catppuccin-vsc-icons
 
-          joaompinto.vscode-graphviz
+          # Commented because it's not found in the extensions flake
+          # joaompinto.vscode-graphviz 
+          # activitywatch.aw-watcher-vscode
+          # openfga.openfga-vscode
 
           mkhl.direnv
-          aw-watcher-vscode
 
           graphql.vscode-graphql
           graphql.vscode-graphql-syntax
 
-          openfga.openfga-vscode
 
-          vscode-tree-sitter-query
+          # vscode-tree-sitter-query
 
-          fcrespo82.markdown-table-formatter
+          # fcrespo82.markdown-table-formatter
         ];
 
       };
