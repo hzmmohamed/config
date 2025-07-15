@@ -224,3 +224,7 @@ Try out rainfrog
 Make the awatcher run after `graphical.target`, or simply have it keep restarting after it's dead.
 
 - Configure notifications about dead systemd units.
+
+- Try out another trash cli that doesn't crash
+- Have a working nvim setup for emergencies
+- Better file manager
