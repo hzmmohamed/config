@@ -18,7 +18,6 @@ in {
         package = pkgs.vscodium;
         mutableExtensionsDir = true; # default
         profiles.default.extensions = with pkgs.vscode-extensions; [
-          pkgs.unstable.vscode-extensions.continue.continue
 
           tomoki1207.pdf
           # Theming
