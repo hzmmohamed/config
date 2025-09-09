@@ -67,8 +67,8 @@ in {
         };
 
         iconTheme = {
-          name = lib.mkForce cfg.icon.name;
-          package = lib.mkForce cfg.icon.pkg;
+          name = cfg.icon.name;
+          package = cfg.icon.pkg;
         };
       };
     };
