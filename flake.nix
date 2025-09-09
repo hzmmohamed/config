@@ -117,7 +117,7 @@
       homes.users.hfahmi.modules = with inputs; [
         nix-colors.homeManagerModules.default
         catppuccin.homeModules.catppuccin
-        nix-index-database.hmModules.nix-index
+        nix-index-database.homeModules.nix-index
         # stylix.homeModules.stylix
       ];
 

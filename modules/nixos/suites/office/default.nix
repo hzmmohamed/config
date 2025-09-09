@@ -75,6 +75,7 @@ in {
             };
 
             profiles.hfahmi = {
+              extensions.force = true;
               search.engines = {
                 "Nix Packages" = {
                   urls = [{
