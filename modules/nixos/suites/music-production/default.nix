@@ -15,7 +15,7 @@ in {
 
     caramelmint.home.extraOptions = {
       home.packages = with pkgs; [
-        kdenlive
+        kdePackages.kdenlive
         audacity
         unstable.ardour
         # unstable.decent-sampler

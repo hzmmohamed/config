@@ -60,7 +60,7 @@ in {
     hardware.graphics = {
       enable = true;
       extraPackages = with pkgs; [
-        mesa.drivers
+        mesa
         intel-ocl
         intel-media-driver
         nvidia-vaapi-driver
