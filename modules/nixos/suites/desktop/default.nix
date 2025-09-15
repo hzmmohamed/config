@@ -22,7 +22,7 @@ in {
     # Necessary for udiskie
     services.udisks2 = enabled;
 
-    services.glance = { enable = false; };
+    # services.glance = { enable = true; };
 
     # services.whoogle-search = enabled;
 
@@ -46,7 +46,7 @@ in {
           vesktop
           element-desktop
 
-          glance
+          # glance
           wifi-qr
           nwg-displays
           wl-screenrec
