@@ -22,7 +22,7 @@ in {
     # Necessary for udiskie
     services.udisks2 = enabled;
 
-    services.glance = { enable = true; };
+    services.glance = { enable = false; };
 
     # services.whoogle-search = enabled;
 
