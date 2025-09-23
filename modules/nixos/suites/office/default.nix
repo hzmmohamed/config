@@ -196,7 +196,7 @@ in {
 
           # TODO: lf should be moved to a module with an elaborate configuration
           lf
-          csv-tui
+          csvlens
           kdePackages.ktorrent
           unstable.anytype
 
