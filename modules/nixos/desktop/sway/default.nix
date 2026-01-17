@@ -34,6 +34,9 @@ in {
         wtype
         wofi-emoji
 
+        waypipe
+
+
         swaycons
         swayws
         qt6.qtwayland

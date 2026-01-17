@@ -22,7 +22,7 @@
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nix-colors.url = "github:misterio77/nix-colors";
-    catppuccin.url = "github:catppuccin/nix";
+    catppuccin.url = "github:catppuccin/nix/v25.05";
 
     nv.url = "github:hzmmohamed/nv";
 

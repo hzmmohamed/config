@@ -159,6 +159,7 @@ in {
               # '';
 
               # TODO: Remove platform specific string here
+              extensions.force = true;
               extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [
                 bitwarden
 

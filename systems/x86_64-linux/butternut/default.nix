@@ -32,10 +32,10 @@ with lib.caramelmint; {
       office = enabled;
       design = enabled;
       media = enabled;
-      games = enabled;
+      # games = enabled;
       music-production = enabled;
       maker-tools = enabled;
-      ai = enabled;
+      # ai = enabled;
     };
 
     theme = {

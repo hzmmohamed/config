@@ -162,7 +162,6 @@ https://0xda.de/blog/2024/07/framework-and-nixos-sops-nix-secrets-management/
 - Set up dynamic fan profile based on CPU temperature.
 
 
-- Try out waypipe over the Tailscale VPN
 
 - Configure nix-ld or nix-alien
 
