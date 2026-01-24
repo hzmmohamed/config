@@ -36,7 +36,6 @@ in {
 
         unstable.waypipe
 
-
         swaycons
         swayws
         qt6.qtwayland

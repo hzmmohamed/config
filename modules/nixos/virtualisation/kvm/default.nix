@@ -47,7 +47,7 @@ in {
       spice
       spice-gtk
       spice-protocol
-      win-virtio
+      virtio-win
       win-spice
       adwaita-icon-theme
 
@@ -69,10 +69,10 @@ in {
           swtpm.enable = true;
 
           package = pkgs.qemu_full;
-          ovmf = {
-            enable = true;
-            packages = [ pkgs.OVMFFull.fd ];
-          };
+          # ovmf = {
+          #   enable = true;
+          #   packages = [ pkgs.OVMFFull.fd ];
+          # };
           verbatimConfig = ''
             namespaces = []
             user = "+${builtins.toString config.users.users.${user.name}.uid}"

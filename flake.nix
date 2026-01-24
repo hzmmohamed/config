@@ -2,10 +2,11 @@
   description = "Caramel Mint";
 
   inputs = {
-    # NixPkgs (nixos-25.05)
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    # NixPkgs (nixos-25.11)
+    nixpkgs.url =
+      "github:nixos/nixpkgs/nixos-25.11";
 
-    stylix.url = "github:danth/stylix/release-25.05";
+    stylix.url = "github:danth/stylix/release-25.11";
 
     disko = {
       url = "github:nix-community/disko";
@@ -22,12 +23,12 @@
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nix-colors.url = "github:misterio77/nix-colors";
-    catppuccin.url = "github:catppuccin/nix/v25.05";
+    catppuccin.url = "github:catppuccin/nix/v25.11";
 
     nv.url = "github:hzmmohamed/nv";
 
     # Home Manager (release-23.11)
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-index-database.url = "github:nix-community/nix-index-database";
@@ -102,7 +103,7 @@
       channels-config = {
         allowUnfree = true;
         # This version of Electron is EOL, but latest Obsidian still uses it.
-        permittedInsecurePackages = [ "electron-25.9.0" ];
+        permittedInsecurePackages = [ "electron-25.9.0" "libsoup-2.74.3" ];
       };
 
       systems.modules.nixos = with inputs; [
@@ -117,7 +118,7 @@
       homes.users.hfahmi.modules = with inputs; [
         nix-colors.homeManagerModules.default
         catppuccin.homeModules.catppuccin
-        nix-index-database.hmModules.nix-index
+        nix-index-database.homeModules.nix-index
         # stylix.homeModules.stylix
       ];
 

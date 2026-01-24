@@ -70,7 +70,6 @@ in {
           graphql.vscode-graphql
           graphql.vscode-graphql-syntax
 
-
           # vscode-tree-sitter-query
 
           # fcrespo82.markdown-table-formatter

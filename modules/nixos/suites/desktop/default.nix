@@ -10,11 +10,10 @@ in {
 
   config = mkIf cfg.enable {
     services.flatpak.enable = true;
-    services.logind.extraConfig = ''
-      HandlePowerKey=suspend
-      IdleAction=suspend
-      IdleActionSec=1m
-    '';
+    services.logind.settings.Login = {
+      IdleAction="suspend";
+      IdleActionSec="1m";
+    };
 
     # screen locker
     programs.xss-lock.enable = true;

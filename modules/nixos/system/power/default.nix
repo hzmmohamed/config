@@ -16,7 +16,7 @@ in {
     environment.systemPackages = with pkgs; [ powertop ];
 
     services = {
-      logind = {
+      logind.settings.Login = {
 
         powerKey = "ignore";
         suspendKey = "ignore";
@@ -32,13 +32,10 @@ in {
         lidSwitchDocked = "ignore";
         lidSwitchExternalPower = "suspend-then-hibernate";
 
-        extraConfig = ''
-          # don’t shutdown when power button is short-pressed
-          HandlePowerKey=wlogout
-
-          # want to be able to listen to music while laptop closed
-          LidSwitchIgnoreInhibited=no
-        '';
+        # don’t shutdown when power button is short-pressed
+        HandlePowerKey = "wlogout";
+        # want to be able to listen to music while laptop closed
+        LidSwitchIgnoreInhibited = "no";
       };
 
       # CPU and Power-related config

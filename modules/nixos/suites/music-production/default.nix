@@ -27,7 +27,7 @@ in {
         cardinal
         drumgizmo
         sooperlooper
-        CHOWTapeModel
+        chow-tape-model
         airwindows-lv2
         #  ChowCentaur
         #  ChowPhaser

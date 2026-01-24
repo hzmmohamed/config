@@ -24,6 +24,21 @@ with lib.caramelmint; {
   #   };
   # };
 
+  services.openssh = {
+    enable = true;
+    ports = [ 7654 ]; # Change this to your preferred port
+    settings = {
+      PasswordAuthentication = true; # Recommended for security
+      KbdInteractiveAuthentication = true;
+      PermitRootLogin = "no";
+    };
+  };
+
+  # Ensure the custom port is open in the firewall
+  networking.firewall.allowedTCPPorts = [ 2222 ];
+
+  programs.wayvnc.enable = true;
+
   caramelmint = {
     suites = {
       common = enabled;

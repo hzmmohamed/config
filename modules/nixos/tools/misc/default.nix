@@ -23,9 +23,7 @@ in {
           enableFishIntegration = true;
         };
 
-        lsd = {
-          enable = true;
-        };
+        lsd = { enable = true; };
 
         lf.enable = true;
 
@@ -69,7 +67,7 @@ in {
       gzip
 
       pv
-      du-dust
+      dust
       parallel-disk-usage
       dua
 

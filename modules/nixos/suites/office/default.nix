@@ -101,12 +101,13 @@ in {
               bookmarks = {
                 force = true;
                 settings = [{
-                name = "wikipedia";
-                tags = [ "wiki" ];
-                keyword = "wiki";
-                url =
-                  "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
-              }];};
+                  name = "wikipedia";
+                  tags = [ "wiki" ];
+                  keyword = "wiki";
+                  url =
+                    "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
+                }];
+              };
 
               settings = {
                 "dom.security.https_only_mode" = true;
@@ -160,20 +161,21 @@ in {
 
               # TODO: Remove platform specific string here
               extensions.force = true;
-              extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [
-                bitwarden
+              extensions.packages =
+                with inputs.firefox-addons.packages."x86_64-linux"; [
+                  bitwarden
 
-                # TODO: Put the vertical tabs configuraiton behind a single flag in a dedicated module
-                tree-style-tab
-                aw-watcher-web
-                youtube-shorts-block
-                zotero-connector
-                # tridactyl
+                  # TODO: Put the vertical tabs configuraiton behind a single flag in a dedicated module
+                  tree-style-tab
+                  aw-watcher-web
+                  youtube-shorts-block
+                  zotero-connector
+                  # tridactyl
 
-                # block-origin
-                # sponsorblock
-                # arkreader
-              ];
+                  # block-origin
+                  # sponsorblock
+                  # arkreader
+                ];
             };
           };
 
