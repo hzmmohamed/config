@@ -34,7 +34,7 @@ in {
         wtype
         wofi-emoji
 
-        waypipe
+        unstable.waypipe
 
 
         swaycons
