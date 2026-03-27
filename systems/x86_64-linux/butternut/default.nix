@@ -38,6 +38,12 @@ with lib.caramelmint; {
   networking.firewall.allowedTCPPorts = [ 2222 ];
 
   programs.wayvnc.enable = true;
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+  glibc
+  libglvnd
+  # ... any other missing libs
+];
 
   caramelmint = {
     suites = {

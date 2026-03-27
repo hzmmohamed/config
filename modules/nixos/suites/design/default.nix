@@ -20,6 +20,8 @@ in {
           inkscape
           gimp
 
+          pkgs.unstable.blender
+
           fontfor
           fontforge
           font-manager
