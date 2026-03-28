@@ -1,7 +1,13 @@
-{ options, config, lib, pkgs, ... }:
+{
+  options,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
-with lib.caramelmint;
-let cfg = config.caramelmint.desktop.addons.wofi;
+with lib.caramelmint; let
+  cfg = config.caramelmint.desktop.addons.wofi;
 in {
   options.caramelmint.desktop.addons.wofi = with types; {
     enable =
@@ -9,7 +15,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ wofi wofi-emoji ];
+    home.packages = with pkgs; [wofi wofi-emoji];
     # config -> .config/wofi/config
     # css -> .config/wofi/style.css
     # colors -> $XDG_CACHE_HOME/wal/colors

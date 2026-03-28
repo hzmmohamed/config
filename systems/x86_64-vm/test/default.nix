@@ -1,7 +1,13 @@
-{ pkgs, config, lib, channel, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  channel,
+  ...
+}:
 with lib;
 with lib.caramelmint; {
-  imports = [ ./hardware.nix ];
+  imports = [./hardware.nix];
 
   caramelmint = {
     suites = {

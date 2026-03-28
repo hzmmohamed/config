@@ -1,7 +1,13 @@
-{ options, config, pkgs, lib, ... }:
+{
+  options,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 with lib;
-with lib.caramelmint;
-let cfg = config.caramelmint.cli-apps.shell-history;
+with lib.caramelmint; let
+  cfg = config.caramelmint.cli-apps.shell-history;
 in {
   options.caramelmint.cli-apps.shell-history = with types; {
     enable = mkBoolOpt false "Whether or not to configure shell history.";
@@ -38,4 +44,3 @@ in {
     };
   };
 }
-

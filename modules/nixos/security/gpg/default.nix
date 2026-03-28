@@ -1,13 +1,20 @@
-{ options, config, pkgs, lib, inputs, ... }:
+{
+  options,
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 with lib;
-with lib.caramelmint;
-let
+with lib.caramelmint; let
   cfg = config.caramelmint.security.gpg;
   # gpgConf = "${inputs.gpg-base-conf}/gpg.conf";
 in {
   options.caramelmint.security.gpg = with types; {
     enable = mkBoolOpt false "Whether or not to enable GPG.";
-    agentTimeout = mkOpt int 5
+    agentTimeout =
+      mkOpt int 5
       "The amount of time to wait before continuing with shell init.";
   };
 

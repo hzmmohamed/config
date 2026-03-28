@@ -1,16 +1,21 @@
-{ options, config, lib, pkgs, ... }:
+{
+  options,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
-with lib.caramelmint;
-let cfg = config.caramelmint.apps.vscode;
+with lib.caramelmint; let
+  cfg = config.caramelmint.apps.vscode;
 in {
   options.caramelmint.apps.vscode = with types; {
     enable = mkBoolOpt false "Whether to enable and configure VSCode.";
   };
 
   config = mkIf cfg.enable {
-
     caramelmint.home.extraOptions = {
-      catppuccin = { vscode.enable = false; };
+      catppuccin = {vscode.enable = false;};
 
       #  Install and Configure VSCodium
       programs.vscode = {
@@ -18,7 +23,6 @@ in {
         package = pkgs.vscodium;
         mutableExtensionsDir = true; # default
         profiles.default.extensions = with pkgs.vscode-extensions; [
-
           tomoki1207.pdf
           # Theming
           emmanuelbeziat.vscode-great-icons
@@ -61,7 +65,7 @@ in {
           catppuccin.catppuccin-vsc-icons
 
           # Commented because it's not found in the extensions flake
-          # joaompinto.vscode-graphviz 
+          # joaompinto.vscode-graphviz
           # activitywatch.aw-watcher-vscode
           # openfga.openfga-vscode
 
@@ -74,7 +78,6 @@ in {
 
           # fcrespo82.markdown-table-formatter
         ];
-
       };
 
       # Allow mutable settings.json at runtime, and rewritten on running `home-manager switch`
@@ -88,8 +91,7 @@ in {
           "files.autoSaveDelay" = 1000;
           "editor.wordWrap" = "on";
           "nix.serverPath" = "nil";
-          "editor.fontFamily" =
-            "'FiraCode Nerd Font Mono', 'monospace', monospace";
+          "editor.fontFamily" = "'FiraCode Nerd Font Mono', 'monospace', monospace";
           "workbench.startupEditor" = "none";
         };
         configDir = "VSCodium";
@@ -97,8 +99,8 @@ in {
         userSettingsDirPath = "/home/hfahmi/.config/${configDir}/User";
         userSettingsFilePath = "${userSettingsDirPath}/settings.json";
       in {
-        after = [ "writeBoundary" ];
-        before = [ ];
+        after = ["writeBoundary"];
+        before = [];
         data = ''
           mkdir -p ${userSettingsDirPath}
           cat ${

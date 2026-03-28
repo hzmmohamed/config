@@ -1,7 +1,12 @@
-{ options, config, pkgs, lib, ... }:
+{
+  options,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 with lib;
-with lib.caramelmint;
-let
+with lib.caramelmint; let
   cfg = config.caramelmint.tools.git;
   gpg = config.caramelmint.security.gpg;
   user = config.caramelmint.user;
@@ -44,10 +49,10 @@ in {
           };
         };
         extraConfig = {
-          init = { defaultBranch = "main"; };
-          pull = { rebase = true; };
-          push = { autoSetupRemote = true; };
-          core = { whitespace = "trailing-space,space-before-tab"; };
+          init = {defaultBranch = "main";};
+          pull = {rebase = true;};
+          push = {autoSetupRemote = true;};
+          core = {whitespace = "trailing-space,space-before-tab";};
           safe = {
             # directory = "${config.users.users.${user.name}.home}/personal/config";
             directory = "*";
@@ -58,7 +63,7 @@ in {
       # Add lazygit
       programs.lazygit = enabled;
 
-      home.packages = with pkgs; [ gibo ];
+      home.packages = with pkgs; [gibo];
     };
   };
 }

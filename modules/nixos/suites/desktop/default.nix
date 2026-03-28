@@ -1,7 +1,13 @@
-{ options, config, lib, pkgs, ... }:
+{
+  options,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
-with lib.caramelmint;
-let cfg = config.caramelmint.suites.desktop;
+with lib.caramelmint; let
+  cfg = config.caramelmint.suites.desktop;
 in {
   options.caramelmint.suites.desktop = with types; {
     enable =
@@ -11,8 +17,8 @@ in {
   config = mkIf cfg.enable {
     services.flatpak.enable = true;
     services.logind.settings.Login = {
-      IdleAction="suspend";
-      IdleActionSec="1m";
+      IdleAction = "suspend";
+      IdleActionSec = "1m";
     };
 
     # screen locker
@@ -31,8 +37,8 @@ in {
       # Miracast
       gnome-network-displays
     ];
-    networking.firewall.allowedTCPPorts = [ 7236 7250 ];
-    networking.firewall.allowedUDPPorts = [ 7236 5353 ];
+    networking.firewall.allowedTCPPorts = [7236 7250];
+    networking.firewall.allowedUDPPorts = [7236 5353];
     services.earlyoom = {
       enable = true;
       enableNotifications = true;
@@ -56,7 +62,7 @@ in {
       };
       desktop = {
         sway = enabled;
-        addons = { xdg-portal = enabled; };
+        addons = {xdg-portal = enabled;};
       };
     };
   };

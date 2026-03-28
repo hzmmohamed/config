@@ -1,7 +1,13 @@
-{ pkgs, config, lib, channel, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  channel,
+  ...
+}:
 with lib;
 with lib.caramelmint; {
-  imports = [ ./disk-config.nix ./hardware.nix ];
+  imports = [./disk-config.nix ./hardware.nix];
   users.users.root.openssh.authorizedKeys.keys = [
     # change this to your ssh key
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMhxcLHsjikNd2JG4vRp55lEaJpUZNYS3TdjQ9aIii9T hzmmohamed@gmail.com"
@@ -49,7 +55,6 @@ with lib.caramelmint; {
         key = config.sops.secrets."syncthing/key".path;
         cert = config.sops.secrets."syncthing/cert".path;
       };
-
     };
   };
   sops.secrets."syncthing/key" = {
@@ -57,7 +62,7 @@ with lib.caramelmint; {
     owner = config.caramelmint.user.name;
     group = config.users.users.${config.caramelmint.user.name}.group;
     mode = "0400";
-    restartUnits = [ "syncthing.service" ];
+    restartUnits = ["syncthing.service"];
   };
 
   sops.secrets."syncthing/cert" = {
@@ -65,7 +70,7 @@ with lib.caramelmint; {
     owner = config.caramelmint.user.name;
     group = config.users.users.${config.caramelmint.user.name}.group;
     mode = "0400";
-    restartUnits = [ "syncthing.service" ];
+    restartUnits = ["syncthing.service"];
   };
 
   # End Syncthing Config

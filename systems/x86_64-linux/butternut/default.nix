@@ -1,7 +1,13 @@
-{ pkgs, config, lib, channel, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  channel,
+  ...
+}:
 with lib;
 with lib.caramelmint; {
-  imports = [ ./disk-config.nix ./hardware.nix ];
+  imports = [./disk-config.nix ./hardware.nix];
 
   # Replaced nix-serve with the more performant nix-serve-ng
   # Ref: https://github.com/aristanetworks/nix-serve-ng?tab=readme-ov-file#variant-a
@@ -26,7 +32,7 @@ with lib.caramelmint; {
 
   services.openssh = {
     enable = true;
-    ports = [ 7654 ]; # Change this to your preferred port
+    ports = [7654]; # Change this to your preferred port
     settings = {
       PasswordAuthentication = true; # Recommended for security
       KbdInteractiveAuthentication = true;
@@ -35,15 +41,15 @@ with lib.caramelmint; {
   };
 
   # Ensure the custom port is open in the firewall
-  networking.firewall.allowedTCPPorts = [ 2222 ];
+  networking.firewall.allowedTCPPorts = [2222];
 
   programs.wayvnc.enable = true;
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
-  glibc
-  libglvnd
-  # ... any other missing libs
-];
+    glibc
+    libglvnd
+    # ... any other missing libs
+  ];
 
   caramelmint = {
     suites = {
@@ -61,7 +67,7 @@ with lib.caramelmint; {
 
     theme = {
       desktop = enabled;
-      boot = { enable = false; };
+      boot = {enable = false;};
     };
 
     # hardware = { nvidia = enabled; };
@@ -74,7 +80,6 @@ with lib.caramelmint; {
         key = config.sops.secrets."syncthing/key".path;
         cert = config.sops.secrets."syncthing/cert".path;
       };
-
     };
   };
   sops.secrets."syncthing/key" = {
@@ -82,7 +87,7 @@ with lib.caramelmint; {
     owner = config.caramelmint.user.name;
     group = config.users.users.${config.caramelmint.user.name}.group;
     mode = "0400";
-    restartUnits = [ "syncthing.service" ];
+    restartUnits = ["syncthing.service"];
   };
 
   sops.secrets."syncthing/cert" = {
@@ -90,7 +95,7 @@ with lib.caramelmint; {
     owner = config.caramelmint.user.name;
     group = config.users.users.${config.caramelmint.user.name}.group;
     mode = "0400";
-    restartUnits = [ "syncthing.service" ];
+    restartUnits = ["syncthing.service"];
   };
 
   # End Syncthing Config

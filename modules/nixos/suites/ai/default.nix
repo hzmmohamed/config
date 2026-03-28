@@ -1,7 +1,13 @@
-{ options, config, lib, pkgs, ... }:
+{
+  options,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
-with lib.caramelmint;
-let cfg = config.caramelmint.suites.ai;
+with lib.caramelmint; let
+  cfg = config.caramelmint.suites.ai;
 in {
   options.caramelmint.suites.ai = with types; {
     enable =

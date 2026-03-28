@@ -1,21 +1,28 @@
-{ options, config, lib, pkgs, ... }:
+{
+  options,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
-with lib.caramelmint;
-let cfg = config.caramelmint.suites.maker-tools;
+with lib.caramelmint; let
+  cfg = config.caramelmint.suites.maker-tools;
 in {
   options.caramelmint.suites.maker-tools = with types; {
-    enable = mkBoolOpt false
+    enable =
+      mkBoolOpt false
       "Whether or not to enable common configuration for maker tools.";
   };
 
   config = mkIf cfg.enable {
     caramelmint = {
-      tools = { git = enabled; };
+      tools = {git = enabled;};
 
       home.extraOptions = {
         home.packages = with pkgs; [
           freecad
-          # kicad 
+          # kicad
           gimp
           inkscape
           openscad

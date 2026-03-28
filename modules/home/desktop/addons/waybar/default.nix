@@ -1,7 +1,13 @@
-{ options, config, lib, pkgs, ... }:
+{
+  options,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
-with lib.caramelmint;
-let cfg = config.caramelmint.desktop.addons.waybar;
+with lib.caramelmint; let
+  cfg = config.caramelmint.desktop.addons.waybar;
 in {
   options.caramelmint.desktop.addons.waybar = with types; {
     enable =
@@ -17,10 +23,9 @@ in {
           layer = "top";
           position = "right";
           reload_style_on_change = true;
-          modules-left =
-            [ "custom/notification" "clock" "custom/pacman" "tray" ];
-          modules-center = [ "sway/workspaces" ];
-          modules-right = [ "group/expand" "battery" ];
+          modules-left = ["custom/notification" "clock" "custom/pacman" "tray"];
+          modules-center = ["sway/workspaces"];
+          modules-right = ["group/expand" "battery"];
           "sway/workspaces" = {
             format = "{icon}";
             format-icons = {
@@ -28,13 +33,12 @@ in {
               default = "○";
               empty = "○";
             };
-            persistent-workspaces = { "*" = [ 1 2 3 4 5 6 7 8 9 ]; };
+            persistent-workspaces = {"*" = [1 2 3 4 5 6 7 8 9];};
           };
           "custom/notification" = {
             tooltip = false;
             format = "";
-            on-click =
-              "${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw";
+            on-click = "${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw";
             escape = true;
           };
           clock = {
@@ -55,7 +59,7 @@ in {
                 today = "<span color='#ff6699'><b><u>{}</u></b></span>";
               };
             };
-            actions = { on-click-right = "mode"; };
+            actions = {on-click-right = "mode";};
           };
           network = {
             format-wifi = "";
@@ -103,7 +107,7 @@ in {
             format-charging = "{capacity}% 󰂄";
             format-plugged = "{capacity}% 󰂄 ";
             format-alt = "{time} {icon}";
-            format-icons = [ "󰁻" "󰁼" "󰁾" "󰂀" "󰂂" "󰁹" ];
+            format-icons = ["󰁻" "󰁼" "󰁾" "󰂀" "󰂂" "󰁹"];
           };
 
           "custom/expand" = {
@@ -142,7 +146,7 @@ in {
             format = "󰻠";
             tooltip = true;
           };
-          memory = { format = ""; };
+          memory = {format = "";};
           temperature = {
             critical-threshold = 80;
             format = "";
@@ -159,7 +163,7 @@ in {
                   color: @text;
                 }
 
-                
+
         window#waybar{
             background: transparent;
         }
@@ -267,12 +271,12 @@ in {
                     animation-direction: alternate;
                 }
                 #group-expand{
-                    transition: all .3s ease; 
+                    transition: all .3s ease;
                 }
                 #custom-expand{
                     color:alpha(@foreground,.2);
                     text-shadow: 0px 0px 2px rgba(0, 0, 0, .7);
-                    transition: all .3s ease; 
+                    transition: all .3s ease;
                 }
                 #custom-expand:hover{
                     color:rgba(255,255,255,.2);
@@ -281,7 +285,7 @@ in {
                 #custom-colorpicker{
                 }
                 #cpu,#memory,#temperature{
-                    transition: all .3s ease; 
+                    transition: all .3s ease;
                     color:@text;
 
                 }
@@ -291,15 +295,15 @@ in {
 
                 }
                 #tray{
-                    transition: all .3s ease; 
+                    transition: all .3s ease;
 
                 }
                 #tray menu * {
-                    transition: all .3s ease; 
+                    transition: all .3s ease;
                 }
 
                 #tray menu separator {
-                    transition: all .3s ease; 
+                    transition: all .3s ease;
                 }
       '';
     };

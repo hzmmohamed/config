@@ -1,23 +1,28 @@
-{ options, config, pkgs, lib, ... }:
+{
+  options,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 with lib;
-with lib.caramelmint;
-let cfg = config.caramelmint.system.power;
+with lib.caramelmint; let
+  cfg = config.caramelmint.system.power;
 in {
   options.caramelmint.system.power = with types; {
-    enable = mkBoolOpt false
+    enable =
+      mkBoolOpt false
       "Whether or not to enable and configure power-saving-related services.";
   };
 
   config = mkIf cfg.enable {
-
     caramelmint.home.extraOptions.home.packages =
-      mkIf config.caramelmint.suites.desktop.enable [ pkgs.cpupower-gui ];
+      mkIf config.caramelmint.suites.desktop.enable [pkgs.cpupower-gui];
 
-    environment.systemPackages = with pkgs; [ powertop ];
+    environment.systemPackages = with pkgs; [powertop];
 
     services = {
       logind.settings.Login = {
-
         powerKey = "ignore";
         suspendKey = "ignore";
         rebootKey = "ignore";

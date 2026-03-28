@@ -1,7 +1,13 @@
-{ options, config, lib, pkgs, ... }:
+{
+  options,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
-with lib.caramelmint;
-let cfg = config.caramelmint.tools.obsidian;
+with lib.caramelmint; let
+  cfg = config.caramelmint.tools.obsidian;
 in {
   options.caramelmint.tools.obsidian = with types; {
     enable = mkBoolOpt false "Whether to enable Obsidian.";

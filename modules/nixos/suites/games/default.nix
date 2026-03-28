@@ -1,22 +1,30 @@
-{ options, config, lib, pkgs, ... }:
+{
+  options,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
-with lib.caramelmint;
-let cfg = config.caramelmint.suites.games;
+with lib.caramelmint; let
+  cfg = config.caramelmint.suites.games;
 in {
   options.caramelmint.suites.games = with types; {
-    enable = mkBoolOpt false
+    enable =
+      mkBoolOpt false
       "Whether or not to enable common configuration for games.";
   };
 
   config = mkIf cfg.enable {
-
     # Ref: https://github.com/lutris/docs/blob/master/HowToEsync.md
-    security.pam.loginLimits = [{
-      domain = "hfahmi";
-      item = "nofile";
-      type = "hard";
-      value = "524288";
-    }];
+    security.pam.loginLimits = [
+      {
+        domain = "hfahmi";
+        item = "nofile";
+        type = "hard";
+        value = "524288";
+      }
+    ];
     programs.steam = {
       enable = true;
       gamescopeSession.enable = true;
@@ -32,7 +40,7 @@ in {
     hardware.xone = enabled;
 
     # Configure wireless bluetooth controller (Failed attempt)
-    # Refs: 
+    # Refs:
     # https://www.reddit.com/r/linux_gaming/comments/smxqm2/how_to_use_xpadneo_with_an_xbox_series_controller/
 
     # hardware.bluetooth.settings = {
@@ -72,7 +80,6 @@ in {
     };
 
     environment.systemPackages = with pkgs; [
-
       evtest-qt # GUI Controller tester
 
       # Needed for some installers like League of Legends
@@ -92,8 +99,7 @@ in {
         protontricks
       ];
       home.sessionVariables = {
-        STEAM_EXTRA_COMPAT_TOOLS_PATHS =
-          "\\\${HOME}/.steam/root/compatibilitytools.d";
+        STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\\\${HOME}/.steam/root/compatibilitytools.d";
       };
     };
 

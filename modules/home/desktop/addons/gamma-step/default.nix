@@ -1,7 +1,13 @@
-{ options, config, pkgs, lib, ... }:
+{
+  options,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 with lib;
-with lib.caramelmint;
-let cfg = config.caramelmint.desktop.addons.gammastep;
+with lib.caramelmint; let
+  cfg = config.caramelmint.desktop.addons.gammastep;
 in {
   options.caramelmint.desktop.addons.gammastep = with types; {
     enable =
@@ -38,9 +44,7 @@ in {
           ${pkgs.gnused}/bin/sed -i -e 's/"workbench.colorTheme": ".*"/"workbench.colorTheme": "Catppuccin Latte"/g' "$HOME/.config/VSCodium/User/settings.json"
 
         '';
-
       };
     };
-
   };
 }

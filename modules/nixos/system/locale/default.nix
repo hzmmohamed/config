@@ -1,7 +1,13 @@
-{ options, config, pkgs, lib, ... }:
+{
+  options,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 with lib;
-with lib.caramelmint;
-let cfg = config.caramelmint.system.locale;
+with lib.caramelmint; let
+  cfg = config.caramelmint.system.locale;
 in {
   options.caramelmint.system.locale = with types; {
     enable = mkBoolOpt false "Whether or not to manage locale settings.";
@@ -22,6 +28,6 @@ in {
       LC_TIME = "de_DE.UTF-8";
     };
 
-    console = { keyMap = mkForce "us"; };
+    console = {keyMap = mkForce "us";};
   };
 }

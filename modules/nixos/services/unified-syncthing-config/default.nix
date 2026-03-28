@@ -1,7 +1,12 @@
-{ lib, pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 with lib;
-with lib.caramelmint;
-let cfg = config.caramelmint.services.unified-syncthing-config;
+with lib.caramelmint; let
+  cfg = config.caramelmint.services.unified-syncthing-config;
 in {
   options.caramelmint.services.unified-syncthing-config = with types; {
     enable = mkBoolOpt false "Whether or not to configure syncthing";
@@ -16,17 +21,14 @@ in {
     assertions = [
       {
         assertion = cfg.myCredentials.key != "";
-        message =
-          "caramelmint.services.unified-syncthing-config.myCredentials.key must be set";
+        message = "caramelmint.services.unified-syncthing-config.myCredentials.key must be set";
       }
       {
         assertion = cfg.myCredentials.cert != "";
-        message =
-          "caramelmint.services.unified-syncthing-config.myCredentials.cert must be set";
+        message = "caramelmint.services.unified-syncthing-config.myCredentials.cert must be set";
       }
     ];
-    systemd.services.syncthing.environment.STNODEFAULTFOLDER =
-      "true"; # Don't create default ~/Sync folder
+    systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true"; # Don't create default ~/Sync folder
 
     services.syncthing = {
       enable = true;
@@ -43,42 +45,39 @@ in {
       settings = {
         devices = {
           "butternut" = {
-            id =
-              "MRJSBVI-MRVAT7V-WHLSZBC-5LX6KFD-VGCYP4E-W265N3K-B5URBIH-RPUTWQK";
+            id = "MRJSBVI-MRVAT7V-WHLSZBC-5LX6KFD-VGCYP4E-W265N3K-B5URBIH-RPUTWQK";
           };
           "maple" = {
-            id =
-              "H7H47TV-XI7EQDB-U4RAQWU-BYMDKVT-6HNATQP-EDELRE7-35GLDGH-BKAUBAW";
+            id = "H7H47TV-XI7EQDB-U4RAQWU-BYMDKVT-6HNATQP-EDELRE7-35GLDGH-BKAUBAW";
           };
         };
         folders = {
           "zotero-db" = {
             path = "${
-                config.users.users.${config.caramelmint.user.name}.home
-              }/Zotero";
-            devices = [ "butternut" "maple" ];
+              config.users.users.${config.caramelmint.user.name}.home
+            }/Zotero";
+            devices = ["butternut" "maple"];
             # By default, Syncthing doesn't sync file permissions. This line enables it for this folder.
             ignorePerms = false;
           };
           "zotero-attachments" = {
             path = "${
-                config.users.users.${config.caramelmint.user.name}.home
-              }/personal/zotero-attachments";
-            devices = [ "butternut" "maple" ];
+              config.users.users.${config.caramelmint.user.name}.home
+            }/personal/zotero-attachments";
+            devices = ["butternut" "maple"];
             # By default, Syncthing doesn't sync file permissions. This line enables it for this folder.
             ignorePerms = false;
           };
           "flower-choir" = {
             path = "${
-                config.users.users.${config.caramelmint.user.name}.home
-              }/personal/flower-choir";
-            devices = [ "butternut" "maple" ];
+              config.users.users.${config.caramelmint.user.name}.home
+            }/personal/flower-choir";
+            devices = ["butternut" "maple"];
             # By default, Syncthing doesn't sync file permissions. This line enables it for this folder.
             ignorePerms = false;
           };
         };
       };
-
     };
   };
 }

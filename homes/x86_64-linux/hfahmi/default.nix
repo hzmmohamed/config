@@ -1,4 +1,12 @@
-{ lib, pkgs, config, osConfig ? { }, format ? "unknown", inputs, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  osConfig ? {},
+  format ? "unknown",
+  inputs,
+  ...
+}:
 with lib;
 with lib.caramelmint; {
   # colorScheme = inputs.nix-colors.colorSchemes.gruvbox-light-medium;

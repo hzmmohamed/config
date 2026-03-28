@@ -1,7 +1,13 @@
-{ options, config, lib, pkgs, ... }:
+{
+  options,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
-with lib.caramelmint;
-let cfg = config.caramelmint.tools.yazi;
+with lib.caramelmint; let
+  cfg = config.caramelmint.tools.yazi;
 in {
   options.caramelmint.tools.yazi = with types; {
     enable = mkBoolOpt false "Whether or not to enable yazi.";
@@ -12,7 +18,7 @@ in {
       enable = true;
       enableFishIntegration = true;
       settings = {
-        log = { enabled = false; };
+        log = {enabled = false;};
         manager = {
           show_hidden = false;
           show_symlink = true;
@@ -26,6 +32,6 @@ in {
 
     # Extra packages for preview functionality
     # https://yazi-rs.github.io/docs/installation/
-    home.packages = with pkgs; [ imagemagick poppler ];
+    home.packages = with pkgs; [imagemagick poppler];
   };
 }

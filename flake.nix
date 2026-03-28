@@ -3,8 +3,7 @@
 
   inputs = {
     # NixPkgs (nixos-25.11)
-    nixpkgs.url =
-      "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
 
     stylix.url = "github:danth/stylix/release-25.11";
 
@@ -59,8 +58,7 @@
 
     # Flake Hygiene
     flake-checker = {
-      url =
-        "github:DeterminateSystems/flake-checker/46b02e6172ed961113d336a035688ac12c96d9f4";
+      url = "github:DeterminateSystems/flake-checker/46b02e6172ed961113d336a035688ac12c96d9f4";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -81,29 +79,29 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    musnix = { url = "github:musnix/musnix"; };
+    musnix = {url = "github:musnix/musnix";};
   };
 
-  outputs = inputs:
-    let
-      lib = inputs.snowfall-lib.mkLib {
-        inherit inputs;
-        src = ./.;
+  outputs = inputs: let
+    lib = inputs.snowfall-lib.mkLib {
+      inherit inputs;
+      src = ./.;
 
-        snowfall = {
-          meta = {
-            name = "caramelmint";
-            title = "Caramel Mint";
-          };
-
-          namespace = "caramelmint";
+      snowfall = {
+        meta = {
+          name = "caramelmint";
+          title = "Caramel Mint";
         };
+
+        namespace = "caramelmint";
       };
-    in lib.mkFlake {
+    };
+  in
+    lib.mkFlake {
       channels-config = {
         allowUnfree = true;
         # This version of Electron is EOL, but latest Obsidian still uses it.
-        permittedInsecurePackages = [ "electron-25.9.0" "libsoup-2.74.3" ];
+        permittedInsecurePackages = ["electron-25.9.0" "libsoup-2.74.3"];
       };
 
       systems.modules.nixos = with inputs; [
@@ -122,9 +120,10 @@
         # stylix.homeModules.stylix
       ];
 
-      deploy = lib.mkDeploy { inherit (inputs) self; };
+      deploy = lib.mkDeploy {inherit (inputs) self;};
 
-      checks = builtins.mapAttrs
+      checks =
+        builtins.mapAttrs
         (system: deploy-lib: deploy-lib.deployChecks inputs.self.deploy)
         inputs.deploy-rs.lib;
     };

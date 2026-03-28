@@ -1,10 +1,17 @@
-{ options, config, pkgs, lib, ... }:
+{
+  options,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 with lib;
-with lib.caramelmint;
-let cfg = config.caramelmint.hardware.nvidia;
+with lib.caramelmint; let
+  cfg = config.caramelmint.hardware.nvidia;
 in {
   options.caramelmint.hardware.nvidia = with types; {
-    enable = mkBoolOpt false
+    enable =
+      mkBoolOpt false
       "Whether or not to enable and configure NVIDIA dGPU support.";
   };
 
@@ -13,7 +20,7 @@ in {
     #   dGPU.configuration = {
     # system.nixos.tags = [ "dGPU" ];
     # Load nvidia driver for Xorg and Wayland
-    services.xserver.videoDrivers = [ "nvidia" ];
+    services.xserver.videoDrivers = ["nvidia"];
     services.ollama.acceleration = "cuda";
 
     hardware.nvidia = {

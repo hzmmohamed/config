@@ -1,7 +1,13 @@
-{ options, config, lib, pkgs, ... }:
+{
+  options,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
-with lib.caramelmint;
-let cfg = config.caramelmint.desktop.addons.xdg-portal;
+with lib.caramelmint; let
+  cfg = config.caramelmint.desktop.addons.xdg-portal;
 in {
   options.caramelmint.desktop.addons.xdg-portal = with types; {
     enable = mkBoolOpt false "Whether or not to add support for xdg portal.";
@@ -23,7 +29,7 @@ in {
       };
     };
     caramelmint.home.extraOptions = {
-      home.packages = with pkgs; [ ashpd-demo ];
+      home.packages = with pkgs; [ashpd-demo];
 
       # xdg.configFile."xdg-desktop-portal-wlr/config".text = ''
       #   [screencast]

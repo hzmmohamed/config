@@ -1,7 +1,13 @@
-{ options, config, lib, pkgs, ... }@inputs:
+{
+  options,
+  config,
+  lib,
+  pkgs,
+  ...
+} @ inputs:
 with lib;
-with lib.caramelmint;
-let cfg = config.caramelmint.desktop.sway;
+with lib.caramelmint; let
+  cfg = config.caramelmint.desktop.sway;
 in {
   options.caramelmint.desktop.sway = with types; {
     enable = mkBoolOpt false "Whether or not to enable and configure Sway.";
@@ -45,7 +51,7 @@ in {
         swww
         waypaper
       ];
-      services.swayidle = { enable = true; };
+      services.swayidle = {enable = true;};
       programs.swaylock.enable = true;
       programs.swayr = {
         enable = true;
@@ -66,12 +72,9 @@ in {
           };
           format = {
             output_format = "{indent}Output {name}    ({id})";
-            workspace_format =
-              "{indent}Workspace {name} [{layout}] on output {output_name}    ({id})";
-            container_format =
-              "{indent}Container [{layout}] {marks} on workspace {workspace_name}    ({id})";
-            window_format =
-              "img:{app_icon}:text:{indent}{app_name} — {urgency_start}“{title}”{urgency_end} {marks} on workspace {workspace_name} / {output_name}    ({id})";
+            workspace_format = "{indent}Workspace {name} [{layout}] on output {output_name}    ({id})";
+            container_format = "{indent}Container [{layout}] {marks} on workspace {workspace_name}    ({id})";
+            window_format = "img:{app_icon}:text:{indent}{app_name} — {urgency_start}“{title}”{urgency_end} {marks} on workspace {workspace_name} / {output_name}    ({id})";
             indent = "    ";
             urgency_start = "";
             urgency_end = "";
@@ -80,25 +83,25 @@ in {
           layout = {
             auto_tile = false;
             auto_tile_min_window_width_per_output_width = [
-              [ 800 400 ]
-              [ 1024 500 ]
-              [ 1280 600 ]
-              [ 1400 680 ]
-              [ 1440 700 ]
-              [ 1600 780 ]
-              [ 1680 780 ]
-              [ 1920 920 ]
-              [ 2048 980 ]
-              [ 2560 1000 ]
-              [ 3440 1200 ]
-              [ 3840 1280 ]
-              [ 4096 1400 ]
-              [ 4480 1600 ]
-              [ 7680 2400 ]
+              [800 400]
+              [1024 500]
+              [1280 600]
+              [1400 680]
+              [1440 700]
+              [1600 780]
+              [1680 780]
+              [1920 920]
+              [2048 980]
+              [2560 1000]
+              [3440 1200]
+              [3840 1280]
+              [4096 1400]
+              [4480 1600]
+              [7680 2400]
             ];
           };
-          focus = { lockin_delay = 750; };
-          misc = { seq_inhibit = false; };
+          focus = {lockin_delay = 750;};
+          misc = {seq_inhibit = false;};
         };
       };
       services.swaync = {
@@ -144,7 +147,7 @@ in {
         enable = true;
 
         # TODO: Check if Nvidia is enabled
-        extraOptions = [ "--unsupported-gpu" ];
+        extraOptions = ["--unsupported-gpu"];
 
         # Wrapped version of sway in nixpkgs already adds recommended command here in the sway docs https://github.com/swaywm/sway/wiki/Systemd-integration#managing-user-applications-with-systemd
         wrapperFeatures.gtk = true;
@@ -156,7 +159,6 @@ in {
           modifier = "Mod4";
           terminal = "alacritty";
           menu = "wofi --show drun";
-
         in {
           modifier = modifier;
           floating.modifier = modifier;
@@ -168,7 +170,7 @@ in {
             border = 4;
           };
 
-          bars = [ ];
+          bars = [];
 
           colors = {
             focused = {
@@ -227,8 +229,7 @@ in {
             "${modifier}+26" = "layout toggle split";
 
             "${modifier}+Shift+54" = "reload";
-            "${modifier}+Shift+26" =
-              "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
+            "${modifier}+Shift+26" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
 
             "${modifier}+43" = "focus left";
             "${modifier}+44" = "focus down";
@@ -255,18 +256,16 @@ in {
             "${modifier}+53" = "[urgent=latest] focus";
 
             # Toggle notification center
-            "${modifier}+57" =
-              "${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw";
+            "${modifier}+57" = "${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw";
           };
           keybindings = let
-            brightnessKeybindings =
-              mkIf config.caramelmint.desktop.addons.light.enable {
-                # brightness
-                "XF86MonBrightnessUp" = "exec light -A 5";
-                "XF86MonBrightnessDown" = "exec light -U 5";
-                "Shift+XF86MonBrightnessUp" = "exec light -A 1";
-                "Shift+XF86MonBrightnessDown" = "exec light -U 1";
-              };
+            brightnessKeybindings = mkIf config.caramelmint.desktop.addons.light.enable {
+              # brightness
+              "XF86MonBrightnessUp" = "exec light -A 5";
+              "XF86MonBrightnessDown" = "exec light -U 5";
+              "Shift+XF86MonBrightnessUp" = "exec light -A 1";
+              "Shift+XF86MonBrightnessDown" = "exec light -U 1";
+            };
             # lib.nixpkgs.attrsets.mergeAttrsList [
           in {
             # TODO: Add shortcuts for swayws
@@ -305,13 +304,10 @@ in {
 
             "${modifier}+space" = "exec ${menu}";
             "${modifier}+Return" = "exec ${terminal}";
-            "${modifier}+Shift+Return" =
-              "exec swaymsg input 1:1:AT_Translated_Set_2_keyboard  xkb_switch_layout next";
+            "${modifier}+Shift+Return" = "exec swaymsg input 1:1:AT_Translated_Set_2_keyboard  xkb_switch_layout next";
 
-            "XF86AudioRaiseVolume" =
-              "exec wpctl set-volume --limit 1 @DEFAULT_SINK@ 5%+";
-            "XF86AudioLowerVolume" =
-              "exec wpctl set-volume --limit 1 @DEFAULT_SINK@ 5%-";
+            "XF86AudioRaiseVolume" = "exec wpctl set-volume --limit 1 @DEFAULT_SINK@ 5%+";
+            "XF86AudioLowerVolume" = "exec wpctl set-volume --limit 1 @DEFAULT_SINK@ 5%-";
             "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_SINK@ toggle";
 
             # microphone
@@ -399,7 +395,7 @@ in {
 
     services.xserver.enable = true;
     services.displayManager.sddm.enable = true;
-    services.displayManager.sessionPackages = [ pkgs.sway ];
+    services.displayManager.sessionPackages = [pkgs.sway];
     services.passSecretService.enable = true;
   };
 }

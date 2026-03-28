@@ -1,11 +1,17 @@
-{ options, config, pkgs, lib, ... }:
+{
+  options,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 with lib;
-with lib.caramelmint;
-let cfg = config.caramelmint.system.fonts;
+with lib.caramelmint; let
+  cfg = config.caramelmint.system.fonts;
 in {
   options.caramelmint.system.fonts = with types; {
     enable = mkBoolOpt false "Whether or not to manage fonts.";
-    fonts = mkOpt (listOf package) [ ] "Custom font packages to install.";
+    fonts = mkOpt (listOf package) [] "Custom font packages to install.";
   };
 
   config = mkIf cfg.enable {
@@ -14,13 +20,13 @@ in {
       LOG_ICONS = "true";
     };
 
-    environment.systemPackages = with pkgs; [ font-manager ];
+    environment.systemPackages = with pkgs; [font-manager];
 
     fonts.fontconfig = {
       defaultFonts = {
-        serif = [ "TeX Gyre Pagella" ];
-        sansSerif = [ "Noto Sans" ];
-        monospace = [ "FiraCode Nerd Font Mono" "Kawkab Mono" ];
+        serif = ["TeX Gyre Pagella"];
+        sansSerif = ["Noto Sans"];
+        monospace = ["FiraCode Nerd Font Mono" "Kawkab Mono"];
       };
     };
 
@@ -54,6 +60,7 @@ in {
 
         # Meslo Nerd fonts package contains all the needed glyphs for the tide prompt
         meslo-lgs-nf
-      ] ++ cfg.fonts;
+      ]
+      ++ cfg.fonts;
   };
 }

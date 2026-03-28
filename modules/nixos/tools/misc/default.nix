@@ -1,7 +1,13 @@
-{ options, config, lib, pkgs, ... }:
+{
+  options,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
-with lib.caramelmint;
-let cfg = config.caramelmint.tools.misc;
+with lib.caramelmint; let
+  cfg = config.caramelmint.tools.misc;
 in {
   options.caramelmint.tools.misc = with types; {
     enable = mkBoolOpt false "Whether or not to enable common utilities.";
@@ -10,7 +16,6 @@ in {
   config = mkIf cfg.enable {
     caramelmint.home.configFile."wgetrc".text = "";
     caramelmint.home.extraOptions = {
-
       programs = {
         nix-index-database.comma.enable = true;
         # https://github.com/eth-p/bat-extras
@@ -23,7 +28,7 @@ in {
           enableFishIntegration = true;
         };
 
-        lsd = { enable = true; };
+        lsd = {enable = true;};
 
         lf.enable = true;
 

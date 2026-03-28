@@ -1,7 +1,13 @@
-{ options, config, lib, pkgs, ... }:
+{
+  options,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
-with lib.caramelmint;
-let cfg = config.caramelmint.tools.adb;
+with lib.caramelmint; let
+  cfg = config.caramelmint.tools.adb;
 in {
   options.caramelmint.tools.adb = with types; {
     enable = mkBoolOpt false "Whether or not to enable ADB.";
@@ -9,6 +15,6 @@ in {
 
   config = mkIf cfg.enable {
     programs.adb.enable = true;
-    caramelmint.user.extraGroups = [ "adbusers" ];
+    caramelmint.user.extraGroups = ["adbusers"];
   };
 }

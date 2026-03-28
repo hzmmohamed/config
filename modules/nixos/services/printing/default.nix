@@ -1,7 +1,13 @@
-{ options, config, pkgs, lib, ... }:
+{
+  options,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 with lib;
-with lib.caramelmint;
-let cfg = config.caramelmint.services.printing;
+with lib.caramelmint; let
+  cfg = config.caramelmint.services.printing;
 in {
   options.caramelmint.services.printing = with types; {
     enable = mkBoolOpt false "Whether or not to configure printing support.";
@@ -10,7 +16,7 @@ in {
   config = mkIf cfg.enable {
     services.printing = {
       enable = true;
-      drivers = with pkgs; [ gutenprint samsung-unified-linux-driver ];
+      drivers = with pkgs; [gutenprint samsung-unified-linux-driver];
     };
   };
 }

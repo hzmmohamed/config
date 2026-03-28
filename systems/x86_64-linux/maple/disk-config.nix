@@ -1,6 +1,5 @@
 # Example to create a bios compatible gpt partition
-{ lib, ... }: {
-
+{lib, ...}: {
   boot = {
     # Bootloader
     loader.systemd-boot.enable = true;
@@ -10,7 +9,6 @@
 
     # https://github.com/NixOS/nixpkgs/blob/c32c39d6f3b1fe6514598fa40ad2cf9ce22c3fb7/nixos/modules/system/boot/loader/systemd-boot/systemd-boot.nix#L66
     loader.systemd-boot.editor = false;
-
   };
 
   disko.devices = {
@@ -28,7 +26,7 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = [ "umask=0077" ];
+                mountOptions = ["umask=0077"];
               };
             };
             luks = {

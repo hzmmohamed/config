@@ -1,7 +1,14 @@
-{ options, config, lib, pkgs, inputs, ... }:
+{
+  options,
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 with lib;
-with lib.caramelmint;
-let cfg = config.caramelmint.desktop.addons.alacritty;
+with lib.caramelmint; let
+  cfg = config.caramelmint.desktop.addons.alacritty;
 in {
   options.caramelmint.desktop.addons.alacritty = with types; {
     enable =

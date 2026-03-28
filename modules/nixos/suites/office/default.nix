@@ -1,10 +1,18 @@
-{ options, config, lib, pkgs, inputs, ... }:
+{
+  options,
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 with lib;
-with lib.caramelmint;
-let cfg = config.caramelmint.suites.office;
+with lib.caramelmint; let
+  cfg = config.caramelmint.suites.office;
 in {
   options.caramelmint.suites.office = with types; {
-    enable = mkBoolOpt false
+    enable =
+      mkBoolOpt false
       "Whether or not to enable common office productivity configuration.";
   };
 
@@ -15,15 +23,17 @@ in {
     # For KDE Connect
     #TODO: Move to separate module
     networking.firewall = rec {
-      allowedTCPPortRanges = [{
-        from = 1714;
-        to = 1764;
-      }];
+      allowedTCPPortRanges = [
+        {
+          from = 1714;
+          to = 1764;
+        }
+      ];
       allowedUDPPortRanges = allowedTCPPortRanges;
     };
 
     caramelmint = {
-      apps = { vscode = enabled; };
+      apps = {vscode = enabled;};
 
       tools = {
         # espanso = enabled;
@@ -31,7 +41,7 @@ in {
         activity-watch = enabled;
       };
 
-      virtualisation = { kvm = enabled; };
+      virtualisation = {kvm = enabled;};
 
       home.extraOptions = {
         home.sessionVariables = {
@@ -49,22 +59,22 @@ in {
             enable = true;
             package = pkgs.unstable.chromium;
             extensions = [
-              { id = "nngceckbapebfimnlniiiahkandclblb"; } # Bitwarden
-              { id = "chphlpgkkbolifaimnlloiipkdnihall"; } # OneTab
+              {id = "nngceckbapebfimnlniiiahkandclblb";} # Bitwarden
+              {id = "chphlpgkkbolifaimnlloiipkdnihall";} # OneTab
 
-              { id = "ekhagklcjbdpajgpjgmbionohlpdbjgc"; } # Zotero Connector
+              {id = "ekhagklcjbdpajgpjgmbionohlpdbjgc";} # Zotero Connector
 
-              { id = "ghbmnnjooekpmoecnnnilnnbdlolhkhi"; } # Google Docs Offline
+              {id = "ghbmnnjooekpmoecnnnilnnbdlolhkhi";} # Google Docs Offline
 
               {
                 id = "pmjeegjhjdlccodhacdgbgfagbpmccpe";
               } # Clockify Time Tracker
-              { id = "oejclklollnadllgjcpaopapmckpeaim"; } # Weekly Clockify
+              {id = "oejclklollnadllgjcpaopapmckpeaim";} # Weekly Clockify
 
-              { id = "nglaklhklhcoonedhgnpgddginnjdadi"; } # Activity Watcher
-              { id = "fpnmgdkabkmnadcjpehmlllkndpkmiak"; } # Wayback Machine
+              {id = "nglaklhklhcoonedhgnpgddginnjdadi";} # Activity Watcher
+              {id = "fpnmgdkabkmnadcjpehmlllkndpkmiak";} # Wayback Machine
 
-              { id = "bcjindcccaagfpapjjmafapmmgkkhgoa"; } # JSON Formatter
+              {id = "bcjindcccaagfpapjjmafapmmgkkhgoa";} # JSON Formatter
             ];
           };
           firefox = {
@@ -77,36 +87,38 @@ in {
             profiles.hfahmi = {
               search.engines = {
                 "Nix Packages" = {
-                  urls = [{
-                    template = "https://search.nixos.org/packages";
-                    params = [
-                      {
-                        name = "type";
-                        value = "packages";
-                      }
-                      {
-                        name = "query";
-                        value = "{searchTerms}";
-                      }
-                    ];
-                  }];
+                  urls = [
+                    {
+                      template = "https://search.nixos.org/packages";
+                      params = [
+                        {
+                          name = "type";
+                          value = "packages";
+                        }
+                        {
+                          name = "query";
+                          value = "{searchTerms}";
+                        }
+                      ];
+                    }
+                  ];
 
-                  icon =
-                    "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                  definedAliases = [ "@np" ];
+                  icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+                  definedAliases = ["@np"];
                 };
               };
               search.force = true;
 
               bookmarks = {
                 force = true;
-                settings = [{
-                  name = "wikipedia";
-                  tags = [ "wiki" ];
-                  keyword = "wiki";
-                  url =
-                    "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
-                }];
+                settings = [
+                  {
+                    name = "wikipedia";
+                    tags = ["wiki"];
+                    keyword = "wiki";
+                    url = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
+                  }
+                ];
               };
 
               settings = {
@@ -161,24 +173,22 @@ in {
 
               # TODO: Remove platform specific string here
               extensions.force = true;
-              extensions.packages =
-                with inputs.firefox-addons.packages."x86_64-linux"; [
-                  bitwarden
+              extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [
+                bitwarden
 
-                  # TODO: Put the vertical tabs configuraiton behind a single flag in a dedicated module
-                  tree-style-tab
-                  aw-watcher-web
-                  youtube-shorts-block
-                  zotero-connector
-                  # tridactyl
+                # TODO: Put the vertical tabs configuraiton behind a single flag in a dedicated module
+                tree-style-tab
+                aw-watcher-web
+                youtube-shorts-block
+                zotero-connector
+                # tridactyl
 
-                  # block-origin
-                  # sponsorblock
-                  # arkreader
-                ];
+                # block-origin
+                # sponsorblock
+                # arkreader
+              ];
             };
           };
-
         };
 
         home.packages = with pkgs; [
